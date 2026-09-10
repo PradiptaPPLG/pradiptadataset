@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
 <meta charset="UTF-8">
@@ -27,11 +28,15 @@
 
     --bg: #f4f4f2;
     --paper: #ffffff;
+
     --ink: #111111;
+
     --muted: #777777;
     --soft: #a4a4a4;
     --line: #dededb;
+
     --accent: #e9452f;
+
 
     --mono:
         "SFMono-Regular",
@@ -39,6 +44,7 @@
         "Liberation Mono",
         Menlo,
         monospace;
+
 
     --sans:
         Inter,
@@ -49,26 +55,30 @@
         Helvetica,
         Arial,
         sans-serif;
+
 }
 
 
 * {
 
-    box-sizing: border-box;
+    box-sizing:
+        border-box;
 
 }
 
 
 html {
 
-    scroll-behavior: smooth;
+    scroll-behavior:
+        smooth;
 
 }
 
 
 body {
 
-    margin: 0;
+    margin:
+        0;
 
     background:
         var(--bg);
@@ -88,23 +98,27 @@ body {
 button,
 input {
 
-    font: inherit;
+    font:
+        inherit;
 
 }
 
 
 button {
 
-    cursor: pointer;
+    cursor:
+        pointer;
 
 }
 
 
 a {
 
-    color: inherit;
+    color:
+        inherit;
 
-    text-decoration: none;
+    text-decoration:
+        none;
 
 }
 
@@ -146,7 +160,8 @@ a {
         space-between;
 
     border-bottom:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
 }
 
@@ -300,8 +315,7 @@ a {
 .hero {
 
     padding:
-        105px 0
-        105px;
+        105px 0 105px;
 
     display:
         grid;
@@ -314,7 +328,8 @@ a {
         80px;
 
     border-bottom:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
 }
 
@@ -413,13 +428,6 @@ a {
 }
 
 
-/*
- * Source text tetap berada di DOM.
- *
- * Tapi tidak terlihat karena canvas yang menjadi
- * visual utama.
- */
-
 .particle-line {
 
     display:
@@ -454,10 +462,6 @@ a {
 
 }
 
-
-/*
- * Canvas tepat menutup seluruh H1.
- */
 
 .hero-title-canvas {
 
@@ -523,7 +527,8 @@ a {
         20px;
 
     border-top:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
 }
 
@@ -569,14 +574,13 @@ a {
 
 
 /* =========================================================
-   LIBRARY HEADER
+   LIBRARY
 ========================================================= */
 
 .library {
 
     padding:
-        55px 0
-        110px;
+        55px 0 110px;
 
 }
 
@@ -658,7 +662,8 @@ a {
         center;
 
     border-bottom:
-        1px solid var(--ink);
+        1px solid
+        var(--ink);
 
 }
 
@@ -758,7 +763,8 @@ a {
         0 12px;
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     background:
         transparent;
@@ -804,13 +810,14 @@ a {
 
 
 /* =========================================================
-   DATASET LIST
+   DATASET TABLE / LIST
 ========================================================= */
 
 .dataset-list {
 
     border-top:
-        1px solid var(--ink);
+        1px solid
+        var(--ink);
 
 }
 
@@ -843,7 +850,8 @@ a {
         center;
 
     border-bottom:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     color:
         var(--soft);
@@ -872,7 +880,8 @@ a {
         center;
 
     border-bottom:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     transition:
         background-color
@@ -1011,7 +1020,8 @@ a {
         0 11px;
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     background:
         transparent;
@@ -1074,7 +1084,8 @@ a {
         85px 20px;
 
     border-bottom:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     text-align:
         center;
@@ -1111,6 +1122,138 @@ a {
 
 
 /* =========================================================
+   TEXT LOOP / BLACK RIBBON
+========================================================= */
+
+.text-loop-section {
+
+    width:
+        100%;
+
+    margin:
+        0;
+
+    overflow:
+        hidden;
+
+    background:
+        transparent;
+
+    border-top:
+        1px solid
+        var(--line);
+
+    border-bottom:
+        1px solid
+        var(--line);
+
+}
+
+
+.text-loop {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    overflow:
+        hidden;
+
+    background:
+        transparent;
+
+}
+
+
+.text-loop-svg {
+
+    display:
+        block;
+
+    width:
+        100%;
+
+    height:
+        135px;
+
+    overflow:
+        visible;
+
+}
+
+
+.text-loop-path {
+
+    fill:
+        none;
+
+    stroke:
+        #111111;
+
+    stroke-width:
+        76;
+
+    stroke-linecap:
+        round;
+
+    stroke-linejoin:
+        round;
+
+}
+
+
+.text-loop-text {
+
+    fill:
+        #ffffff;
+
+    font-family:
+        var(--sans);
+
+    font-size:
+        38px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1px;
+
+    user-select:
+        none;
+
+    pointer-events:
+        none;
+
+}
+
+
+.text-loop-measure {
+
+    visibility:
+        hidden;
+
+    pointer-events:
+        none;
+
+    font-family:
+        var(--sans);
+
+    font-size:
+        38px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        1px;
+
+}
+
+
+/* =========================================================
    FOOTER
 ========================================================= */
 
@@ -1129,7 +1272,8 @@ a {
         space-between;
 
     border-top:
-        1px solid var(--ink);
+        1px solid
+        var(--ink);
 
     color:
         var(--soft);
@@ -1268,7 +1412,8 @@ a {
         0 24px;
 
     border-bottom:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
 }
 
@@ -1330,7 +1475,8 @@ a {
         34px;
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     background:
         white;
@@ -1368,7 +1514,8 @@ a {
         );
 
     border-bottom:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
 }
 
@@ -1379,7 +1526,8 @@ a {
         15px 18px;
 
     border-right:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
 }
 
@@ -1468,7 +1616,8 @@ a {
         #f8f8f6;
 
     border-bottom:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
 }
 
@@ -1516,7 +1665,8 @@ a {
         0 9px;
 
     border:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     background:
         white;
@@ -1582,7 +1732,8 @@ a {
         0 15px;
 
     border-top:
-        1px solid var(--line);
+        1px solid
+        var(--line);
 
     color:
         var(--soft);
@@ -1865,6 +2016,33 @@ a {
 
     }
 
+
+    /* TextLoop */
+
+    .text-loop-svg {
+
+        height:
+            105px;
+
+    }
+
+
+    .text-loop-text,
+    .text-loop-measure {
+
+        font-size:
+            29px;
+
+    }
+
+
+    .text-loop-path {
+
+        stroke-width:
+            61;
+
+    }
+
 }
 
 
@@ -1904,12 +2082,52 @@ a {
 
     }
 
+
+    /* TextLoop */
+
+    .text-loop-svg {
+
+        height:
+            86px;
+
+    }
+
+
+    .text-loop-text,
+    .text-loop-measure {
+
+        font-size:
+            23px;
+
+    }
+
+
+    .text-loop-path {
+
+        stroke-width:
+            49;
+
+    }
+
 }
 
 
 /* =========================================================
-   END CSS
+   REDUCED MOTION
 ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+
+    }
+
+}
 
 </style>
 
@@ -1928,32 +2146,45 @@ a {
 
     <header class="header">
 
+
         <a
             href="#"
             class="logo"
         >
 
+
             <div class="logo-mark">
+
                 DP
+
             </div>
 
 
             <div class="logo-text">
 
+
                 <div class="logo-title">
+
                     Dataset Archive
+
                 </div>
+
 
                 <div class="logo-subtitle">
+
                     Pradipta / Public Collection
+
                 </div>
 
+
             </div>
+
 
         </a>
 
 
         <div class="header-right">
+
 
             <div class="online">
 
@@ -1967,10 +2198,14 @@ a {
 
 
             <span>
+
                 2026
+
             </span>
 
+
         </div>
+
 
     </header>
 
@@ -1988,31 +2223,35 @@ a {
 
             <div class="hero-index">
 
+
                 <span
                     class="hero-index-line"
                 ></span>
 
+
                 Collection / 001
+
 
             </div>
 
 
             <!-- =================================================
-                 PARTICLE TITLE
-
-                 Kedua baris akan dibuat oleh Canvas.
-                 ================================================= -->
+                 PARTICLE HERO TEXT
+            ================================================== -->
 
             <h1
                 class="hero-title"
                 id="particleHero"
             >
 
+
                 <span
                     class="particle-line"
                     data-particle-color="#111111"
                 >
+
                     Data for
+
                 </span>
 
 
@@ -2020,7 +2259,9 @@ a {
                     class="particle-line"
                     data-particle-color="#999995"
                 >
+
                     building things.
+
                 </span>
 
 
@@ -2030,10 +2271,12 @@ a {
                     aria-hidden="true"
                 ></canvas>
 
+
             </h1>
 
 
             <p class="hero-description">
+
 
                 Kumpulan dataset kecil yang dibuat untuk
                 eksperimen, database seeding, prototyping,
@@ -2041,6 +2284,7 @@ a {
 
                 Semua file disimpan dalam format source aslinya:
                 PHP dan SQL.
+
 
             </p>
 
@@ -2117,8 +2361,11 @@ a {
 
             <label class="search">
 
+
                 <span class="search-icon">
+
                     /
+
                 </span>
 
 
@@ -2128,6 +2375,7 @@ a {
                     placeholder="Search collection..."
                     autocomplete="off"
                 >
+
 
             </label>
 
@@ -2148,7 +2396,9 @@ a {
                 class="filter active"
                 data-filter="all"
             >
+
                 ALL
+
             </button>
 
 
@@ -2156,7 +2406,9 @@ a {
                 class="filter"
                 data-filter="php"
             >
+
                 PHP
+
             </button>
 
 
@@ -2164,7 +2416,9 @@ a {
                 class="filter"
                 data-filter="sql"
             >
+
                 SQL
+
             </button>
 
 
@@ -2172,7 +2426,9 @@ a {
                 class="filter"
                 data-filter="vehicle"
             >
+
                 VEHICLE
+
             </button>
 
 
@@ -2180,7 +2436,9 @@ a {
                 class="filter"
                 data-filter="reference"
             >
+
                 REFERENCE
+
             </button>
 
 
@@ -2188,7 +2446,9 @@ a {
                 class="filter"
                 data-filter="database"
             >
+
                 DATABASE
+
             </button>
 
 
@@ -2209,6 +2469,120 @@ a {
 
 
     <!-- =====================================================
+         ANIMATED APISTACK / DATASET RIBBON
+    ====================================================== -->
+
+    <section
+        class="text-loop-section"
+        id="textLoop"
+        aria-label="ApiStack Dataset"
+    >
+
+
+        <div class="text-loop">
+
+
+            <svg
+                class="text-loop-svg"
+                id="textLoopSvg"
+                viewBox="0 0 1200 190"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+            >
+
+
+                <!--
+                    Black ribbon.
+
+                    Amplitude dibuat kecil sehingga
+                    bentuknya hanya gentle wave.
+                -->
+
+                <path
+                    id="textLoopPath"
+                    class="text-loop-path"
+                    d="
+                        M -300 95
+
+                        C -240 84,
+                          -180 106,
+                          -120 95
+
+                        S 0 84,
+                          60 95
+
+                        S 180 106,
+                          240 95
+
+                        S 360 84,
+                          420 95
+
+                        S 540 106,
+                          600 95
+
+                        S 720 84,
+                          780 95
+
+                        S 900 106,
+                          960 95
+
+                        S 1080 84,
+                          1140 95
+
+                        S 1260 106,
+                          1320 95
+
+                        S 1440 84,
+                          1500 95
+                    "
+                ></path>
+
+
+                <!--
+                    Hidden measurement text.
+                -->
+
+                <text
+                    id="textLoopMeasure"
+                    class="text-loop-measure"
+                >
+                    APISTACK ✦ DATASET ✦
+                </text>
+
+
+                <!--
+                    SATU textPath.
+
+                    Text dibuat sangat panjang oleh JS.
+                -->
+
+                <text
+                    class="text-loop-text"
+                    dominant-baseline="central"
+                >
+
+                    <textPath
+                        id="textLoopHead"
+                        href="#textLoopPath"
+                        startOffset="0"
+                    >
+                        APISTACK ✦ DATASET ✦
+                    </textPath>
+
+                </text>
+
+
+            </svg>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
          FOOTER
     ====================================================== -->
 
@@ -2216,12 +2590,16 @@ a {
 
 
         <span>
+
             DATASET ARCHIVE / PRADIPTA
+
         </span>
 
 
         <span class="footer-right">
+
             PHP · SQL · CAR
+
         </span>
 
 
@@ -2252,6 +2630,8 @@ a {
     <section class="modal-panel">
 
 
+        <!-- MODAL HEADER -->
+
         <div class="modal-top">
 
 
@@ -2262,7 +2642,9 @@ a {
                     class="modal-title"
                     id="modalTitle"
                 >
+
                     Dataset
+
                 </h3>
 
 
@@ -2270,7 +2652,9 @@ a {
                     class="modal-file"
                     id="modalFile"
                 >
+
                     —
+
                 </div>
 
 
@@ -2282,7 +2666,9 @@ a {
                 id="closeModal"
                 aria-label="Close"
             >
+
                 ×
+
             </button>
 
 
@@ -2290,69 +2676,99 @@ a {
 
 
 
+        <!-- METADATA -->
+
         <div class="modal-meta">
 
 
             <div class="meta">
 
+
                 <div class="meta-label">
+
                     Format
+
                 </div>
+
 
                 <div
                     class="meta-value"
                     id="metaFormat"
                 >
+
                     —
+
                 </div>
+
 
             </div>
 
 
             <div class="meta">
 
+
                 <div class="meta-label">
+
                     Type
+
                 </div>
+
 
                 <div
                     class="meta-value"
                     id="metaType"
                 >
+
                     —
+
                 </div>
+
 
             </div>
 
 
             <div class="meta">
 
+
                 <div class="meta-label">
+
                     Directory
+
                 </div>
+
 
                 <div
                     class="meta-value"
                     id="metaDirectory"
                 >
+
                     —
+
                 </div>
+
 
             </div>
 
 
             <div class="meta">
 
+
                 <div class="meta-label">
+
                     File size
+
                 </div>
+
 
                 <div
                     class="meta-value"
                     id="metaSize"
                 >
+
                     —
+
                 </div>
+
 
             </div>
 
@@ -2360,6 +2776,8 @@ a {
         </div>
 
 
+
+        <!-- FILE VIEWER -->
 
         <div class="viewer">
 
@@ -2368,7 +2786,9 @@ a {
 
 
                 <span class="viewer-label">
+
                     Source preview
+
                 </span>
 
 
@@ -2379,7 +2799,9 @@ a {
                         class="viewer-action"
                         id="copyButton"
                     >
+
                         Copy
+
                     </button>
 
 
@@ -2387,7 +2809,9 @@ a {
                         class="viewer-action"
                         id="downloadButton"
                     >
+
                         Download
+
                     </button>
 
 
@@ -2413,14 +2837,18 @@ a {
                 <span
                     id="viewerStatus"
                 >
+
                     Waiting for file...
+
                 </span>
 
 
                 <span
                     id="viewerLines"
                 >
+
                     —
+
                 </span>
 
 
@@ -2441,7 +2869,9 @@ a {
     class="toast"
     id="toast"
 >
+
     Copied
+
 </div>
 
 
@@ -2740,15 +3170,18 @@ const datasetList =
         "datasetList"
     );
 
+
 const searchInput =
     document.getElementById(
         "searchInput"
     );
 
+
 const filterRow =
     document.getElementById(
         "filterRow"
     );
+
 
 const libraryCount =
     document.getElementById(
@@ -2761,10 +3194,12 @@ const previewModal =
         "previewModal"
     );
 
+
 const modalBackdrop =
     document.getElementById(
         "modalBackdrop"
     );
+
 
 const closeModalButton =
     document.getElementById(
@@ -2777,25 +3212,30 @@ const modalTitle =
         "modalTitle"
     );
 
+
 const modalFile =
     document.getElementById(
         "modalFile"
     );
+
 
 const metaFormat =
     document.getElementById(
         "metaFormat"
     );
 
+
 const metaType =
     document.getElementById(
         "metaType"
     );
 
+
 const metaDirectory =
     document.getElementById(
         "metaDirectory"
     );
+
 
 const metaSize =
     document.getElementById(
@@ -2808,10 +3248,12 @@ const viewerCode =
         "viewerCode"
     );
 
+
 const viewerStatus =
     document.getElementById(
         "viewerStatus"
     );
+
 
 const viewerLines =
     document.getElementById(
@@ -2824,10 +3266,12 @@ const copyButton =
         "copyButton"
     );
 
+
 const downloadButton =
     document.getElementById(
         "downloadButton"
     );
+
 
 const toast =
     document.getElementById(
@@ -2888,7 +3332,7 @@ function setText(
 
 
 /* ============================================================
-   DATASET FILTER
+   FILTER
 ============================================================ */
 
 function getFilteredDatasets() {
@@ -2934,12 +3378,14 @@ function getFilteredDatasets() {
                 ...dataset.tags
 
             ]
-                .join(" ")
+                .join(
+                    " "
+                )
                 .toLowerCase();
 
 
             const matchesSearch =
-                !query
+                query === ""
                 ||
                 content.includes(
                     query
@@ -2963,6 +3409,15 @@ function getFilteredDatasets() {
 ============================================================ */
 
 function renderDatasets() {
+
+    if (
+        !datasetList
+    ) {
+
+        return;
+
+    }
+
 
     const list =
         getFilteredDatasets();
@@ -3043,9 +3498,11 @@ function renderDatasets() {
                         <div
                             class="dataset-number"
                         >
+
                             ${escapeHTML(
                                 dataset.id
                             )}
+
                         </div>
 
 
@@ -3056,18 +3513,22 @@ function renderDatasets() {
                             <div
                                 class="dataset-name"
                             >
+
                                 ${escapeHTML(
                                     dataset.name
                                 )}
+
                             </div>
 
 
                             <div
                                 class="dataset-description"
                             >
+
                                 ${escapeHTML(
                                     dataset.description
                                 )}
+
                             </div>
 
                         </div>
@@ -3079,24 +3540,29 @@ function renderDatasets() {
                                 dataset.file
                             )}"
                         >
+
                             ${escapeHTML(
                                 dataset.file
                             )}
+
                         </div>
 
 
                         <div
                             class="dataset-type"
                         >
+
                             ${escapeHTML(
                                 dataset.type
                             )}
+
                         </div>
 
 
                         <div
                             class="dataset-actions"
                         >
+
 
                             <button
                                 type="button"
@@ -3105,7 +3571,9 @@ function renderDatasets() {
                                     dataset.id
                                 )}"
                             >
+
                                 Preview
+
                             </button>
 
 
@@ -3116,8 +3584,11 @@ function renderDatasets() {
                                     dataset.id
                                 )}"
                             >
+
                                 Download
+
                             </button>
+
 
                         </div>
 
@@ -3191,7 +3662,7 @@ function bindDatasetButtons() {
 
 
 /* ============================================================
-   PREVIEW
+   OPEN PREVIEW
 ============================================================ */
 
 function openPreview(
@@ -3272,8 +3743,7 @@ function openPreview(
 
 
     /*
-     * Preview tetap menggunakan TXT.
-     *
+     * Preview menggunakan file TXT.
      * Tidak memakai fetch().
      */
 
@@ -3314,15 +3784,21 @@ function openPreview(
     }
 
 
-    previewModal.classList.add(
-        "open"
-    );
+    if (
+        previewModal
+    ) {
+
+        previewModal.classList.add(
+            "open"
+        );
 
 
-    previewModal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
+        previewModal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+    }
 
 
     document.body.style.overflow =
@@ -3406,14 +3882,6 @@ function downloadDataset(
     }
 
 
-    /*
-     * File TXT preview memiliki isi
-     * yang sama dengan file asli.
-     *
-     * Browser diminta memberikan nama
-     * download asli .php/.sql.
-     */
-
     const link =
         document.createElement(
             "a"
@@ -3451,7 +3919,7 @@ function downloadDataset(
 
 
 /* ============================================================
-   COPY
+   COPY PREVIEW
 ============================================================ */
 
 async function copyPreview() {
@@ -3542,6 +4010,52 @@ async function copyPreview() {
         );
 
     }
+
+}
+
+
+/* ============================================================
+   TOAST
+============================================================ */
+
+function showToast(
+    message
+) {
+
+    if (
+        !toast
+    ) {
+
+        return;
+
+    }
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            1800
+        );
 
 }
 
@@ -3688,7 +4202,8 @@ document.addEventListener(
     event => {
 
         if (
-            event.key === "Escape"
+            event.key ===
+            "Escape"
             &&
             previewModal
             &&
@@ -3706,14 +4221,14 @@ document.addEventListener(
 
 
 /* ============================================================
-   START DATASET UI
+   START DATASET
 ============================================================ */
 
 renderDatasets();
 
 
 /* ============================================================
-   PARTICLE TEXT ENGINE
+   PARTICLE HERO ENGINE
 ============================================================ */
 
 (() => {
@@ -3741,16 +4256,10 @@ renderDatasets();
 
 
     if (
-        !hero
-        ||
-        !canvas
-        ||
-        sourceLines.length === 0
+        !hero ||
+        !canvas ||
+        !sourceLines.length
     ) {
-
-        console.warn(
-            "Particle text elements not found."
-        );
 
         return;
 
@@ -3767,10 +4276,6 @@ renderDatasets();
         !ctx
     ) {
 
-        console.warn(
-            "Canvas context unavailable."
-        );
-
         return;
 
     }
@@ -3782,84 +4287,29 @@ renderDatasets();
 
     const CONFIG = {
 
-        /*
-         * Ukuran particle.
-         *
-         * 2px terasa cukup jelas
-         * tanpa terlalu kasar.
-         */
-
         particleSize:
-            2.05,
-
-
-        /*
-         * Sampling density.
-         *
-         * 2 = sangat padat
-         */
+            2.0,
 
         density:
             2,
 
-
-        /*
-         * Scatter awal.
-         */
-
         scatter:
             135,
-
-
-        /*
-         * Durasi pembentukan.
-
-         */
 
         gatherDuration:
             1500,
 
-
-        /*
-         * Delay particle.
-
-         */
-
         stagger:
             130,
-
-
-        /*
-         * Mouse repel.
-
-         */
 
         pointerRepel:
             30,
 
-
-        /*
-         * Mouse radius.
-
-         */
-
         repelRadius:
             110,
 
-
-        /*
-         * Idle.
-
-         */
-
         idleDrift:
             0.14,
-
-
-        /*
-         * Batas aman.
-
-         */
 
         maxParticles:
             14000
@@ -3958,7 +4408,8 @@ renderDatasets();
         return (
             1 -
             Math.pow(
-                1 - value,
+                1 -
+                value,
                 3
             )
         );
@@ -3974,7 +4425,8 @@ renderDatasets();
             Math.sin(
                 seed *
                 12.9898
-            ) *
+            )
+            *
             43758.5453;
 
 
@@ -3994,7 +4446,8 @@ renderDatasets();
 
         const clean =
             String(
-                value || ""
+                value ||
+                ""
             )
                 .replace(
                     "#",
@@ -4068,12 +4521,6 @@ renderDatasets();
     ======================================================== */
 
     function buildParticles() {
-
-        /*
-         * ================================================
-         * CANVAS UKURAN AKTUAL
-         * ================================================
-         */
 
         const rect =
             hero.getBoundingClientRect();
@@ -4150,9 +4597,7 @@ renderDatasets();
 
 
         /*
-         * ================================================
-         * FONT AKTUAL DARI H1
-         * ================================================
+         * Get H1 font.
          */
 
         const style =
@@ -4194,24 +4639,12 @@ renderDatasets();
             0;
 
 
-        /*
-         * Font string.
-         */
-
         const font =
             `${fontWeight} ${fontSize}px ${fontFamily}`;
 
 
         /*
-         * ================================================
-         * OFFSCREEN CANVAS
-         *
-         * Tidak lagi memakai getBoundingClientRect()
-         * untuk menghitung posisi glyph.
-         *
-         * Ini bagian yang memperbaiki particle
-         * yang sebelumnya kepotong dan mengecil.
-         * ================================================
+         * Measure canvas.
          */
 
         const measureCanvas =
@@ -4244,167 +4677,88 @@ renderDatasets();
 
 
         /*
-         * ================================================
-         * HITUNG DIMENSI MAKSIMUM TEKS
-         * ================================================
+         * Process lines.
          */
 
-        let maxTextWidth =
-            0;
-
-
-        const lineMeasurements =
-            sourceLines.map(
-                element => {
-
-                    const text =
-                        element
-                            .textContent
-                            .trim();
-
-
-                    let textWidth =
-                        0;
-
-
-                    for (
-                        let i = 0;
-                        i < text.length;
-                        i++
-                    ) {
-
-                        textWidth +=
-                            measureCtx
-                                .measureText(
-                                    text[i]
-                                )
-                                .width;
-
-
-                        if (
-                            i <
-                            text.length -
-                            1
-                        ) {
-
-                            textWidth +=
-                                letterSpacing;
-
-                        }
-
-                    }
-
-
-                    maxTextWidth =
-                        Math.max(
-                            maxTextWidth,
-                            textWidth
-                        );
-
-
-                    return {
-
-                        text,
-
-                        width:
-                            textWidth,
-
-                        color:
-                            element
-                                .dataset
-                                .particleColor
-                            ||
-                            "#999995"
-
-                    };
-
-                }
-            );
-
-
-        /*
-         * Text metrics.
-         */
-
-        const metrics =
-            measureCtx.measureText(
-                "Hg"
-            );
-
-
-        const ascent =
-            metrics.actualBoundingBoxAscent
-            ||
-            fontSize *
-            0.78;
-
-
-        const descent =
-            metrics.actualBoundingBoxDescent
-            ||
-            fontSize *
-            0.22;
-
-
-        /*
-         * Padding cukup untuk memastikan
-         * glyph tidak terpotong.
-         */
-
-        const padding =
-            Math.ceil(
-                fontSize *
-                0.15
-            );
-
-
-        /*
-         * Offscreen hanya sebesar teks.
-         */
-
-        const offscreenWidth =
-            Math.ceil(
-                maxTextWidth +
-                padding *
-                2
-            );
-
-
-        const offscreenHeight =
-            Math.ceil(
-                (
-                    ascent +
-                    descent
-                )
-                +
-                (
-                    lineHeight *
-                    (
-                        lineMeasurements.length -
-                        1
-                    )
-                )
-                +
-                padding *
-                2
-            );
-
-
-        /*
-         * ================================================
-         * PROCESS EACH LINE INDIVIDUALLY
-         * ================================================
-         */
-
-        lineMeasurements.forEach(
+        sourceLines.forEach(
             (
-                line,
+                element,
                 lineIndex
             ) => {
 
-                /*
-                 * Canvas per line.
-                 */
+                const text =
+                    element
+                        .textContent
+                        .trim();
+
+
+                if (
+                    !text
+                ) {
+
+                    return;
+
+                }
+
+
+                let textWidth =
+                    0;
+
+
+                for (
+                    let i = 0;
+                    i < text.length;
+                    i++
+                ) {
+
+                    textWidth +=
+                        measureCtx
+                            .measureText(
+                                text[i]
+                            )
+                            .width;
+
+
+                    if (
+                        i <
+                        text.length -
+                        1
+                    ) {
+
+                        textWidth +=
+                            letterSpacing;
+
+                    }
+
+                }
+
+
+                const metrics =
+                    measureCtx.measureText(
+                        "Hg"
+                    );
+
+
+                const ascent =
+                    metrics.actualBoundingBoxAscent
+                    ||
+                    fontSize *
+                    0.78;
+
+
+                const descent =
+                    metrics.actualBoundingBoxDescent
+                    ||
+                    fontSize *
+                    0.22;
+
+
+                const padding =
+                    Math.ceil(
+                        fontSize *
+                        0.16
+                    );
+
 
                 const offscreen =
                     document.createElement(
@@ -4413,7 +4767,11 @@ renderDatasets();
 
 
                 offscreen.width =
-                    offscreenWidth;
+                    Math.ceil(
+                        textWidth +
+                        padding *
+                        2
+                    );
 
 
                 offscreen.height =
@@ -4444,38 +4802,21 @@ renderDatasets();
                 }
 
 
-                /*
-                 * Set font.
-                 */
-
                 offCtx.font =
                     font;
-
-
-                offCtx.textBaseline =
-                    "alphabetic";
 
 
                 offCtx.textAlign =
                     "left";
 
 
-                /*
-                 * Mask putih.
-                 */
+                offCtx.textBaseline =
+                    "alphabetic";
+
 
                 offCtx.fillStyle =
                     "#ffffff";
 
-
-                /*
-                 * =========================================
-                 * CHARACTER BY CHARACTER
-                 *
-                 * Supaya letter-spacing H1 tetap
-                 * ikut.
-                 * =========================================
-                 */
 
                 let cursorX =
                     padding;
@@ -4488,12 +4829,12 @@ renderDatasets();
 
                 for (
                     let i = 0;
-                    i < line.text.length;
+                    i < text.length;
                     i++
                 ) {
 
                     const character =
-                        line.text[i];
+                        text[i];
 
 
                     offCtx.fillText(
@@ -4511,7 +4852,7 @@ renderDatasets();
 
                     if (
                         i <
-                        line.text.length -
+                        text.length -
                         1
                     ) {
 
@@ -4523,10 +4864,6 @@ renderDatasets();
                 }
 
 
-                /*
-                 * Pixel data.
-                 */
-
                 const imageData =
                     offCtx.getImageData(
                         0,
@@ -4536,14 +4873,40 @@ renderDatasets();
                     );
 
 
-                /*
-                 * =========================================
-                 * SAMPLE PIXELS
-                 * =========================================
-                 */
+                const lineElementRect =
+                    element
+                        .getBoundingClientRect();
 
-                const targets =
-                    [];
+
+                const heroRect =
+                    hero
+                        .getBoundingClientRect();
+
+
+                const lineY =
+                    lineElementRect.top -
+                    heroRect.top;
+
+
+                const lineBoxHeight =
+                    lineElementRect.height;
+
+
+                const glyphHeight =
+                    ascent +
+                    descent;
+
+
+                const leading =
+                    Math.max(
+                        0,
+                        (
+                            lineBoxHeight -
+                            glyphHeight
+                        )
+                        /
+                        2
+                    );
 
 
                 const step =
@@ -4562,7 +4925,7 @@ renderDatasets();
                         x += step
                     ) {
 
-                        const pixelIndex =
+                        const index =
                             (
                                 (
                                     y *
@@ -4578,33 +4941,20 @@ renderDatasets();
                         const alpha =
                             imageData
                                 .data[
-                                    pixelIndex +
+                                    index +
                                     3
                                 ];
 
 
                         if (
                             alpha <
-                            55
+                            60
                         ) {
 
                             continue;
 
                         }
 
-
-                        /*
-                         * Target position.
-                         *
-                         * X:
-                         *    selalu mulai dari 0/padding
-                         *
-                         * Y:
-                         *    line index * lineHeight
-                         *
-                         * Jadi tidak akan lagi
-                         * bergeser karena DOM span.
-                         */
 
                         const targetX =
                             x -
@@ -4612,36 +4962,28 @@ renderDatasets();
 
 
                         const targetY =
-                            (
-                                lineIndex *
-                                lineHeight
-                            )
-                            +
+                            lineY +
+                            leading +
                             (
                                 y -
                                 padding
                             );
 
 
-                        /*
-                         * Hindari target di luar
-                         * canvas H1.
-                         */
-
                         if (
                             targetX <
-                            -2
+                            -4
                             ||
                             targetX >
                             width +
-                            2
+                            4
                             ||
                             targetY <
-                            -2
+                            -4
                             ||
                             targetY >
                             height +
-                            2
+                            4
                         ) {
 
                             continue;
@@ -4649,86 +4991,43 @@ renderDatasets();
                         }
 
 
-                        targets.push({
+                        const color =
+                            element
+                                .dataset
+                                .particleColor
+                            ||
+                            "#999995";
 
-                            x:
-                                targetX,
-
-                            y:
-                                targetY,
-
-                            alpha:
-                                alpha / 255,
-
-                            color:
-                                line.color
-
-                        });
-
-                    }
-
-                }
-
-
-                /*
-                 * =========================================
-                 * CENTER TEXT HORIZONTAL
-                 *
-                 * DOM H1 biasanya left-aligned.
-                 * Kita gunakan 0 sebagai baseline.
-                 * Kalau teks lebih kecil dari H1,
-                 * kita tetap mulai dari kiri supaya
-                 * identik dengan heading asli.
-                 * =========================================
-                 */
-
-                const lineOffsetX =
-                    0;
-
-
-                /*
-                 * =========================================
-                 * PARTICLES
-                 * =========================================
-                 */
-
-                targets.forEach(
-                    (
-                        target,
-                        index
-                    ) => {
 
                         const seed =
                             randomHash(
                                 (
-                                    index +
-                                    1
+                                    x *
+                                    7
                                 )
-                                *
+                                +
                                 (
-                                    lineIndex +
-                                    1
+                                    y *
+                                    13
                                 )
-                                *
-                                17
+                                +
+                                (
+                                    lineIndex *
+                                    991
+                                )
                             );
 
 
                         const depth =
                             0.55 +
                             randomHash(
-                                index +
-                                500 +
-                                lineIndex *
-                                100
+                                x +
+                                y +
+                                500
                             )
                             *
                             0.65;
 
-
-                        /*
-                         * Starting scatter.
-                         */
 
                         const angle =
                             seed *
@@ -4746,13 +5045,12 @@ renderDatasets();
                             (
                                 0.35 +
                                 depth *
-                                0.70
+                                0.72
                             );
 
 
                         const startX =
-                            lineOffsetX +
-                            target.x +
+                            targetX +
                             Math.cos(
                                 angle
                             )
@@ -4761,7 +5059,7 @@ renderDatasets();
 
 
                         const startY =
-                            target.y +
+                            targetY +
                             Math.sin(
                                 angle
                             )
@@ -4769,78 +5067,62 @@ renderDatasets();
                             distance;
 
 
-                        /*
-                         * Color.
-                         *
-                         * Sedikit variasi hanya pada warna
-                         * yang sama.
-                         */
-
                         const rgb =
                             hexToRgb(
-                                target.color
+                                color
                             );
 
 
-                        let color =
-                            target.color;
+                        let finalColor =
+                            color;
 
 
                         if (
                             rgb
                         ) {
 
-                            /*
-                             * Variasi kecil.
-                             *
-                             * Hitam tetap hitam-ish.
-                             * Abu tetap abu.
-                             */
-
                             const amount =
                                 seed *
                                 0.08;
 
 
-                            const mixed = {
+                            finalColor =
+                                rgbToCss({
 
-                                r:
-                                    Math.round(
-                                        rgb.r +
-                                        (
-                                            255 -
-                                            rgb.r
-                                        ) *
-                                        amount
-                                    ),
+                                    r:
+                                        Math.round(
+                                            rgb.r +
+                                            (
+                                                255 -
+                                                rgb.r
+                                            )
+                                            *
+                                            amount
+                                        ),
 
-                                g:
-                                    Math.round(
-                                        rgb.g +
-                                        (
-                                            255 -
-                                            rgb.g
-                                        ) *
-                                        amount
-                                    ),
+                                    g:
+                                        Math.round(
+                                            rgb.g +
+                                            (
+                                                255 -
+                                                rgb.g
+                                            )
+                                            *
+                                            amount
+                                        ),
 
-                                b:
-                                    Math.round(
-                                        rgb.b +
-                                        (
-                                            255 -
-                                            rgb.b
-                                        ) *
-                                        amount
-                                    )
+                                    b:
+                                        Math.round(
+                                            rgb.b +
+                                            (
+                                                255 -
+                                                rgb.b
+                                            )
+                                            *
+                                            amount
+                                        )
 
-                            };
-
-
-                            color =
-                                rgbToCss(
-                                    mixed
-                                );
+                                });
 
                         }
 
@@ -4857,30 +5139,31 @@ renderDatasets();
 
                             startY,
 
-                            targetX:
-                                lineOffsetX +
-                                target.x,
+                            targetX,
 
-                            targetY:
-                                target.y,
+                            targetY,
 
                             size:
                                 Math.max(
                                     1,
-                                    CONFIG
-                                        .particleSize
-                                    *
+                                    CONFIG.particleSize *
                                     (
                                         0.78 +
-                                        target.alpha *
-                                        0.32
+                                        (
+                                            alpha /
+                                            255
+                                        )
+                                        *
+                                        0.34
                                     )
                                 ),
 
-                            color,
+                            color:
+                                finalColor,
 
                             alpha:
-                                target.alpha,
+                                alpha /
+                                255,
 
                             seed,
 
@@ -4893,16 +5176,15 @@ renderDatasets();
                         });
 
                     }
-                );
+
+                }
 
             }
         );
 
 
         /*
-         * ================================================
-         * PARTICLE LIMIT
-         * ================================================
+         * Limit particles.
          */
 
         if (
@@ -4920,25 +5202,20 @@ renderDatasets();
                     (
                         _particle,
                         index
-                    ) => {
-
-                        return (
-                            randomHash(
-                                index +
-                                999
-                            )
-                            <
-                            ratio
-                        );
-
-                    }
+                    ) =>
+                        randomHash(
+                            index +
+                            7000
+                        )
+                        <
+                        ratio
                 );
 
         }
 
 
         /*
-         * Mouse.
+         * Reset pointer.
          */
 
         pointer.x =
@@ -4960,7 +5237,7 @@ renderDatasets();
 
 
         /*
-         * Animation reset.
+         * Formation reset.
          */
 
         gatherStart =
@@ -4970,10 +5247,6 @@ renderDatasets();
         gathering =
             !reducedMotion;
 
-
-        /*
-         * Reduced motion.
-         */
 
         if (
             reducedMotion
@@ -5014,7 +5287,7 @@ renderDatasets();
 
 
     /* ========================================================
-       DRAW
+       DRAW PARTICLE
     ======================================================== */
 
     function drawParticle(
@@ -5060,10 +5333,6 @@ renderDatasets();
         );
 
 
-        /*
-         * Smooth pointer.
-         */
-
         pointer.smoothX +=
             (
                 pointer.x -
@@ -5101,12 +5370,6 @@ renderDatasets();
                     1;
 
 
-                /*
-                 * =========================================
-                 * GATHER
-                 * =========================================
-                 */
-
                 if (
                     gathering
                 ) {
@@ -5120,7 +5383,8 @@ renderDatasets();
                     progress =
                         clamp(
                             elapsed /
-                            CONFIG.gatherDuration,
+                            CONFIG
+                                .gatherDuration,
                             0,
                             1
                         );
@@ -5165,12 +5429,6 @@ renderDatasets();
                 }
 
 
-                /*
-                 * =========================================
-                 * IDLE DRIFT
-                 * =========================================
-                 */
-
                 else if (
                     !reducedMotion
                 ) {
@@ -5196,7 +5454,7 @@ renderDatasets();
                     targetY +=
                         Math.cos(
                             time *
-                            0.64 +
+                            0.63 +
                             particle.seed *
                             8
                         )
@@ -5207,12 +5465,6 @@ renderDatasets();
 
                 }
 
-
-                /*
-                 * =========================================
-                 * MOUSE REPEL
-                 * =========================================
-                 */
 
                 if (
                     pointer.active &&
@@ -5244,7 +5496,7 @@ renderDatasets();
                         CONFIG.repelRadius
                     ) {
 
-                        const force =
+                        const strength =
                             Math.pow(
                                 1 -
                                 (
@@ -5263,7 +5515,7 @@ renderDatasets();
                                 distance
                             )
                             *
-                            force;
+                            strength;
 
 
                         targetY +=
@@ -5272,18 +5524,12 @@ renderDatasets();
                                 distance
                             )
                             *
-                            force;
+                            strength;
 
                     }
 
                 }
 
-
-                /*
-                 * =========================================
-                 * SMOOTH
-                 * =========================================
-                 */
 
                 const follow =
                     reducedMotion
@@ -5308,12 +5554,6 @@ renderDatasets();
                     *
                     follow;
 
-
-                /*
-                 * =========================================
-                 * OPACITY
-                 * =========================================
-                 */
 
                 ctx.globalAlpha =
                     clamp(
@@ -5340,10 +5580,6 @@ renderDatasets();
         ctx.globalAlpha =
             1;
 
-
-        /*
-         * Finish.
-         */
 
         if (
             gathering &&
@@ -5465,13 +5701,13 @@ renderDatasets();
         in window
     ) {
 
-        const resizeObserver =
+        const observer =
             new ResizeObserver(
                 queueResize
             );
 
 
-        resizeObserver.observe(
+        observer.observe(
             hero
         );
 
@@ -5523,10 +5759,485 @@ renderDatasets();
 
     async function start() {
 
+        if (
+            document.fonts &&
+            document.fonts.ready
+        ) {
+
+            try {
+
+                await document
+                    .fonts
+                    .ready;
+
+            } catch {}
+
+        }
+
+
+        buildParticles();
+
+
+        animationFrame =
+            requestAnimationFrame(
+                render
+            );
+
+    }
+
+
+    start();
+
+})();
+
+
+/* ============================================================
+   TEXT LOOP
+   SMOOTH RIGHT -> LEFT
+============================================================ */
+
+(() => {
+
+    const root =
+        document.getElementById(
+            "textLoop"
+        );
+
+
+    const path =
+        document.getElementById(
+            "textLoopPath"
+        );
+
+
+    const measure =
+        document.getElementById(
+            "textLoopMeasure"
+        );
+
+
+    const textPath =
+        document.getElementById(
+            "textLoopHead"
+        );
+
+
+    if (
+        !root ||
+        !path ||
+        !measure ||
+        !textPath
+    ) {
+
+        return;
+
+    }
+
+
+    /* ========================================================
+       CONFIG
+    ======================================================== */
+
+    const CONFIG = {
+
         /*
-         * Tunggu browser selesai menyiapkan font.
-         * Ini penting supaya ukuran particle benar-benar
-         * sama dengan heading.
+         * Unit teks yang akan diulang.
+         */
+
+        unit:
+            "APISTACK ✦ DATASET ✦",
+
+
+        /*
+         * Kecepatan dalam SVG units / second.
+         *
+         * 42 = smooth / cinematic
+         * 60 = lebih cepat
+         */
+
+        speed:
+            48,
+
+
+        /*
+         * Pause ketika hover.
+         */
+
+        pauseOnHover:
+            true
+
+    };
+
+
+    /* ========================================================
+       STATE
+    ======================================================== */
+
+    let pathLength =
+        0;
+
+
+    let unitWidth =
+        0;
+
+
+    let phase =
+        0;
+
+
+    let lastTime =
+        0;
+
+
+    let paused =
+        false;
+
+
+    let animationFrame =
+        null;
+
+
+    let reducedMotion =
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    /* ========================================================
+       MEASURE
+    ======================================================== */
+
+    function setupText() {
+
+        try {
+
+            /*
+             * Path length hanya dipakai untuk mengetahui
+             * berapa banyak teks yang diperlukan.
+             */
+
+            pathLength =
+                path.getTotalLength();
+
+
+            /*
+             * Measurement dari SATU pattern.
+             */
+
+            measure.textContent =
+                CONFIG.unit;
+
+
+            unitWidth =
+                measure.getComputedTextLength();
+
+        } catch (
+            error
+        ) {
+
+            console.warn(
+                "TextLoop measurement failed:",
+                error
+            );
+
+
+            return false;
+
+        }
+
+
+        if (
+            !pathLength ||
+            !unitWidth
+        ) {
+
+            return false;
+
+        }
+
+
+        /*
+         * Buat text jauh lebih panjang daripada
+         * area yang terlihat.
+         */
+
+        const requiredLength =
+            pathLength *
+            5;
+
+
+        const repeatCount =
+            Math.max(
+                40,
+                Math.ceil(
+                    requiredLength /
+                    unitWidth
+                )
+            );
+
+
+        textPath.textContent =
+            Array(
+                repeatCount
+            )
+                .fill(
+                    CONFIG.unit
+                )
+                .join(
+                    "\u00A0"
+                );
+
+
+        /*
+         * Start dari posisi 0.
+         */
+
+        phase =
+            0;
+
+
+        applyPhase();
+
+
+        return true;
+
+    }
+
+
+    /* ========================================================
+       APPLY PHASE
+    ======================================================== */
+
+    function applyPhase() {
+
+        if (
+            !unitWidth
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * Kita hanya menggerakkan SATU unit teks.
+         *
+         * Setelah mencapai unitWidth,
+         * kembali ke posisi ekuivalen.
+         *
+         * Karena pola identik, reset tidak terlihat.
+         */
+
+        const wrapped =
+            phase %
+            unitWidth;
+
+
+        /*
+         * NEGATIVE = bergerak kanan -> kiri.
+         */
+
+        textPath.setAttribute(
+            "startOffset",
+            String(
+                -wrapped
+            )
+        );
+
+    }
+
+
+    /* ========================================================
+       ANIMATION
+    ======================================================== */
+
+    function animate(
+        now
+    ) {
+
+        if (
+            !lastTime
+        ) {
+
+            lastTime =
+                now;
+
+        }
+
+
+        const delta =
+            Math.min(
+                50,
+                now -
+                lastTime
+            );
+
+
+        lastTime =
+            now;
+
+
+        if (
+            !paused &&
+            !reducedMotion &&
+            unitWidth >
+            0
+        ) {
+
+            /*
+             * Phase bertambah.
+             *
+             * applyPhase() memberikan nilai negatif,
+             * sehingga visual bergerak kanan -> kiri.
+             */
+
+            phase +=
+                CONFIG.speed *
+                (
+                    delta /
+                    1000
+                );
+
+
+            applyPhase();
+
+        }
+
+
+        animationFrame =
+            requestAnimationFrame(
+                animate
+            );
+
+    }
+
+
+    /* ========================================================
+       HOVER
+    ======================================================== */
+
+    if (
+        CONFIG.pauseOnHover
+    ) {
+
+        root.addEventListener(
+            "pointerenter",
+            () => {
+
+                paused =
+                    true;
+
+            }
+        );
+
+
+        root.addEventListener(
+            "pointerleave",
+            () => {
+
+                paused =
+                    false;
+
+
+                /*
+                 * Reset waktu agar saat resume
+                 * tidak terjadi lonjakan delta.
+                 */
+
+                lastTime =
+                    performance.now();
+
+            }
+        );
+
+    }
+
+
+    /* ========================================================
+       REDUCED MOTION
+    ======================================================== */
+
+    const motionQuery =
+        window.matchMedia
+            ? window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            )
+            : null;
+
+
+    if (
+        motionQuery
+    ) {
+
+        motionQuery.addEventListener(
+            "change",
+            event => {
+
+                reducedMotion =
+                    event.matches;
+
+
+                if (
+                    reducedMotion
+                ) {
+
+                    phase =
+                        0;
+
+
+                    applyPhase();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* ========================================================
+       RESIZE
+    ======================================================== */
+
+    let resizeTimer =
+        null;
+
+
+    window.addEventListener(
+        "resize",
+        () => {
+
+            clearTimeout(
+                resizeTimer
+            );
+
+
+            resizeTimer =
+                setTimeout(
+                    () => {
+
+                        setupText();
+
+                    },
+                    120
+                );
+
+        }
+    );
+
+
+    /* ========================================================
+       START
+    ======================================================== */
+
+    async function start() {
+
+        /*
+         * Tunggu font.
+         *
+         * Ini penting supaya unitWidth tidak berubah
+         * setelah animasi sudah berjalan.
          */
 
         if (
@@ -5546,19 +6257,37 @@ renderDatasets();
 
 
         /*
-         * Build pertama.
+         * Setup pertama.
          */
 
-        buildParticles();
+        const ready =
+            setupText();
 
 
         /*
-         * Animation loop.
+         * Browser kadang membutuhkan
+         * satu layout pass tambahan.
          */
+
+        if (
+            !ready
+        ) {
+
+            setTimeout(
+                setupText,
+                200
+            );
+
+        }
+
+
+        lastTime =
+            performance.now();
+
 
         animationFrame =
             requestAnimationFrame(
-                render
+                animate
             );
 
     }
@@ -5572,4 +6301,5 @@ renderDatasets();
 
 
 </body>
+
 </html>
