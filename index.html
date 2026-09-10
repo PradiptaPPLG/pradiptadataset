@@ -1,0 +1,5575 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Dataset Archive — Pradipta</title>
+
+<meta
+    name="description"
+    content="A lightweight public dataset archive by Pradipta."
+>
+
+
+<style>
+
+/* =========================================================
+   BASE
+========================================================= */
+
+:root {
+
+    --bg: #f4f4f2;
+    --paper: #ffffff;
+    --ink: #111111;
+    --muted: #777777;
+    --soft: #a4a4a4;
+    --line: #dededb;
+    --accent: #e9452f;
+
+    --mono:
+        "SFMono-Regular",
+        Consolas,
+        "Liberation Mono",
+        Menlo,
+        monospace;
+
+    --sans:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Helvetica,
+        Arial,
+        sans-serif;
+}
+
+
+* {
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    margin: 0;
+
+    background:
+        var(--bg);
+
+    color:
+        var(--ink);
+
+    font-family:
+        var(--sans);
+
+    -webkit-font-smoothing:
+        antialiased;
+
+}
+
+
+button,
+input {
+
+    font: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+
+    width:
+        min(
+            1420px,
+            calc(100% - 44px)
+        );
+
+    margin:
+        0 auto;
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    height:
+        82px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    border-bottom:
+        1px solid var(--line);
+
+}
+
+
+.logo {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        -0.03em;
+
+}
+
+
+.logo-mark {
+
+    width:
+        31px;
+
+    height:
+        31px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    background:
+        var(--ink);
+
+    color:
+        white;
+
+    font-size:
+        11px;
+
+    font-weight:
+        800;
+
+}
+
+
+.logo-text {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        2px;
+
+}
+
+
+.logo-title {
+
+    font-size:
+        13px;
+
+}
+
+
+.logo-subtitle {
+
+    font-size:
+        9px;
+
+    color:
+        var(--muted);
+
+    letter-spacing:
+        0.1em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.header-right {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        20px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        10px;
+
+}
+
+
+.online {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        7px;
+
+}
+
+
+.online-dot {
+
+    width:
+        6px;
+
+    height:
+        6px;
+
+    border-radius:
+        50%;
+
+    background:
+        #2d9c5a;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    padding:
+        105px 0
+        105px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.5fr
+        0.8fr;
+
+    gap:
+        80px;
+
+    border-bottom:
+        1px solid var(--line);
+
+}
+
+
+.hero-left {
+
+    max-width:
+        900px;
+
+}
+
+
+.hero-index {
+
+    margin-bottom:
+        27px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        12px;
+
+    color:
+        var(--accent);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        10px;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        0.08em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.hero-index-line {
+
+    width:
+        35px;
+
+    height:
+        1px;
+
+    background:
+        var(--accent);
+
+}
+
+
+/* =========================================================
+   PARTICLE HERO
+========================================================= */
+
+.hero-title {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    margin:
+        0;
+
+    font-size:
+        clamp(
+            58px,
+            7vw,
+            108px
+        );
+
+    line-height:
+        0.92;
+
+    letter-spacing:
+        -0.075em;
+
+    font-weight:
+        800;
+
+    isolation:
+        isolate;
+
+}
+
+
+/*
+ * Source text tetap berada di DOM.
+ *
+ * Tapi tidak terlihat karena canvas yang menjadi
+ * visual utama.
+ */
+
+.particle-line {
+
+    display:
+        block;
+
+    width:
+        max-content;
+
+    max-width:
+        100%;
+
+    white-space:
+        nowrap;
+
+    color:
+        transparent;
+
+    -webkit-text-fill-color:
+        transparent;
+
+    font:
+        inherit;
+
+    line-height:
+        inherit;
+
+    letter-spacing:
+        inherit;
+
+    user-select:
+        none;
+
+}
+
+
+/*
+ * Canvas tepat menutup seluruh H1.
+ */
+
+.hero-title-canvas {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    display:
+        block;
+
+    z-index:
+        10;
+
+    pointer-events:
+        auto;
+
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.hero-description {
+
+    max-width:
+        600px;
+
+    margin-top:
+        38px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.8;
+
+}
+
+
+.hero-right {
+
+    align-self:
+        end;
+
+}
+
+
+.hero-note {
+
+    padding-top:
+        20px;
+
+    border-top:
+        1px solid var(--line);
+
+}
+
+
+.hero-note-label {
+
+    color:
+        var(--soft);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        0.09em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.hero-note-text {
+
+    margin-top:
+        13px;
+
+    max-width:
+        320px;
+
+    color:
+        #444444;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.65;
+
+}
+
+
+/* =========================================================
+   LIBRARY HEADER
+========================================================= */
+
+.library {
+
+    padding:
+        55px 0
+        110px;
+
+}
+
+
+.library-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        end;
+
+    gap:
+        30px;
+
+    margin-bottom:
+        26px;
+
+}
+
+
+.library-title-wrap {
+
+    display:
+        flex;
+
+    align-items:
+        baseline;
+
+    gap:
+        16px;
+
+}
+
+
+.library-title {
+
+    margin:
+        0;
+
+    font-size:
+        22px;
+
+    letter-spacing:
+        -0.04em;
+
+}
+
+
+.library-count {
+
+    color:
+        var(--soft);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        10px;
+
+}
+
+
+.search {
+
+    width:
+        315px;
+
+    height:
+        42px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    border-bottom:
+        1px solid var(--ink);
+
+}
+
+
+.search-icon {
+
+    color:
+        var(--soft);
+
+    font-size:
+        15px;
+
+}
+
+
+.search input {
+
+    flex:
+        1;
+
+    height:
+        100%;
+
+    border:
+        0;
+
+    outline:
+        0;
+
+    padding-left:
+        10px;
+
+    background:
+        transparent;
+
+    color:
+        var(--ink);
+
+    font-size:
+        12px;
+
+}
+
+
+.search input::placeholder {
+
+    color:
+        #a2a2a2;
+
+}
+
+
+/* =========================================================
+   FILTER
+========================================================= */
+
+.filter-row {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        8px;
+
+    margin-bottom:
+        30px;
+
+    overflow-x:
+        auto;
+
+    scrollbar-width:
+        none;
+
+}
+
+
+.filter-row::-webkit-scrollbar {
+
+    display:
+        none;
+
+}
+
+
+.filter {
+
+    flex:
+        0 0 auto;
+
+    height:
+        34px;
+
+    padding:
+        0 12px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        transparent;
+
+    color:
+        var(--muted);
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    transition:
+        0.18s ease;
+
+}
+
+
+.filter:hover {
+
+    border-color:
+        var(--ink);
+
+    color:
+        var(--ink);
+
+}
+
+
+.filter.active {
+
+    border-color:
+        var(--ink);
+
+    background:
+        var(--ink);
+
+    color:
+        white;
+
+}
+
+
+/* =========================================================
+   DATASET LIST
+========================================================= */
+
+.dataset-list {
+
+    border-top:
+        1px solid var(--ink);
+
+}
+
+
+.dataset-heading,
+.dataset-item {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        62px
+        minmax(300px, 1.7fr)
+        minmax(170px, 0.8fr)
+        130px
+        145px;
+
+    column-gap:
+        25px;
+
+}
+
+
+.dataset-heading {
+
+    min-height:
+        42px;
+
+    align-items:
+        center;
+
+    border-bottom:
+        1px solid var(--line);
+
+    color:
+        var(--soft);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        9px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.08em;
+
+}
+
+
+.dataset-item {
+
+    min-height:
+        102px;
+
+    align-items:
+        center;
+
+    border-bottom:
+        1px solid var(--line);
+
+    transition:
+        background-color
+        0.18s ease;
+
+}
+
+
+.dataset-item:hover {
+
+    background:
+        var(--paper);
+
+}
+
+
+.dataset-number {
+
+    color:
+        #aaaaaa;
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        10px;
+
+}
+
+
+.dataset-main {
+
+    min-width:
+        0;
+
+}
+
+
+.dataset-name {
+
+    font-size:
+        15px;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        -0.035em;
+
+}
+
+
+.dataset-description {
+
+    max-width:
+        540px;
+
+    margin-top:
+        7px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.55;
+
+}
+
+
+.dataset-source {
+
+    min-width:
+        0;
+
+    color:
+        #555555;
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        9px;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+}
+
+
+.dataset-type {
+
+    color:
+        var(--muted);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        9px;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.dataset-actions {
+
+    display:
+        flex;
+
+    justify-content:
+        flex-end;
+
+    gap:
+        6px;
+
+}
+
+
+.action {
+
+    height:
+        34px;
+
+    padding:
+        0 11px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        transparent;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    transition:
+        0.18s ease;
+
+}
+
+
+.action:hover {
+
+    border-color:
+        var(--ink);
+
+    background:
+        var(--ink);
+
+    color:
+        white;
+
+}
+
+
+.action.primary {
+
+    border-color:
+        var(--ink);
+
+    background:
+        var(--ink);
+
+    color:
+        white;
+
+}
+
+
+.action.primary:hover {
+
+    background:
+        #2d2d2d;
+
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.empty {
+
+    padding:
+        85px 20px;
+
+    border-bottom:
+        1px solid var(--line);
+
+    text-align:
+        center;
+
+}
+
+
+.empty strong {
+
+    display:
+        block;
+
+    font-size:
+        15px;
+
+}
+
+
+.empty span {
+
+    display:
+        block;
+
+    margin-top:
+        7px;
+
+    color:
+        var(--muted);
+
+    font-size:
+        11px;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    min-height:
+        75px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    border-top:
+        1px solid var(--ink);
+
+    color:
+        var(--soft);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        9px;
+
+}
+
+
+.footer-right {
+
+    color:
+        var(--muted);
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        999;
+
+    display:
+        none;
+
+}
+
+
+.modal.open {
+
+    display:
+        block;
+
+}
+
+
+.modal-backdrop {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        rgba(
+            16,
+            16,
+            16,
+            0.53
+        );
+
+}
+
+
+.modal-panel {
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
+    width:
+        min(
+            1100px,
+            calc(100% - 32px)
+        );
+
+    height:
+        min(
+            760px,
+            calc(100vh - 32px)
+        );
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    background:
+        var(--paper);
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    box-shadow:
+        0 30px
+        90px
+        rgba(
+            0,
+            0,
+            0,
+            .25
+        );
+
+}
+
+
+.modal-top {
+
+    min-height:
+        92px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 24px;
+
+    border-bottom:
+        1px solid var(--line);
+
+}
+
+
+.modal-title-wrap {
+
+    min-width:
+        0;
+
+}
+
+
+.modal-title {
+
+    margin:
+        0;
+
+    font-size:
+        18px;
+
+    letter-spacing:
+        -0.04em;
+
+}
+
+
+.modal-file {
+
+    margin-top:
+        6px;
+
+    color:
+        var(--muted);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        9px;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+}
+
+
+.modal-close {
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        white;
+
+    font-size:
+        19px;
+
+    line-height:
+        1;
+
+}
+
+
+.modal-close:hover {
+
+    border-color:
+        var(--ink);
+
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.modal-meta {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+
+    border-bottom:
+        1px solid var(--line);
+
+}
+
+
+.meta {
+
+    padding:
+        15px 18px;
+
+    border-right:
+        1px solid var(--line);
+
+}
+
+
+.meta:last-child {
+
+    border-right:
+        0;
+
+}
+
+
+.meta-label {
+
+    color:
+        var(--soft);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        0.08em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.meta-value {
+
+    margin-top:
+        7px;
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================================
+   VIEWER
+========================================================= */
+
+.viewer {
+
+    flex:
+        1;
+
+    min-height:
+        0;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+}
+
+
+.viewer-top {
+
+    height:
+        43px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 16px;
+
+    background:
+        #f8f8f6;
+
+    border-bottom:
+        1px solid var(--line);
+
+}
+
+
+.viewer-label {
+
+    color:
+        var(--muted);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        8px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.1em;
+
+}
+
+
+.viewer-actions {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+}
+
+
+.viewer-action {
+
+    height:
+        29px;
+
+    padding:
+        0 9px;
+
+    border:
+        1px solid var(--line);
+
+    background:
+        white;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+}
+
+
+.viewer-action:hover {
+
+    border-color:
+        var(--ink);
+
+}
+
+
+.viewer-code {
+
+    width:
+        100%;
+
+    flex:
+        1;
+
+    min-height:
+        0;
+
+    display:
+        block;
+
+    margin:
+        0;
+
+    border:
+        0;
+
+    background:
+        #151515;
+
+}
+
+
+.viewer-status {
+
+    min-height:
+        37px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        0 15px;
+
+    border-top:
+        1px solid var(--line);
+
+    color:
+        var(--soft);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        8px;
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+
+    position:
+        fixed;
+
+    right:
+        20px;
+
+    bottom:
+        20px;
+
+    z-index:
+        1100;
+
+    padding:
+        11px 14px;
+
+    background:
+        var(--ink);
+
+    color:
+        white;
+
+    font-size:
+        10px;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(
+            8px
+        );
+
+    pointer-events:
+        none;
+
+    transition:
+        0.2s ease;
+
+}
+
+
+.toast.show {
+
+    opacity:
+        1;
+
+    transform:
+        translateY(
+            0
+        );
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .hero {
+
+        grid-template-columns:
+            1fr;
+
+        gap:
+            55px;
+
+        padding:
+            75px 0;
+
+    }
+
+
+    .hero-right {
+
+        align-self:
+            start;
+
+    }
+
+
+    .dataset-heading,
+    .dataset-item {
+
+        grid-template-columns:
+            50px
+            minmax(250px, 1fr)
+            115px
+            100px;
+
+    }
+
+
+    .dataset-source {
+
+        display:
+            none;
+
+    }
+
+}
+
+
+@media (max-width: 720px) {
+
+    .page {
+
+        width:
+            calc(100% - 24px);
+
+    }
+
+
+    .header {
+
+        height:
+            68px;
+
+    }
+
+
+    .header-right {
+
+        display:
+            none;
+
+    }
+
+
+    .hero {
+
+        padding:
+            60px 0;
+
+    }
+
+
+    .hero-title {
+
+        font-size:
+            58px;
+
+    }
+
+
+    .library {
+
+        padding-top:
+            40px;
+
+    }
+
+
+    .library-header {
+
+        align-items:
+            stretch;
+
+        flex-direction:
+            column;
+
+    }
+
+
+    .search {
+
+        width:
+            100%;
+
+    }
+
+
+    .dataset-heading {
+
+        display:
+            none;
+
+    }
+
+
+    .dataset-item {
+
+        grid-template-columns:
+            32px
+            1fr;
+
+        column-gap:
+            13px;
+
+        padding:
+            22px 0;
+
+        align-items:
+            start;
+
+    }
+
+
+    .dataset-number {
+
+        padding-top:
+            2px;
+
+    }
+
+
+    .dataset-source,
+    .dataset-type {
+
+        display:
+            none;
+
+    }
+
+
+    .dataset-actions {
+
+        grid-column:
+            2;
+
+        justify-content:
+            flex-start;
+
+        margin-top:
+            14px;
+
+    }
+
+
+    .action {
+
+        flex:
+            1;
+
+    }
+
+
+    .modal-meta {
+
+        grid-template-columns:
+            1fr
+            1fr;
+
+    }
+
+
+    .meta {
+
+        border-bottom:
+            1px solid
+            var(--line);
+
+    }
+
+
+    .meta:nth-child(2) {
+
+        border-right:
+            0;
+
+    }
+
+}
+
+
+@media (max-width: 460px) {
+
+    .hero-title {
+
+        font-size:
+            49px;
+
+    }
+
+
+    .logo-subtitle {
+
+        display:
+            none;
+
+    }
+
+
+    .modal-panel {
+
+        width:
+            calc(100% - 14px);
+
+        height:
+            calc(100vh - 14px);
+
+    }
+
+
+    .modal-top {
+
+        padding:
+            0 15px;
+
+    }
+
+}
+
+
+/* =========================================================
+   END CSS
+========================================================= */
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="header">
+
+        <a
+            href="#"
+            class="logo"
+        >
+
+            <div class="logo-mark">
+                DP
+            </div>
+
+
+            <div class="logo-text">
+
+                <div class="logo-title">
+                    Dataset Archive
+                </div>
+
+                <div class="logo-subtitle">
+                    Pradipta / Public Collection
+                </div>
+
+            </div>
+
+        </a>
+
+
+        <div class="header-right">
+
+            <div class="online">
+
+                <span
+                    class="online-dot"
+                ></span>
+
+                Online archive
+
+            </div>
+
+
+            <span>
+                2026
+            </span>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+
+        <div class="hero-left">
+
+
+            <div class="hero-index">
+
+                <span
+                    class="hero-index-line"
+                ></span>
+
+                Collection / 001
+
+            </div>
+
+
+            <!-- =================================================
+                 PARTICLE TITLE
+
+                 Kedua baris akan dibuat oleh Canvas.
+                 ================================================= -->
+
+            <h1
+                class="hero-title"
+                id="particleHero"
+            >
+
+                <span
+                    class="particle-line"
+                    data-particle-color="#111111"
+                >
+                    Data for
+                </span>
+
+
+                <span
+                    class="particle-line"
+                    data-particle-color="#999995"
+                >
+                    building things.
+                </span>
+
+
+                <canvas
+                    class="hero-title-canvas"
+                    id="particleCanvas"
+                    aria-hidden="true"
+                ></canvas>
+
+            </h1>
+
+
+            <p class="hero-description">
+
+                Kumpulan dataset kecil yang dibuat untuk
+                eksperimen, database seeding, prototyping,
+                development, dan project berbasis otomotif.
+
+                Semua file disimpan dalam format source aslinya:
+                PHP dan SQL.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="hero-right">
+
+
+            <div class="hero-note">
+
+
+                <div class="hero-note-label">
+
+                    About this archive
+
+                </div>
+
+
+                <div class="hero-note-text">
+
+                    Bukan marketplace data.
+                    Bukan dashboard analytics.
+                    Hanya sebuah rak digital sederhana
+                    untuk menyimpan dan berbagi dataset.
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LIBRARY
+    ====================================================== -->
+
+    <main class="library">
+
+
+        <div class="library-header">
+
+
+            <div class="library-title-wrap">
+
+
+                <h2 class="library-title">
+
+                    Car datasets
+
+                </h2>
+
+
+                <span
+                    class="library-count"
+                    id="libraryCount"
+                >
+
+                    08 FILES
+
+                </span>
+
+
+            </div>
+
+
+            <label class="search">
+
+                <span class="search-icon">
+                    /
+                </span>
+
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search collection..."
+                    autocomplete="off"
+                >
+
+            </label>
+
+
+        </div>
+
+
+
+        <!-- FILTER -->
+
+        <div
+            class="filter-row"
+            id="filterRow"
+        >
+
+
+            <button
+                class="filter active"
+                data-filter="all"
+            >
+                ALL
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="php"
+            >
+                PHP
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="sql"
+            >
+                SQL
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="vehicle"
+            >
+                VEHICLE
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="reference"
+            >
+                REFERENCE
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="database"
+            >
+                DATABASE
+            </button>
+
+
+        </div>
+
+
+
+        <!-- DATASET LIST -->
+
+        <div
+            class="dataset-list"
+            id="datasetList"
+        ></div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+
+        <span>
+            DATASET ARCHIVE / PRADIPTA
+        </span>
+
+
+        <span class="footer-right">
+            PHP · SQL · CAR
+        </span>
+
+
+    </footer>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     PREVIEW MODAL
+========================================================= -->
+
+<div
+    class="modal"
+    id="previewModal"
+    aria-hidden="true"
+>
+
+
+    <div
+        class="modal-backdrop"
+        id="modalBackdrop"
+    ></div>
+
+
+    <section class="modal-panel">
+
+
+        <div class="modal-top">
+
+
+            <div class="modal-title-wrap">
+
+
+                <h3
+                    class="modal-title"
+                    id="modalTitle"
+                >
+                    Dataset
+                </h3>
+
+
+                <div
+                    class="modal-file"
+                    id="modalFile"
+                >
+                    —
+                </div>
+
+
+            </div>
+
+
+            <button
+                class="modal-close"
+                id="closeModal"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+        </div>
+
+
+
+        <div class="modal-meta">
+
+
+            <div class="meta">
+
+                <div class="meta-label">
+                    Format
+                </div>
+
+                <div
+                    class="meta-value"
+                    id="metaFormat"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="meta">
+
+                <div class="meta-label">
+                    Type
+                </div>
+
+                <div
+                    class="meta-value"
+                    id="metaType"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="meta">
+
+                <div class="meta-label">
+                    Directory
+                </div>
+
+                <div
+                    class="meta-value"
+                    id="metaDirectory"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="meta">
+
+                <div class="meta-label">
+                    File size
+                </div>
+
+                <div
+                    class="meta-value"
+                    id="metaSize"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="viewer">
+
+
+            <div class="viewer-top">
+
+
+                <span class="viewer-label">
+                    Source preview
+                </span>
+
+
+                <div class="viewer-actions">
+
+
+                    <button
+                        class="viewer-action"
+                        id="copyButton"
+                    >
+                        Copy
+                    </button>
+
+
+                    <button
+                        class="viewer-action"
+                        id="downloadButton"
+                    >
+                        Download
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+            <iframe
+                class="viewer-code"
+                id="viewerCode"
+                title="Dataset preview"
+                loading="eager"
+                referrerpolicy="no-referrer"
+                src="about:blank"
+            ></iframe>
+
+
+            <div class="viewer-status">
+
+
+                <span
+                    id="viewerStatus"
+                >
+                    Waiting for file...
+                </span>
+
+
+                <span
+                    id="viewerLines"
+                >
+                    —
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+
+<div
+    class="toast"
+    id="toast"
+>
+    Copied
+</div>
+
+
+
+<script>
+
+/* ============================================================
+   DATASET CONFIGURATION
+============================================================ */
+
+const datasets = [
+
+    {
+        id:
+            "01",
+
+        name:
+            "Dummy Dealer Indonesia",
+
+        description:
+            "Dummy dealer mobil Indonesia untuk testing, prototyping, dan database seeding.",
+
+        file:
+            "data-dummy-dealer-in-indonesian.php",
+
+        preview:
+            "car/preview/data-dummy-dealer-in-indonesian.php.txt",
+
+        format:
+            "PHP",
+
+        type:
+            "Dummy Data",
+
+        directory:
+            "car / php",
+
+        tags: [
+            "php",
+            "database"
+        ]
+    },
+
+
+    {
+        id:
+            "02",
+
+        name:
+            "Indonesian Car Dataset",
+
+        description:
+            "Dataset kendaraan Indonesia untuk katalog kendaraan, aplikasi otomotif, dan eksperimen data.",
+
+        file:
+            "data-indonesian-car-by-pradipta.php",
+
+        preview:
+            "car/preview/data-indonesian-car-by-pradipta.php.txt",
+
+        format:
+            "PHP",
+
+        type:
+            "Vehicle",
+
+        directory:
+            "car / php",
+
+        tags: [
+            "php",
+            "vehicle"
+        ]
+    },
+
+
+    {
+        id:
+            "03",
+
+        name:
+            "Indonesian Number Plate",
+
+        description:
+            "Reference dataset nomor polisi kendaraan Indonesia.",
+
+        file:
+            "data-indonesian-number-plate-by-pradipta.php",
+
+        preview:
+            "car/preview/data-indonesian-number-plate-by-pradipta.php.txt",
+
+        format:
+            "PHP",
+
+        type:
+            "Reference",
+
+        directory:
+            "car / php",
+
+        tags: [
+            "php",
+            "reference",
+            "vehicle"
+        ]
+    },
+
+
+    {
+        id:
+            "04",
+
+        name:
+            "Type Engine Car",
+
+        description:
+            "Reference dataset tipe dan konfigurasi mesin kendaraan.",
+
+        file:
+            "data-type-engine-car-by-pradipta.php",
+
+        preview:
+            "car/preview/data-type-engine-car-by-pradipta.php.txt",
+
+        format:
+            "PHP",
+
+        type:
+            "Reference",
+
+        directory:
+            "car / php",
+
+        tags: [
+            "php",
+            "reference",
+            "vehicle"
+        ]
+    },
+
+
+    {
+        id:
+            "05",
+
+        name:
+            "Dummy Dealer Indonesia",
+
+        description:
+            "SQL dataset dealer Indonesia untuk import database.",
+
+        file:
+            "data-dummy-dealer-in-indonesian.sql",
+
+        preview:
+            "car/preview/data-dummy-dealer-in-indonesian.sql.txt",
+
+        format:
+            "SQL",
+
+        type:
+            "Database",
+
+        directory:
+            "car / sql",
+
+        tags: [
+            "sql",
+            "database"
+        ]
+    },
+
+
+    {
+        id:
+            "06",
+
+        name:
+            "Indonesian Car Dataset",
+
+        description:
+            "SQL dataset kendaraan Indonesia untuk database dan aplikasi otomotif.",
+
+        file:
+            "data-indonesian-car-by-pradipta.sql",
+
+        preview:
+            "car/preview/data-indonesian-car-by-pradipta.sql.txt",
+
+        format:
+            "SQL",
+
+        type:
+            "Database",
+
+        directory:
+            "car / sql",
+
+        tags: [
+            "sql",
+            "database",
+            "vehicle"
+        ]
+    },
+
+
+    {
+        id:
+            "07",
+
+        name:
+            "Indonesian Number Plate",
+
+        description:
+            "SQL reference dataset nomor polisi kendaraan Indonesia.",
+
+        file:
+            "data-indonesian-number-plate-by-pradipta.sql",
+
+        preview:
+            "car/preview/data-indonesian-number-plate-by-pradipta.sql.txt",
+
+        format:
+            "SQL",
+
+        type:
+            "Reference",
+
+        directory:
+            "car / sql",
+
+        tags: [
+            "sql",
+            "reference",
+            "vehicle"
+        ]
+    },
+
+
+    {
+        id:
+            "08",
+
+        name:
+            "Type Engine Car",
+
+        description:
+            "SQL reference dataset tipe engine kendaraan.",
+
+        file:
+            "data-type-engine-car-by-pradipta.sql",
+
+        preview:
+            "car/preview/data-type-engine-car-by-pradipta.sql.txt",
+
+        format:
+            "SQL",
+
+        type:
+            "Reference",
+
+        directory:
+            "car / sql",
+
+        tags: [
+            "sql",
+            "reference",
+            "vehicle"
+        ]
+    }
+
+];
+
+
+/* ============================================================
+   STATE
+============================================================ */
+
+let activeFilter =
+    "all";
+
+let activeDataset =
+    null;
+
+let toastTimer =
+    null;
+
+
+/* ============================================================
+   DOM
+============================================================ */
+
+const datasetList =
+    document.getElementById(
+        "datasetList"
+    );
+
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
+
+const filterRow =
+    document.getElementById(
+        "filterRow"
+    );
+
+const libraryCount =
+    document.getElementById(
+        "libraryCount"
+    );
+
+
+const previewModal =
+    document.getElementById(
+        "previewModal"
+    );
+
+const modalBackdrop =
+    document.getElementById(
+        "modalBackdrop"
+    );
+
+const closeModalButton =
+    document.getElementById(
+        "closeModal"
+    );
+
+
+const modalTitle =
+    document.getElementById(
+        "modalTitle"
+    );
+
+const modalFile =
+    document.getElementById(
+        "modalFile"
+    );
+
+const metaFormat =
+    document.getElementById(
+        "metaFormat"
+    );
+
+const metaType =
+    document.getElementById(
+        "metaType"
+    );
+
+const metaDirectory =
+    document.getElementById(
+        "metaDirectory"
+    );
+
+const metaSize =
+    document.getElementById(
+        "metaSize"
+    );
+
+
+const viewerCode =
+    document.getElementById(
+        "viewerCode"
+    );
+
+const viewerStatus =
+    document.getElementById(
+        "viewerStatus"
+    );
+
+const viewerLines =
+    document.getElementById(
+        "viewerLines"
+    );
+
+
+const copyButton =
+    document.getElementById(
+        "copyButton"
+    );
+
+const downloadButton =
+    document.getElementById(
+        "downloadButton"
+    );
+
+const toast =
+    document.getElementById(
+        "toast"
+    );
+
+
+/* ============================================================
+   HELPERS
+============================================================ */
+
+function escapeHTML(
+    value
+) {
+
+    return String(
+        value ?? ""
+    )
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+function setText(
+    element,
+    value
+) {
+
+    if (
+        element
+    ) {
+
+        element.textContent =
+            value;
+
+    }
+
+}
+
+
+/* ============================================================
+   DATASET FILTER
+============================================================ */
+
+function getFilteredDatasets() {
+
+    const query =
+        searchInput
+            ? searchInput.value
+                .trim()
+                .toLowerCase()
+            : "";
+
+
+    return datasets.filter(
+        dataset => {
+
+            const matchesFilter =
+                activeFilter === "all"
+                ||
+                dataset.tags.includes(
+                    activeFilter
+                )
+                ||
+                dataset.format
+                    .toLowerCase()
+                    ===
+                    activeFilter;
+
+
+            const content = [
+
+                dataset.name,
+
+                dataset.description,
+
+                dataset.file,
+
+                dataset.format,
+
+                dataset.type,
+
+                dataset.directory,
+
+                ...dataset.tags
+
+            ]
+                .join(" ")
+                .toLowerCase();
+
+
+            const matchesSearch =
+                !query
+                ||
+                content.includes(
+                    query
+                );
+
+
+            return (
+                matchesFilter
+                &&
+                matchesSearch
+            );
+
+        }
+    );
+
+}
+
+
+/* ============================================================
+   RENDER DATASETS
+============================================================ */
+
+function renderDatasets() {
+
+    const list =
+        getFilteredDatasets();
+
+
+    setText(
+        libraryCount,
+        `${String(
+            list.length
+        ).padStart(
+            2,
+            "0"
+        )} FILES`
+    );
+
+
+    if (
+        !list.length
+    ) {
+
+        datasetList.innerHTML = `
+
+            <div class="empty">
+
+                <strong>
+                    No dataset found
+                </strong>
+
+                <span>
+                    Coba gunakan keyword atau filter lainnya.
+                </span>
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+    datasetList.innerHTML = `
+
+        <div class="dataset-heading">
+
+            <div>
+                NO.
+            </div>
+
+            <div>
+                DATASET
+            </div>
+
+            <div>
+                SOURCE
+            </div>
+
+            <div>
+                TYPE
+            </div>
+
+            <div style="text-align:right">
+                ACTION
+            </div>
+
+        </div>
+
+
+        ${list
+            .map(
+                dataset => `
+
+                    <article
+                        class="dataset-item"
+                    >
+
+                        <div
+                            class="dataset-number"
+                        >
+                            ${escapeHTML(
+                                dataset.id
+                            )}
+                        </div>
+
+
+                        <div
+                            class="dataset-main"
+                        >
+
+                            <div
+                                class="dataset-name"
+                            >
+                                ${escapeHTML(
+                                    dataset.name
+                                )}
+                            </div>
+
+
+                            <div
+                                class="dataset-description"
+                            >
+                                ${escapeHTML(
+                                    dataset.description
+                                )}
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="dataset-source"
+                            title="${escapeHTML(
+                                dataset.file
+                            )}"
+                        >
+                            ${escapeHTML(
+                                dataset.file
+                            )}
+                        </div>
+
+
+                        <div
+                            class="dataset-type"
+                        >
+                            ${escapeHTML(
+                                dataset.type
+                            )}
+                        </div>
+
+
+                        <div
+                            class="dataset-actions"
+                        >
+
+                            <button
+                                type="button"
+                                class="action primary"
+                                data-preview-id="${escapeHTML(
+                                    dataset.id
+                                )}"
+                            >
+                                Preview
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="action"
+                                data-download-id="${escapeHTML(
+                                    dataset.id
+                                )}"
+                            >
+                                Download
+                            </button>
+
+                        </div>
+
+
+                    </article>
+
+                `
+            )
+            .join("")}
+
+    `;
+
+
+    bindDatasetButtons();
+
+}
+
+
+/* ============================================================
+   DATASET BUTTONS
+============================================================ */
+
+function bindDatasetButtons() {
+
+    document
+        .querySelectorAll(
+            "[data-preview-id]"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        openPreview(
+                            button.dataset
+                                .previewId
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            "[data-download-id]"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        downloadDataset(
+                            button.dataset
+                                .downloadId
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* ============================================================
+   PREVIEW
+============================================================ */
+
+function openPreview(
+    id
+) {
+
+    const dataset =
+        datasets.find(
+            item =>
+                item.id ===
+                String(id)
+        );
+
+
+    if (
+        !dataset
+    ) {
+
+        showToast(
+            "Dataset not found"
+        );
+
+        return;
+
+    }
+
+
+    activeDataset =
+        dataset;
+
+
+    setText(
+        modalTitle,
+        dataset.name
+    );
+
+
+    setText(
+        modalFile,
+        dataset.file
+    );
+
+
+    setText(
+        metaFormat,
+        dataset.format
+    );
+
+
+    setText(
+        metaType,
+        dataset.type
+    );
+
+
+    setText(
+        metaDirectory,
+        dataset.directory
+    );
+
+
+    setText(
+        metaSize,
+        "Static TXT"
+    );
+
+
+    setText(
+        viewerStatus,
+        "Opening preview..."
+    );
+
+
+    setText(
+        viewerLines,
+        "TXT source"
+    );
+
+
+    /*
+     * Preview tetap menggunakan TXT.
+     *
+     * Tidak memakai fetch().
+     */
+
+    if (
+        viewerCode
+    ) {
+
+        viewerCode.src =
+            dataset.preview;
+
+
+        viewerCode.onload =
+            () => {
+
+                setText(
+                    viewerStatus,
+                    "Preview loaded"
+                );
+
+            };
+
+
+        viewerCode.onerror =
+            () => {
+
+                setText(
+                    viewerStatus,
+                    "Preview unavailable"
+                );
+
+
+                showToast(
+                    "Preview file tidak ditemukan"
+                );
+
+            };
+
+    }
+
+
+    previewModal.classList.add(
+        "open"
+    );
+
+
+    previewModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* ============================================================
+   CLOSE PREVIEW
+============================================================ */
+
+function closePreview() {
+
+    if (
+        !previewModal
+    ) {
+
+        return;
+
+    }
+
+
+    previewModal.classList.remove(
+        "open"
+    );
+
+
+    previewModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+
+    if (
+        viewerCode
+    ) {
+
+        viewerCode.src =
+            "about:blank";
+
+    }
+
+
+    activeDataset =
+        null;
+
+}
+
+
+/* ============================================================
+   DOWNLOAD
+============================================================ */
+
+function downloadDataset(
+    id
+) {
+
+    const dataset =
+        datasets.find(
+            item =>
+                item.id ===
+                String(id)
+        );
+
+
+    if (
+        !dataset
+    ) {
+
+        showToast(
+            "Dataset not found"
+        );
+
+        return;
+
+    }
+
+
+    /*
+     * File TXT preview memiliki isi
+     * yang sama dengan file asli.
+     *
+     * Browser diminta memberikan nama
+     * download asli .php/.sql.
+     */
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href =
+        dataset.preview;
+
+
+    link.download =
+        dataset.file;
+
+
+    link.style.display =
+        "none";
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    link.remove();
+
+
+    showToast(
+        "Download started"
+    );
+
+}
+
+
+/* ============================================================
+   COPY
+============================================================ */
+
+async function copyPreview() {
+
+    if (
+        !activeDataset
+    ) {
+
+        showToast(
+            "No dataset selected"
+        );
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                activeDataset.preview,
+                {
+                    cache:
+                        "no-store"
+                }
+            );
+
+
+        if (
+            !response.ok
+        ) {
+
+            throw new Error(
+                "Preview unavailable"
+            );
+
+        }
+
+
+        const text =
+            await response.text();
+
+
+        await navigator
+            .clipboard
+            .writeText(
+                text
+            );
+
+
+        const original =
+            copyButton.textContent;
+
+
+        copyButton.textContent =
+            "Copied";
+
+
+        showToast(
+            "Source copied"
+        );
+
+
+        setTimeout(
+            () => {
+
+                copyButton.textContent =
+                    original;
+
+            },
+            1200
+        );
+
+
+    } catch (
+        error
+    ) {
+
+        console.warn(
+            "Copy unavailable:",
+            error
+        );
+
+
+        showToast(
+            "Copy tersedia saat via HTTP"
+        );
+
+    }
+
+}
+
+
+/* ============================================================
+   SEARCH
+============================================================ */
+
+if (
+    searchInput
+) {
+
+    searchInput.addEventListener(
+        "input",
+        renderDatasets
+    );
+
+}
+
+
+/* ============================================================
+   FILTER
+============================================================ */
+
+if (
+    filterRow
+) {
+
+    filterRow
+        .querySelectorAll(
+            ".filter"
+        )
+        .forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        filterRow
+                            .querySelectorAll(
+                                ".filter"
+                            )
+                            .forEach(
+                                item => {
+
+                                    item.classList.remove(
+                                        "active"
+                                    );
+
+                                }
+                            );
+
+
+                        button.classList.add(
+                            "active"
+                        );
+
+
+                        activeFilter =
+                            button.dataset
+                                .filter
+                            ||
+                            "all";
+
+
+                        renderDatasets();
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* ============================================================
+   MODAL EVENTS
+============================================================ */
+
+if (
+    closeModalButton
+) {
+
+    closeModalButton.addEventListener(
+        "click",
+        closePreview
+    );
+
+}
+
+
+if (
+    modalBackdrop
+) {
+
+    modalBackdrop.addEventListener(
+        "click",
+        closePreview
+    );
+
+}
+
+
+if (
+    copyButton
+) {
+
+    copyButton.addEventListener(
+        "click",
+        copyPreview
+    );
+
+}
+
+
+if (
+    downloadButton
+) {
+
+    downloadButton.addEventListener(
+        "click",
+        () => {
+
+            if (
+                activeDataset
+            ) {
+
+                downloadDataset(
+                    activeDataset.id
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Escape"
+            &&
+            previewModal
+            &&
+            previewModal.classList.contains(
+                "open"
+            )
+        ) {
+
+            closePreview();
+
+        }
+
+    }
+);
+
+
+/* ============================================================
+   START DATASET UI
+============================================================ */
+
+renderDatasets();
+
+
+/* ============================================================
+   PARTICLE TEXT ENGINE
+============================================================ */
+
+(() => {
+
+    const hero =
+        document.getElementById(
+            "particleHero"
+        );
+
+
+    const canvas =
+        document.getElementById(
+            "particleCanvas"
+        );
+
+
+    const sourceLines =
+        hero
+            ? [
+                ...hero.querySelectorAll(
+                    ".particle-line"
+                )
+            ]
+            : [];
+
+
+    if (
+        !hero
+        ||
+        !canvas
+        ||
+        sourceLines.length === 0
+    ) {
+
+        console.warn(
+            "Particle text elements not found."
+        );
+
+        return;
+
+    }
+
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
+
+
+    if (
+        !ctx
+    ) {
+
+        console.warn(
+            "Canvas context unavailable."
+        );
+
+        return;
+
+    }
+
+
+    /* ========================================================
+       CONFIG
+    ======================================================== */
+
+    const CONFIG = {
+
+        /*
+         * Ukuran particle.
+         *
+         * 2px terasa cukup jelas
+         * tanpa terlalu kasar.
+         */
+
+        particleSize:
+            2.05,
+
+
+        /*
+         * Sampling density.
+         *
+         * 2 = sangat padat
+         */
+
+        density:
+            2,
+
+
+        /*
+         * Scatter awal.
+         */
+
+        scatter:
+            135,
+
+
+        /*
+         * Durasi pembentukan.
+
+         */
+
+        gatherDuration:
+            1500,
+
+
+        /*
+         * Delay particle.
+
+         */
+
+        stagger:
+            130,
+
+
+        /*
+         * Mouse repel.
+
+         */
+
+        pointerRepel:
+            30,
+
+
+        /*
+         * Mouse radius.
+
+         */
+
+        repelRadius:
+            110,
+
+
+        /*
+         * Idle.
+
+         */
+
+        idleDrift:
+            0.14,
+
+
+        /*
+         * Batas aman.
+
+         */
+
+        maxParticles:
+            14000
+
+    };
+
+
+    /* ========================================================
+       STATE
+    ======================================================== */
+
+    let particles =
+        [];
+
+
+    let width =
+        0;
+
+
+    let height =
+        0;
+
+
+    let dpr =
+        1;
+
+
+    let animationFrame =
+        null;
+
+
+    let resizeFrame =
+        null;
+
+
+    let gatherStart =
+        0;
+
+
+    let gathering =
+        true;
+
+
+    let reducedMotion =
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    const pointer = {
+
+        active:
+            false,
+
+        x:
+            0,
+
+        y:
+            0,
+
+        smoothX:
+            0,
+
+        smoothY:
+            0
+
+    };
+
+
+    /* ========================================================
+       HELPERS
+    ======================================================== */
+
+    function clamp(
+        value,
+        min,
+        max
+    ) {
+
+        return Math.min(
+            Math.max(
+                value,
+                min
+            ),
+            max
+        );
+
+    }
+
+
+    function easeOutCubic(
+        value
+    ) {
+
+        return (
+            1 -
+            Math.pow(
+                1 - value,
+                3
+            )
+        );
+
+    }
+
+
+    function randomHash(
+        seed
+    ) {
+
+        const value =
+            Math.sin(
+                seed *
+                12.9898
+            ) *
+            43758.5453;
+
+
+        return (
+            value -
+            Math.floor(
+                value
+            )
+        );
+
+    }
+
+
+    function hexToRgb(
+        value
+    ) {
+
+        const clean =
+            String(
+                value || ""
+            )
+                .replace(
+                    "#",
+                    ""
+                );
+
+
+        if (
+            !/^[a-fA-F0-9]{6}$/
+                .test(
+                    clean
+                )
+        ) {
+
+            return null;
+
+        }
+
+
+        return {
+
+            r:
+                parseInt(
+                    clean.slice(
+                        0,
+                        2
+                    ),
+                    16
+                ),
+
+            g:
+                parseInt(
+                    clean.slice(
+                        2,
+                        4
+                    ),
+                    16
+                ),
+
+            b:
+                parseInt(
+                    clean.slice(
+                        4,
+                        6
+                    ),
+                    16
+                )
+
+        };
+
+    }
+
+
+    function rgbToCss(
+        value
+    ) {
+
+        return `
+            rgb(
+                ${value.r},
+                ${value.g},
+                ${value.b}
+            )
+        `;
+
+    }
+
+
+    /* ========================================================
+       BUILD PARTICLES
+    ======================================================== */
+
+    function buildParticles() {
+
+        /*
+         * ================================================
+         * CANVAS UKURAN AKTUAL
+         * ================================================
+         */
+
+        const rect =
+            hero.getBoundingClientRect();
+
+
+        width =
+            Math.max(
+                1,
+                Math.round(
+                    rect.width
+                )
+            );
+
+
+        height =
+            Math.max(
+                1,
+                Math.round(
+                    rect.height
+                )
+            );
+
+
+        dpr =
+            Math.min(
+                window.devicePixelRatio ||
+                1,
+                2
+            );
+
+
+        canvas.width =
+            Math.round(
+                width *
+                dpr
+            );
+
+
+        canvas.height =
+            Math.round(
+                height *
+                dpr
+            );
+
+
+        canvas.style.width =
+            `${width}px`;
+
+
+        canvas.style.height =
+            `${height}px`;
+
+
+        ctx.setTransform(
+            dpr,
+            0,
+            0,
+            dpr,
+            0,
+            0
+        );
+
+
+        ctx.clearRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        particles =
+            [];
+
+
+        /*
+         * ================================================
+         * FONT AKTUAL DARI H1
+         * ================================================
+         */
+
+        const style =
+            window.getComputedStyle(
+                hero
+            );
+
+
+        const fontFamily =
+            style.fontFamily;
+
+
+        const fontWeight =
+            style.fontWeight;
+
+
+        const fontSize =
+            parseFloat(
+                style.fontSize
+            );
+
+
+        const lineHeight =
+            parseFloat(
+                style.lineHeight
+            )
+            ||
+            (
+                fontSize *
+                0.92
+            );
+
+
+        const letterSpacing =
+            parseFloat(
+                style.letterSpacing
+            )
+            ||
+            0;
+
+
+        /*
+         * Font string.
+         */
+
+        const font =
+            `${fontWeight} ${fontSize}px ${fontFamily}`;
+
+
+        /*
+         * ================================================
+         * OFFSCREEN CANVAS
+         *
+         * Tidak lagi memakai getBoundingClientRect()
+         * untuk menghitung posisi glyph.
+         *
+         * Ini bagian yang memperbaiki particle
+         * yang sebelumnya kepotong dan mengecil.
+         * ================================================
+         */
+
+        const measureCanvas =
+            document.createElement(
+                "canvas"
+            );
+
+
+        const measureCtx =
+            measureCanvas.getContext(
+                "2d"
+            );
+
+
+        if (
+            !measureCtx
+        ) {
+
+            return;
+
+        }
+
+
+        measureCtx.font =
+            font;
+
+
+        measureCtx.textBaseline =
+            "alphabetic";
+
+
+        /*
+         * ================================================
+         * HITUNG DIMENSI MAKSIMUM TEKS
+         * ================================================
+         */
+
+        let maxTextWidth =
+            0;
+
+
+        const lineMeasurements =
+            sourceLines.map(
+                element => {
+
+                    const text =
+                        element
+                            .textContent
+                            .trim();
+
+
+                    let textWidth =
+                        0;
+
+
+                    for (
+                        let i = 0;
+                        i < text.length;
+                        i++
+                    ) {
+
+                        textWidth +=
+                            measureCtx
+                                .measureText(
+                                    text[i]
+                                )
+                                .width;
+
+
+                        if (
+                            i <
+                            text.length -
+                            1
+                        ) {
+
+                            textWidth +=
+                                letterSpacing;
+
+                        }
+
+                    }
+
+
+                    maxTextWidth =
+                        Math.max(
+                            maxTextWidth,
+                            textWidth
+                        );
+
+
+                    return {
+
+                        text,
+
+                        width:
+                            textWidth,
+
+                        color:
+                            element
+                                .dataset
+                                .particleColor
+                            ||
+                            "#999995"
+
+                    };
+
+                }
+            );
+
+
+        /*
+         * Text metrics.
+         */
+
+        const metrics =
+            measureCtx.measureText(
+                "Hg"
+            );
+
+
+        const ascent =
+            metrics.actualBoundingBoxAscent
+            ||
+            fontSize *
+            0.78;
+
+
+        const descent =
+            metrics.actualBoundingBoxDescent
+            ||
+            fontSize *
+            0.22;
+
+
+        /*
+         * Padding cukup untuk memastikan
+         * glyph tidak terpotong.
+         */
+
+        const padding =
+            Math.ceil(
+                fontSize *
+                0.15
+            );
+
+
+        /*
+         * Offscreen hanya sebesar teks.
+         */
+
+        const offscreenWidth =
+            Math.ceil(
+                maxTextWidth +
+                padding *
+                2
+            );
+
+
+        const offscreenHeight =
+            Math.ceil(
+                (
+                    ascent +
+                    descent
+                )
+                +
+                (
+                    lineHeight *
+                    (
+                        lineMeasurements.length -
+                        1
+                    )
+                )
+                +
+                padding *
+                2
+            );
+
+
+        /*
+         * ================================================
+         * PROCESS EACH LINE INDIVIDUALLY
+         * ================================================
+         */
+
+        lineMeasurements.forEach(
+            (
+                line,
+                lineIndex
+            ) => {
+
+                /*
+                 * Canvas per line.
+                 */
+
+                const offscreen =
+                    document.createElement(
+                        "canvas"
+                    );
+
+
+                offscreen.width =
+                    offscreenWidth;
+
+
+                offscreen.height =
+                    Math.ceil(
+                        ascent +
+                        descent +
+                        padding *
+                        2
+                    );
+
+
+                const offCtx =
+                    offscreen.getContext(
+                        "2d",
+                        {
+                            willReadFrequently:
+                                true
+                        }
+                    );
+
+
+                if (
+                    !offCtx
+                ) {
+
+                    return;
+
+                }
+
+
+                /*
+                 * Set font.
+                 */
+
+                offCtx.font =
+                    font;
+
+
+                offCtx.textBaseline =
+                    "alphabetic";
+
+
+                offCtx.textAlign =
+                    "left";
+
+
+                /*
+                 * Mask putih.
+                 */
+
+                offCtx.fillStyle =
+                    "#ffffff";
+
+
+                /*
+                 * =========================================
+                 * CHARACTER BY CHARACTER
+                 *
+                 * Supaya letter-spacing H1 tetap
+                 * ikut.
+                 * =========================================
+                 */
+
+                let cursorX =
+                    padding;
+
+
+                const baseline =
+                    padding +
+                    ascent;
+
+
+                for (
+                    let i = 0;
+                    i < line.text.length;
+                    i++
+                ) {
+
+                    const character =
+                        line.text[i];
+
+
+                    offCtx.fillText(
+                        character,
+                        cursorX,
+                        baseline
+                    );
+
+
+                    cursorX +=
+                        offCtx.measureText(
+                            character
+                        ).width;
+
+
+                    if (
+                        i <
+                        line.text.length -
+                        1
+                    ) {
+
+                        cursorX +=
+                            letterSpacing;
+
+                    }
+
+                }
+
+
+                /*
+                 * Pixel data.
+                 */
+
+                const imageData =
+                    offCtx.getImageData(
+                        0,
+                        0,
+                        offscreen.width,
+                        offscreen.height
+                    );
+
+
+                /*
+                 * =========================================
+                 * SAMPLE PIXELS
+                 * =========================================
+                 */
+
+                const targets =
+                    [];
+
+
+                const step =
+                    CONFIG.density;
+
+
+                for (
+                    let y = 0;
+                    y < offscreen.height;
+                    y += step
+                ) {
+
+                    for (
+                        let x = 0;
+                        x < offscreen.width;
+                        x += step
+                    ) {
+
+                        const pixelIndex =
+                            (
+                                (
+                                    y *
+                                    offscreen.width
+                                )
+                                +
+                                x
+                            )
+                            *
+                            4;
+
+
+                        const alpha =
+                            imageData
+                                .data[
+                                    pixelIndex +
+                                    3
+                                ];
+
+
+                        if (
+                            alpha <
+                            55
+                        ) {
+
+                            continue;
+
+                        }
+
+
+                        /*
+                         * Target position.
+                         *
+                         * X:
+                         *    selalu mulai dari 0/padding
+                         *
+                         * Y:
+                         *    line index * lineHeight
+                         *
+                         * Jadi tidak akan lagi
+                         * bergeser karena DOM span.
+                         */
+
+                        const targetX =
+                            x -
+                            padding;
+
+
+                        const targetY =
+                            (
+                                lineIndex *
+                                lineHeight
+                            )
+                            +
+                            (
+                                y -
+                                padding
+                            );
+
+
+                        /*
+                         * Hindari target di luar
+                         * canvas H1.
+                         */
+
+                        if (
+                            targetX <
+                            -2
+                            ||
+                            targetX >
+                            width +
+                            2
+                            ||
+                            targetY <
+                            -2
+                            ||
+                            targetY >
+                            height +
+                            2
+                        ) {
+
+                            continue;
+
+                        }
+
+
+                        targets.push({
+
+                            x:
+                                targetX,
+
+                            y:
+                                targetY,
+
+                            alpha:
+                                alpha / 255,
+
+                            color:
+                                line.color
+
+                        });
+
+                    }
+
+                }
+
+
+                /*
+                 * =========================================
+                 * CENTER TEXT HORIZONTAL
+                 *
+                 * DOM H1 biasanya left-aligned.
+                 * Kita gunakan 0 sebagai baseline.
+                 * Kalau teks lebih kecil dari H1,
+                 * kita tetap mulai dari kiri supaya
+                 * identik dengan heading asli.
+                 * =========================================
+                 */
+
+                const lineOffsetX =
+                    0;
+
+
+                /*
+                 * =========================================
+                 * PARTICLES
+                 * =========================================
+                 */
+
+                targets.forEach(
+                    (
+                        target,
+                        index
+                    ) => {
+
+                        const seed =
+                            randomHash(
+                                (
+                                    index +
+                                    1
+                                )
+                                *
+                                (
+                                    lineIndex +
+                                    1
+                                )
+                                *
+                                17
+                            );
+
+
+                        const depth =
+                            0.55 +
+                            randomHash(
+                                index +
+                                500 +
+                                lineIndex *
+                                100
+                            )
+                            *
+                            0.65;
+
+
+                        /*
+                         * Starting scatter.
+                         */
+
+                        const angle =
+                            seed *
+                            Math.PI *
+                            2;
+
+
+                        const distance =
+                            (
+                                reducedMotion
+                                    ? 0
+                                    : CONFIG.scatter
+                            )
+                            *
+                            (
+                                0.35 +
+                                depth *
+                                0.70
+                            );
+
+
+                        const startX =
+                            lineOffsetX +
+                            target.x +
+                            Math.cos(
+                                angle
+                            )
+                            *
+                            distance;
+
+
+                        const startY =
+                            target.y +
+                            Math.sin(
+                                angle
+                            )
+                            *
+                            distance;
+
+
+                        /*
+                         * Color.
+                         *
+                         * Sedikit variasi hanya pada warna
+                         * yang sama.
+                         */
+
+                        const rgb =
+                            hexToRgb(
+                                target.color
+                            );
+
+
+                        let color =
+                            target.color;
+
+
+                        if (
+                            rgb
+                        ) {
+
+                            /*
+                             * Variasi kecil.
+                             *
+                             * Hitam tetap hitam-ish.
+                             * Abu tetap abu.
+                             */
+
+                            const amount =
+                                seed *
+                                0.08;
+
+
+                            const mixed = {
+
+                                r:
+                                    Math.round(
+                                        rgb.r +
+                                        (
+                                            255 -
+                                            rgb.r
+                                        ) *
+                                        amount
+                                    ),
+
+                                g:
+                                    Math.round(
+                                        rgb.g +
+                                        (
+                                            255 -
+                                            rgb.g
+                                        ) *
+                                        amount
+                                    ),
+
+                                b:
+                                    Math.round(
+                                        rgb.b +
+                                        (
+                                            255 -
+                                            rgb.b
+                                        ) *
+                                        amount
+                                    )
+
+                            };
+
+
+                            color =
+                                rgbToCss(
+                                    mixed
+                                );
+
+                        }
+
+
+                        particles.push({
+
+                            x:
+                                startX,
+
+                            y:
+                                startY,
+
+                            startX,
+
+                            startY,
+
+                            targetX:
+                                lineOffsetX +
+                                target.x,
+
+                            targetY:
+                                target.y,
+
+                            size:
+                                Math.max(
+                                    1,
+                                    CONFIG
+                                        .particleSize
+                                    *
+                                    (
+                                        0.78 +
+                                        target.alpha *
+                                        0.32
+                                    )
+                                ),
+
+                            color,
+
+                            alpha:
+                                target.alpha,
+
+                            seed,
+
+                            depth,
+
+                            delay:
+                                seed *
+                                CONFIG.stagger
+
+                        });
+
+                    }
+                );
+
+            }
+        );
+
+
+        /*
+         * ================================================
+         * PARTICLE LIMIT
+         * ================================================
+         */
+
+        if (
+            particles.length >
+            CONFIG.maxParticles
+        ) {
+
+            const ratio =
+                CONFIG.maxParticles /
+                particles.length;
+
+
+            particles =
+                particles.filter(
+                    (
+                        _particle,
+                        index
+                    ) => {
+
+                        return (
+                            randomHash(
+                                index +
+                                999
+                            )
+                            <
+                            ratio
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /*
+         * Mouse.
+         */
+
+        pointer.x =
+            width /
+            2;
+
+
+        pointer.y =
+            height /
+            2;
+
+
+        pointer.smoothX =
+            pointer.x;
+
+
+        pointer.smoothY =
+            pointer.y;
+
+
+        /*
+         * Animation reset.
+         */
+
+        gatherStart =
+            performance.now();
+
+
+        gathering =
+            !reducedMotion;
+
+
+        /*
+         * Reduced motion.
+         */
+
+        if (
+            reducedMotion
+        ) {
+
+            particles.forEach(
+                particle => {
+
+                    particle.x =
+                        particle.targetX;
+
+
+                    particle.y =
+                        particle.targetY;
+
+
+                    particle.startX =
+                        particle.targetX;
+
+
+                    particle.startY =
+                        particle.targetY;
+
+
+                    particle.delay =
+                        0;
+
+                }
+            );
+
+
+            gathering =
+                false;
+
+        }
+
+    }
+
+
+    /* ========================================================
+       DRAW
+    ======================================================== */
+
+    function drawParticle(
+        particle
+    ) {
+
+        ctx.fillStyle =
+            particle.color;
+
+
+        ctx.beginPath();
+
+
+        ctx.arc(
+            particle.x,
+            particle.y,
+            particle.size /
+            2,
+            0,
+            Math.PI *
+            2
+        );
+
+
+        ctx.fill();
+
+    }
+
+
+    /* ========================================================
+       RENDER
+    ======================================================== */
+
+    function render(
+        now
+    ) {
+
+        ctx.clearRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        /*
+         * Smooth pointer.
+         */
+
+        pointer.smoothX +=
+            (
+                pointer.x -
+                pointer.smoothX
+            )
+            *
+            0.16;
+
+
+        pointer.smoothY +=
+            (
+                pointer.y -
+                pointer.smoothY
+            )
+            *
+            0.16;
+
+
+        let complete =
+            true;
+
+
+        particles.forEach(
+            particle => {
+
+                let targetX =
+                    particle.targetX;
+
+
+                let targetY =
+                    particle.targetY;
+
+
+                let progress =
+                    1;
+
+
+                /*
+                 * =========================================
+                 * GATHER
+                 * =========================================
+                 */
+
+                if (
+                    gathering
+                ) {
+
+                    const elapsed =
+                        now -
+                        gatherStart -
+                        particle.delay;
+
+
+                    progress =
+                        clamp(
+                            elapsed /
+                            CONFIG.gatherDuration,
+                            0,
+                            1
+                        );
+
+
+                    const eased =
+                        easeOutCubic(
+                            progress
+                        );
+
+
+                    targetX =
+                        particle.startX +
+                        (
+                            particle.targetX -
+                            particle.startX
+                        )
+                        *
+                        eased;
+
+
+                    targetY =
+                        particle.startY +
+                        (
+                            particle.targetY -
+                            particle.startY
+                        )
+                        *
+                        eased;
+
+
+                    if (
+                        progress <
+                        1
+                    ) {
+
+                        complete =
+                            false;
+
+                    }
+
+                }
+
+
+                /*
+                 * =========================================
+                 * IDLE DRIFT
+                 * =========================================
+                 */
+
+                else if (
+                    !reducedMotion
+                ) {
+
+                    const time =
+                        now *
+                        0.001;
+
+
+                    targetX +=
+                        Math.sin(
+                            time *
+                            0.72 +
+                            particle.seed *
+                            10
+                        )
+                        *
+                        CONFIG.idleDrift
+                        *
+                        particle.depth;
+
+
+                    targetY +=
+                        Math.cos(
+                            time *
+                            0.64 +
+                            particle.seed *
+                            8
+                        )
+                        *
+                        CONFIG.idleDrift
+                        *
+                        particle.depth;
+
+                }
+
+
+                /*
+                 * =========================================
+                 * MOUSE REPEL
+                 * =========================================
+                 */
+
+                if (
+                    pointer.active &&
+                    !reducedMotion
+                ) {
+
+                    const dx =
+                        targetX -
+                        pointer.smoothX;
+
+
+                    const dy =
+                        targetY -
+                        pointer.smoothY;
+
+
+                    const distance =
+                        Math.hypot(
+                            dx,
+                            dy
+                        );
+
+
+                    if (
+                        distance >
+                        0
+                        &&
+                        distance <
+                        CONFIG.repelRadius
+                    ) {
+
+                        const force =
+                            Math.pow(
+                                1 -
+                                (
+                                    distance /
+                                    CONFIG.repelRadius
+                                ),
+                                2
+                            )
+                            *
+                            CONFIG.pointerRepel;
+
+
+                        targetX +=
+                            (
+                                dx /
+                                distance
+                            )
+                            *
+                            force;
+
+
+                        targetY +=
+                            (
+                                dy /
+                                distance
+                            )
+                            *
+                            force;
+
+                    }
+
+                }
+
+
+                /*
+                 * =========================================
+                 * SMOOTH
+                 * =========================================
+                 */
+
+                const follow =
+                    reducedMotion
+                        ? 1
+                        : 0.30;
+
+
+                particle.x +=
+                    (
+                        targetX -
+                        particle.x
+                    )
+                    *
+                    follow;
+
+
+                particle.y +=
+                    (
+                        targetY -
+                        particle.y
+                    )
+                    *
+                    follow;
+
+
+                /*
+                 * =========================================
+                 * OPACITY
+                 * =========================================
+                 */
+
+                ctx.globalAlpha =
+                    clamp(
+                        (
+                            0.42 +
+                            progress *
+                            0.58
+                        )
+                        *
+                        particle.alpha,
+                        0,
+                        1
+                    );
+
+
+                drawParticle(
+                    particle
+                );
+
+            }
+        );
+
+
+        ctx.globalAlpha =
+            1;
+
+
+        /*
+         * Finish.
+         */
+
+        if (
+            gathering &&
+            complete
+        ) {
+
+            gathering =
+                false;
+
+        }
+
+
+        animationFrame =
+            requestAnimationFrame(
+                render
+            );
+
+    }
+
+
+    /* ========================================================
+       POINTER
+    ======================================================== */
+
+    canvas.addEventListener(
+        "pointerenter",
+        event => {
+
+            pointer.active =
+                true;
+
+
+            updatePointer(
+                event
+            );
+
+        }
+    );
+
+
+    canvas.addEventListener(
+        "pointermove",
+        event => {
+
+            pointer.active =
+                true;
+
+
+            updatePointer(
+                event
+            );
+
+        }
+    );
+
+
+    canvas.addEventListener(
+        "pointerleave",
+        () => {
+
+            pointer.active =
+                false;
+
+        }
+    );
+
+
+    function updatePointer(
+        event
+    ) {
+
+        const rect =
+            canvas.getBoundingClientRect();
+
+
+        pointer.x =
+            event.clientX -
+            rect.left;
+
+
+        pointer.y =
+            event.clientY -
+            rect.top;
+
+    }
+
+
+    /* ========================================================
+       RESIZE
+    ======================================================== */
+
+    function queueResize() {
+
+        if (
+            resizeFrame
+        ) {
+
+            cancelAnimationFrame(
+                resizeFrame
+            );
+
+        }
+
+
+        resizeFrame =
+            requestAnimationFrame(
+                () => {
+
+                    buildParticles();
+
+                }
+            );
+
+    }
+
+
+    if (
+        "ResizeObserver"
+        in window
+    ) {
+
+        const resizeObserver =
+            new ResizeObserver(
+                queueResize
+            );
+
+
+        resizeObserver.observe(
+            hero
+        );
+
+    } else {
+
+        window.addEventListener(
+            "resize",
+            queueResize
+        );
+
+    }
+
+
+    /* ========================================================
+       REDUCED MOTION
+    ======================================================== */
+
+    const motionQuery =
+        window.matchMedia
+            ? window.matchMedia(
+                "(prefers-reduced-motion: reduce)"
+            )
+            : null;
+
+
+    if (
+        motionQuery
+    ) {
+
+        motionQuery.addEventListener(
+            "change",
+            event => {
+
+                reducedMotion =
+                    event.matches;
+
+
+                buildParticles();
+
+            }
+        );
+
+    }
+
+
+    /* ========================================================
+       START
+    ======================================================== */
+
+    async function start() {
+
+        /*
+         * Tunggu browser selesai menyiapkan font.
+         * Ini penting supaya ukuran particle benar-benar
+         * sama dengan heading.
+         */
+
+        if (
+            document.fonts &&
+            document.fonts.ready
+        ) {
+
+            try {
+
+                await document
+                    .fonts
+                    .ready;
+
+            } catch {}
+
+        }
+
+
+        /*
+         * Build pertama.
+         */
+
+        buildParticles();
+
+
+        /*
+         * Animation loop.
+         */
+
+        animationFrame =
+            requestAnimationFrame(
+                render
+            );
+
+    }
+
+
+    start();
+
+})();
+
+</script>
+
+
+</body>
+</html>
