@@ -214,7 +214,7 @@ a {
         var(--ink);
 
     color:
-        white;
+        #ffffff;
 
     font-size:
         11px;
@@ -324,6 +324,9 @@ a {
 
 .hero {
 
+    position:
+        relative;
+
     padding:
         105px 0
         105px;
@@ -406,7 +409,7 @@ a {
 
 
 /* =========================================================
-   PARTICLE HERO TEXT
+   PARTICLE HERO
 ========================================================= */
 
 .hero-title {
@@ -640,12 +643,20 @@ a {
         transform,
         opacity;
 
+    transition-property:
+        opacity,
+        transform;
+
+    transition-timing-function:
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+
 }
 
-
-/*
- * State ketika character sudah aktif.
- */
 
 .split-char.split-visible {
 
@@ -662,49 +673,126 @@ a {
 }
 
 
-/*
- * Sedikit easing tambahan supaya terasa
- * seperti motion design, bukan linear.
- */
+/* =========================================================
+   CIRCULAR TEXT
+========================================================= */
 
-.split-char {
+.circular-text-wrap {
 
-    transition-property:
-        opacity,
-        transform;
+    position: absolute;
 
-    transition-timing-function:
-        cubic-bezier(
-            0.22,
-            1,
-            0.36,
-            1
-        );
+    /*
+     * Ditaruh di sisi kanan headline,
+     * tetapi masih berada DI ATAS About this archive.
+     */
+    right: clamp(145px, 15%, 230px);
+    top: 36%;
+
+    width: 200px;
+    height: 200px;
+
+    transform: translateY(-50%);
+
+    z-index: 20;
+    pointer-events: auto;
 
 }
 
+.circular-text {
+
+    position: relative;
+
+    width: 200px;
+    height: 200px;
+
+    color: #111111;
+
+    cursor: pointer;
+
+    transform-origin: 50% 50%;
+
+    -webkit-transform-origin: 50% 50%;
+
+    animation: circularTextSpin 20s linear infinite;
+
+}
 
 /*
- * Reduce motion.
+ * React-Bits style: SETIAP KARAKTER ditempatkan
+ * sendiri di keliling lingkaran.
+ * Ini yang membuat hasilnya benar-benar mirip
+ * referensi, bukan kata-kata yang dipaksa sebagai satu blok.
  */
+.circular-letter {
 
-@media (
-    prefers-reduced-motion: reduce
-) {
+    position: absolute;
 
-    .split-char {
+    left: 50%;
+    top: 50%;
 
-        opacity:
-            1;
+    display: block;
 
-        transform:
-            none;
+    width: 1em;
+    height: 1em;
 
-        transition:
-            none;
+    margin: 0;
 
+    color: #111111;
+
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: 0;
+
+    text-align: center;
+    white-space: pre;
+
+    transform-origin: 50% 50%;
+    -webkit-transform-origin: 50% 50%;
+
+    user-select: none;
+}
+
+@keyframes circularTextSpin {
+
+    from {
+        transform: rotate(0deg);
     }
 
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+.circular-text-wrap:hover .circular-text {
+    animation-duration: 5s;
+}
+
+/* =========================================================
+   CENTER LOGO
+   Logo tetap diam; hanya text di sekelilingnya yang berputar.
+========================================================= */
+
+.circular-logo {
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+    pointer-events: none;
+    user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .circular-text {
+        animation: none;
+    }
 }
 
 
@@ -1321,9 +1409,7 @@ a {
 
 
 /*
- * Ribbon hitam.
- *
- * Curve sengaja kecil.
+ * Hanya pita ini yang hitam.
  */
 
 .text-loop-path {
@@ -1956,6 +2042,18 @@ a {
    RESPONSIVE
 ========================================================= */
 
+@media (max-width: 1150px) {
+
+    .circular-text-wrap {
+
+        right:
+            150px;
+
+    }
+
+}
+
+
 @media (max-width: 950px) {
 
     .hero {
@@ -1976,6 +2074,80 @@ a {
 
         align-self:
             start;
+
+    }
+
+
+    /*
+     * Circle ikut flow layout.
+     */
+
+    .circular-text-wrap {
+
+        position:
+            relative;
+
+        right:
+            auto;
+
+        top:
+            auto;
+
+        width:
+            150px;
+
+        height:
+            150px;
+
+        margin:
+            15px
+            0
+            0
+            auto;
+
+        transform:
+            none;
+
+    }
+
+
+    .circular-text {
+
+        width:
+            150px;
+
+        height:
+            150px;
+
+    }
+
+
+    .circular-logo {
+
+        width:
+            46px;
+
+        height:
+            46px;
+
+    }
+
+
+    .circular-item {
+
+        font-size:
+            11px;
+
+    }
+
+
+    .circular-text-center {
+
+        width:
+            26px;
+
+        height:
+            26px;
 
     }
 
@@ -2007,7 +2179,10 @@ a {
     .page {
 
         width:
-            calc(100% - 24px);
+            calc(
+                100% -
+                24px
+            );
 
     }
 
@@ -2162,6 +2337,32 @@ a {
     }
 
 
+    /* Circular Text */
+
+    .circular-text-wrap {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 125px;
+        height: 125px;
+        margin: 30px 0 0 auto;
+        transform: none;
+    }
+
+    .circular-text {
+        width: 125px;
+        height: 125px;
+    }
+
+    .circular-letter {
+        font-size: 9px;
+    }
+
+
+    /*
+     * Text Loop.
+     */
+
     .text-loop-svg {
 
         height:
@@ -2210,10 +2411,16 @@ a {
     .modal-panel {
 
         width:
-            calc(100% - 14px);
+            calc(
+                100% -
+                14px
+            );
 
         height:
-            calc(100vh - 14px);
+            calc(
+                100vh -
+                14px
+            );
 
     }
 
@@ -2222,6 +2429,58 @@ a {
 
         padding:
             0 15px;
+
+    }
+
+
+    .circular-text-wrap {
+
+        width:
+            105px;
+
+        height:
+            105px;
+
+    }
+
+
+    .circular-text {
+
+        width:
+            105px;
+
+        height:
+            105px;
+
+    }
+
+
+    .circular-logo {
+
+        width:
+            32px;
+
+        height:
+            32px;
+
+    }
+
+
+    .circular-item {
+
+        font-size:
+            7px;
+
+    }
+
+
+    .circular-text-center {
+
+        width:
+            20px;
+
+        height:
+            20px;
 
     }
 
@@ -2252,6 +2511,46 @@ a {
 
 }
 
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+
+    }
+
+
+    .circular-text {
+
+        animation:
+            none;
+
+    }
+
+
+    .split-char {
+
+        opacity:
+            1;
+
+        transform:
+            none;
+
+        transition:
+            none;
+
+    }
+
+}
+
 </style>
 
 </head>
@@ -2277,7 +2576,9 @@ a {
 
 
             <div class="logo-mark">
+
                 DP
+
             </div>
 
 
@@ -2285,12 +2586,16 @@ a {
 
 
                 <div class="logo-title">
+
                     Dataset Archive
+
                 </div>
 
 
                 <div class="logo-subtitle">
+
                     Pradipta / Public Collection
+
                 </div>
 
 
@@ -2318,7 +2623,9 @@ a {
 
 
             <span>
+
                 2026
+
             </span>
 
 
@@ -2339,16 +2646,16 @@ a {
         <div class="hero-left">
 
 
-            <!--
-                SplitText target:
-                Collection / 001
-            -->
+            <!-- ===============================================
+                 COLLECTION
+            ================================================ -->
 
             <div
                 class="hero-index split-parent"
                 data-split="true"
                 data-split-delay="26"
             >
+
 
                 <span
                     class="hero-index-line"
@@ -2358,7 +2665,9 @@ a {
                 <span
                     data-split-content
                 >
+
                     Collection / 001
+
                 </span>
 
 
@@ -2366,9 +2675,9 @@ a {
 
 
 
-            <!-- =================================================
-                 PARTICLE HERO
-            ================================================== -->
+            <!-- ===============================================
+                 PARTICLE TITLE
+            ================================================ -->
 
             <h1
                 class="hero-title"
@@ -2407,21 +2716,22 @@ a {
 
 
 
-            <!--
-                SplitText target:
-                Hero description
-            -->
+            <!-- ===============================================
+                 DESCRIPTION
+            ================================================ -->
 
             <p
                 class="hero-description split-parent"
                 data-split="true"
                 data-split-delay="8"
             >
+
                 Kumpulan dataset kecil yang dibuat untuk
                 eksperimen, database seeding, prototyping,
                 development, dan project berbasis otomotif.
                 Semua file disimpan dalam format source aslinya:
                 PHP dan SQL.
+
             </p>
 
 
@@ -2429,16 +2739,42 @@ a {
 
 
 
+        <!-- =================================================
+             CIRCULAR TEXT
+        ================================================== -->
+
+        <div
+            class="circular-text-wrap"
+            id="circularTextWrap"
+            aria-label="ApiStack Dataset"
+        >
+
+            <div
+                class="circular-text"
+                id="circularText"
+            ></div>
+
+            <img
+                class="circular-logo"
+                src="assets/logo.webp"
+                alt=""
+                aria-hidden="true"
+                draggable="false"
+            >
+
+        </div>
+
+
+
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
+
         <div class="hero-right">
 
 
             <div class="hero-note">
 
-
-                <!--
-                    SplitText target:
-                    About this archive
-                -->
 
                 <div
                     class="hero-note-label split-parent"
@@ -2450,11 +2786,6 @@ a {
 
                 </div>
 
-
-                <!--
-                    SplitText target:
-                    About description
-                -->
 
                 <div
                     class="hero-note-text split-parent"
@@ -2493,11 +2824,6 @@ a {
             <div class="library-title-wrap">
 
 
-                <!--
-                    SplitText:
-                    Car datasets
-                -->
-
                 <h2
                     class="library-title split-parent"
                     data-split="true"
@@ -2508,13 +2834,6 @@ a {
 
                 </h2>
 
-
-                <!--
-                    SplitText:
-                    Count.
-                    JS juga akan mengaktifkan ulang
-                    ketika count berubah.
-                -->
 
                 <span
                     class="library-count split-parent"
@@ -2535,7 +2854,9 @@ a {
             <label class="search">
 
 
-                <span class="search-icon">
+                <span
+                    class="search-icon"
+                >
 
                     /
 
@@ -2557,9 +2878,9 @@ a {
 
 
 
-        <!-- =====================================================
+        <!-- =================================================
              FILTER
-        ====================================================== -->
+        ================================================== -->
 
         <div
             class="filter-row"
@@ -2571,7 +2892,9 @@ a {
                 class="filter active"
                 data-filter="all"
             >
+
                 ALL
+
             </button>
 
 
@@ -2579,7 +2902,9 @@ a {
                 class="filter"
                 data-filter="php"
             >
+
                 PHP
+
             </button>
 
 
@@ -2587,7 +2912,9 @@ a {
                 class="filter"
                 data-filter="sql"
             >
+
                 SQL
+
             </button>
 
 
@@ -2595,7 +2922,9 @@ a {
                 class="filter"
                 data-filter="vehicle"
             >
+
                 VEHICLE
+
             </button>
 
 
@@ -2603,7 +2932,9 @@ a {
                 class="filter"
                 data-filter="reference"
             >
+
                 REFERENCE
+
             </button>
 
 
@@ -2611,7 +2942,9 @@ a {
                 class="filter"
                 data-filter="database"
             >
+
                 DATABASE
+
             </button>
 
 
@@ -2619,9 +2952,9 @@ a {
 
 
 
-        <!-- =====================================================
+        <!-- =================================================
              DATASET LIST
-        ====================================================== -->
+        ================================================== -->
 
         <div
             class="dataset-list"
@@ -2656,13 +2989,9 @@ a {
             >
 
 
-                <!--
-                    BLACK RIBBON ONLY.
-
-                    Background page tetap #f4f4f2.
-
-                    Gelombang dibuat sangat rendah.
-                -->
+                <!-- ========================================
+                     BLACK RIBBON
+                ========================================== -->
 
                 <path
                     id="textLoopPath"
@@ -2704,23 +3033,23 @@ a {
                 ></path>
 
 
-                <!--
-                    Hidden measurement text.
-                -->
+                <!-- ========================================
+                     HIDDEN MEASUREMENT
+                ========================================== -->
 
                 <text
                     id="textLoopMeasure"
                     class="text-loop-measure"
                 >
+
                     APISTACK ✦ DATASET ✦
+
                 </text>
 
 
-                <!--
-                    SATU textPath saja.
-
-                    JS mengisi teks repetitif.
-                -->
+                <!-- ========================================
+                     ACTUAL TEXT
+                ========================================== -->
 
                 <text
                     class="text-loop-text"
@@ -2732,6 +3061,7 @@ a {
                         href="#textLoopPath"
                         startOffset="0"
                     >
+
                         APISTACK ✦ DATASET ✦
 
                     </textPath>
@@ -2797,7 +3127,9 @@ a {
     <section class="modal-panel">
 
 
-        <!-- MODAL HEADER -->
+        <!-- ===============================================
+             MODAL HEADER
+        ================================================ -->
 
         <div class="modal-top">
 
@@ -2843,7 +3175,9 @@ a {
 
 
 
-        <!-- METADATA -->
+        <!-- ===============================================
+             META
+        ================================================ -->
 
         <div class="modal-meta">
 
@@ -2852,7 +3186,9 @@ a {
 
 
                 <div class="meta-label">
+
                     Format
+
                 </div>
 
 
@@ -2873,7 +3209,9 @@ a {
 
 
                 <div class="meta-label">
+
                     Type
+
                 </div>
 
 
@@ -2894,7 +3232,9 @@ a {
 
 
                 <div class="meta-label">
+
                     Directory
+
                 </div>
 
 
@@ -2915,7 +3255,9 @@ a {
 
 
                 <div class="meta-label">
+
                     File size
+
                 </div>
 
 
@@ -2936,7 +3278,9 @@ a {
 
 
 
-        <!-- FILE VIEWER -->
+        <!-- ===============================================
+             VIEWER
+        ================================================ -->
 
         <div class="viewer">
 
@@ -3024,6 +3368,10 @@ a {
 
 
 
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
 <div
     class="toast"
     id="toast"
@@ -3038,7 +3386,7 @@ a {
 <script>
 
 /* ============================================================
-   DATASET CONFIGURATION
+   DATASETS
 ============================================================ */
 
 const datasets = [
@@ -3068,10 +3416,12 @@ const datasets = [
         directory:
             "car / php",
 
-        tags: [
-            "php",
-            "database"
-        ]
+        tags:
+            [
+                "php",
+                "database"
+            ]
+
     },
 
 
@@ -3100,10 +3450,12 @@ const datasets = [
         directory:
             "car / php",
 
-        tags: [
-            "php",
-            "vehicle"
-        ]
+        tags:
+            [
+                "php",
+                "vehicle"
+            ]
+
     },
 
 
@@ -3132,11 +3484,13 @@ const datasets = [
         directory:
             "car / php",
 
-        tags: [
-            "php",
-            "reference",
-            "vehicle"
-        ]
+        tags:
+            [
+                "php",
+                "reference",
+                "vehicle"
+            ]
+
     },
 
 
@@ -3165,11 +3519,13 @@ const datasets = [
         directory:
             "car / php",
 
-        tags: [
-            "php",
-            "reference",
-            "vehicle"
-        ]
+        tags:
+            [
+                "php",
+                "reference",
+                "vehicle"
+            ]
+
     },
 
 
@@ -3198,10 +3554,12 @@ const datasets = [
         directory:
             "car / sql",
 
-        tags: [
-            "sql",
-            "database"
-        ]
+        tags:
+            [
+                "sql",
+                "database"
+            ]
+
     },
 
 
@@ -3230,11 +3588,13 @@ const datasets = [
         directory:
             "car / sql",
 
-        tags: [
-            "sql",
-            "database",
-            "vehicle"
-        ]
+        tags:
+            [
+                "sql",
+                "database",
+                "vehicle"
+            ]
+
     },
 
 
@@ -3263,11 +3623,13 @@ const datasets = [
         directory:
             "car / sql",
 
-        tags: [
-            "sql",
-            "reference",
-            "vehicle"
-        ]
+        tags:
+            [
+                "sql",
+                "reference",
+                "vehicle"
+            ]
+
     },
 
 
@@ -3296,11 +3658,13 @@ const datasets = [
         directory:
             "car / sql",
 
-        tags: [
-            "sql",
-            "reference",
-            "vehicle"
-        ]
+        tags:
+            [
+                "sql",
+                "reference",
+                "vehicle"
+            ]
+
     }
 
 ];
@@ -3313,15 +3677,17 @@ const datasets = [
 let activeFilter =
     "all";
 
+
 let activeDataset =
     null;
+
 
 let toastTimer =
     null;
 
 
 /* ============================================================
-   DOM
+   DOM REFERENCES
 ============================================================ */
 
 const datasetList =
@@ -3474,15 +3840,11 @@ function escapeHTML(
 
 
 /*
- * setText juga mengurus SplitText.
+ * Mengatur teks elemen.
  *
- * Ini penting untuk libraryCount:
- *
- * 08 FILES
- * 06 FILES
- * 01 FILES
- *
- * tetap bisa di-split ulang.
+ * Sekaligus menjaga SplitText
+ * jika elemen tersebut memang menggunakan
+ * data-split="true".
  */
 
 function setText(
@@ -3499,16 +3861,17 @@ function setText(
     }
 
 
-    /*
-     * Kalau elemen memiliki sistem split,
-     * hapus split lama terlebih dahulu.
-     */
-
     if (
         element.dataset &&
         element.dataset.split ===
         "true"
     ) {
+
+        element.dataset.splitOriginal =
+            String(
+                value ?? ""
+            );
+
 
         element
             .querySelectorAll(
@@ -3516,18 +3879,18 @@ function setText(
             )
             .forEach(
                 word => {
-                    word
-                        .replaceWith(
-                            document.createTextNode(
-                                word.textContent
-                            )
-                        );
+
+                    word.replaceWith(
+                        document.createTextNode(
+                            word.textContent
+                        )
+                    );
+
                 }
             );
 
 
-        element
-            .normalize();
+        element.normalize();
 
     }
 
@@ -3535,10 +3898,6 @@ function setText(
     element.textContent =
         value;
 
-
-    /*
-     * Re-split.
-     */
 
     if (
         element.dataset &&
@@ -3571,49 +3930,6 @@ function splitTextElement(
 
     }
 
-
-    /*
-     * Ambil teks dari elemen.
-     */
-
-    let sourceText =
-        element.dataset.splitOriginal;
-
-
-    /*
-     * Untuk pertama kali,
-     * ambil innerText/textContent.
-     */
-
-    if (
-        sourceText ===
-        undefined
-    ) {
-
-        sourceText =
-            element.textContent
-                .replace(
-                    /\s+/g,
-                    " "
-                )
-                .trim();
-
-
-        element.dataset.splitOriginal =
-            sourceText;
-
-    }
-
-
-    /*
-     * Elemen mungkin memiliki child seperti
-     * hero-index-line.
-     *
-     * Simpan element children yang harus dipertahankan.
-     *
-     * Cara paling aman untuk elemen seperti hero-index:
-     * hanya split child [data-split-content].
-     */
 
     const contentTarget =
         element.querySelector(
@@ -3669,11 +3985,6 @@ function splitTextNodeTarget(
         original;
 
 
-    /*
-     * Jangan rebuild kalau sudah
-     * memiliki split character.
-     */
-
     if (
         target.querySelector(
             ".split-word"
@@ -3688,18 +3999,6 @@ function splitTextNodeTarget(
     target.textContent =
         "";
 
-
-    /*
-     * Pisahkan berdasarkan kata.
-     *
-     * Setiap kata adalah inline-block,
-     * sementara character di dalamnya
-     * menjadi inline-block.
-     *
-     * Ini lebih aman untuk text wrapping
-     * daripada menjadikan setiap karakter
-     * independent layout item.
-     */
 
     const words =
         original.split(
@@ -3732,39 +4031,38 @@ function splitTextNodeTarget(
                 "split-word";
 
 
-            [...word].forEach(
-                character => {
+            [
+                ...word
+            ]
+                .forEach(
+                    character => {
 
-                    const charElement =
-                        document.createElement(
-                            "span"
+                        const charElement =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        charElement.className =
+                            "split-char";
+
+
+                        charElement.textContent =
+                            character;
+
+
+                        wordElement.appendChild(
+                            charElement
                         );
 
-
-                    charElement.className =
-                        "split-char";
-
-
-                    charElement.textContent =
-                        character;
-
-
-                    wordElement.appendChild(
-                        charElement
-                    );
-
-                }
-            );
+                    }
+                );
 
 
             target.appendChild(
                 wordElement
             );
 
-
-            /*
-             * Space antar kata.
-             */
 
             if (
                 wordIndex <
@@ -3806,7 +4104,7 @@ function prepareSplitText() {
 
 
 /* ============================================================
-   SPLIT TEXT OBSERVER
+   SPLIT OBSERVER
 ============================================================ */
 
 let splitObserver =
@@ -3815,11 +4113,6 @@ let splitObserver =
 
 function createSplitObserver() {
 
-    /*
-     * Reduced motion:
-     * langsung tampil.
-     */
-
     const reducedMotion =
         window.matchMedia &&
         window.matchMedia(
@@ -3827,13 +4120,11 @@ function createSplitObserver() {
         ).matches;
 
 
-    /*
-     * Kalau browser tidak support IntersectionObserver,
-     * tampilkan langsung.
-     */
-
     if (
-        !("IntersectionObserver" in window)
+        !(
+            "IntersectionObserver"
+            in window
+        )
     ) {
 
         document
@@ -3876,18 +4167,14 @@ function createSplitObserver() {
                         }
 
 
-                        const element =
-                            entry.target;
-
-
                         animateSplitElement(
-                            element,
+                            entry.target,
                             reducedMotion
                         );
 
 
                         splitObserver.unobserve(
-                            element
+                            entry.target
                         );
 
                     }
@@ -3925,7 +4212,7 @@ function createSplitObserver() {
 
 function animateSplitElement(
     element,
-    reducedMotion = false
+    reducedMotion
 ) {
 
     const chars =
@@ -3979,11 +4266,6 @@ function animateSplitElement(
             }
 
 
-            /*
-             * Durasi karakter sedikit lebih lama
-             * supaya terasa premium.
-             */
-
             char.style.transitionDuration =
                 "720ms";
 
@@ -3991,11 +4273,6 @@ function animateSplitElement(
             char.style.transitionDelay =
                 `${index * delay}ms`;
 
-
-            /*
-             * Force reflow sebelum menambahkan
-             * visible class.
-             */
 
             void char.offsetWidth;
 
@@ -4009,11 +4286,6 @@ function animateSplitElement(
 
 }
 
-
-/*
- * Untuk elemen yang di-render ulang,
- * observer perlu dipasang kembali.
- */
 
 function refreshSplitObserver() {
 
@@ -4049,7 +4321,8 @@ function getFilteredDatasets() {
         dataset => {
 
             const matchesFilter =
-                activeFilter === "all"
+                activeFilter ===
+                "all"
                 ||
                 dataset.tags.includes(
                     activeFilter
@@ -4061,7 +4334,7 @@ function getFilteredDatasets() {
                     activeFilter;
 
 
-            const searchContent = [
+            const content = [
 
                 dataset.name,
 
@@ -4087,7 +4360,7 @@ function getFilteredDatasets() {
             const matchesSearch =
                 query === ""
                 ||
-                searchContent.includes(
+                content.includes(
                     query
                 );
 
@@ -4263,7 +4536,6 @@ function renderDatasets() {
                             class="dataset-actions"
                         >
 
-
                             <button
                                 type="button"
                                 class="action primary"
@@ -4385,6 +4657,7 @@ function openPreview(
             "Dataset not found"
         );
 
+
         return;
 
     }
@@ -4441,13 +4714,6 @@ function openPreview(
         "TXT source"
     );
 
-
-    /*
-     * Preview menggunakan static TXT.
-     *
-     * Tidak menggunakan fetch()
-     * untuk preview utama.
-     */
 
     if (
         viewerCode
@@ -4579,18 +4845,11 @@ function downloadDataset(
             "Dataset not found"
         );
 
+
         return;
 
     }
 
-
-    /*
-     * Source:
-     * static TXT preview.
-     *
-     * Nama hasil download:
-     * PHP / SQL asli.
-     */
 
     const link =
         document.createElement(
@@ -4641,6 +4900,7 @@ async function copyPreview() {
         showToast(
             "No dataset selected"
         );
+
 
         return;
 
@@ -4784,11 +5044,6 @@ if (
 
             renderDatasets();
 
-
-            /*
-             * Count mendapat animasi lagi
-             * setelah search berubah.
-             */
 
             requestAnimationFrame(
                 () => {
@@ -4958,7 +5213,7 @@ document.addEventListener(
 
 
 /* ============================================================
-   START DATASET UI
+   START DATASET
 ============================================================ */
 
 renderDatasets();
@@ -4970,11 +5225,6 @@ renderDatasets();
 
 prepareSplitText();
 
-
-/*
- * Tunggu browser selesai melakukan layout
- * baru observer dibuat.
- */
 
 requestAnimationFrame(
     () => {
@@ -5354,10 +5604,6 @@ requestAnimationFrame(
             [];
 
 
-        /*
-         * H1 font.
-         */
-
         const style =
             window.getComputedStyle(
                 hero
@@ -5378,17 +5624,6 @@ requestAnimationFrame(
             );
 
 
-        const lineHeight =
-            parseFloat(
-                style.lineHeight
-            )
-            ||
-            (
-                fontSize *
-                0.92
-            );
-
-
         const letterSpacing =
             parseFloat(
                 style.letterSpacing
@@ -5400,10 +5635,6 @@ requestAnimationFrame(
         const font =
             `${fontWeight} ${fontSize}px ${fontFamily}`;
 
-
-        /*
-         * Measurement.
-         */
 
         const measureCanvas =
             document.createElement(
@@ -5454,10 +5685,6 @@ requestAnimationFrame(
 
                 }
 
-
-                /*
-                 * Text width.
-                 */
 
                 let textWidth =
                     0;
@@ -5517,10 +5744,6 @@ requestAnimationFrame(
                         0.16
                     );
 
-
-                /*
-                 * Offscreen canvas.
-                 */
 
                 const offscreen =
                     document.createElement(
@@ -5589,10 +5812,6 @@ requestAnimationFrame(
                     ascent;
 
 
-                /*
-                 * Draw characters individually.
-                 */
-
                 for (
                     let i = 0;
                     i < text.length;
@@ -5630,10 +5849,6 @@ requestAnimationFrame(
                 }
 
 
-                /*
-                 * Pixel data.
-                 */
-
                 const imageData =
                     offCtx.getImageData(
                         0,
@@ -5642,10 +5857,6 @@ requestAnimationFrame(
                         offscreen.height
                     );
 
-
-                /*
-                 * DOM line position.
-                 */
 
                 const lineRect =
                     element
@@ -5687,10 +5898,6 @@ requestAnimationFrame(
                     CONFIG.density;
 
 
-                /*
-                 * Sample mask pixels.
-                 */
-
                 for (
                     let y = 0;
                     y < offscreen.height;
@@ -5703,7 +5910,7 @@ requestAnimationFrame(
                         x += step
                     ) {
 
-                        const pixelIndex =
+                        const index =
                             (
                                 (
                                     y *
@@ -5719,7 +5926,7 @@ requestAnimationFrame(
                         const alpha =
                             imageData
                                 .data[
-                                    pixelIndex +
+                                    index +
                                     3
                                 ];
 
@@ -5755,14 +5962,7 @@ requestAnimationFrame(
                             targetX >
                             width +
                             4
-                        ) {
-
-                            continue;
-
-                        }
-
-
-                        if (
+                            ||
                             targetY <
                             -4
                             ||
@@ -5969,10 +6169,6 @@ requestAnimationFrame(
         );
 
 
-        /*
-         * Limit particle count.
-         */
-
         if (
             particles.length >
             CONFIG.maxParticles
@@ -6000,10 +6196,6 @@ requestAnimationFrame(
         }
 
 
-        /*
-         * Reset pointer.
-         */
-
         pointer.x =
             width /
             2;
@@ -6021,10 +6213,6 @@ requestAnimationFrame(
         pointer.smoothY =
             pointer.y;
 
-
-        /*
-         * Restart formation.
-         */
 
         gatherStart =
             performance.now();
@@ -6091,10 +6279,10 @@ requestAnimationFrame(
             particle.x,
             particle.y,
             particle.size /
-                2,
+            2,
             0,
             Math.PI *
-                2
+            2
         );
 
 
@@ -6118,10 +6306,6 @@ requestAnimationFrame(
             height
         );
 
-
-        /*
-         * Smooth pointer.
-         */
 
         pointer.smoothX +=
             (
@@ -6159,10 +6343,6 @@ requestAnimationFrame(
                 let progress =
                     1;
 
-
-                /*
-                 * GATHER
-                 */
 
                 if (
                     gathering
@@ -6223,10 +6403,6 @@ requestAnimationFrame(
                 }
 
 
-                /*
-                 * IDLE
-                 */
-
                 else if (
                     !reducedMotion
                 ) {
@@ -6263,10 +6439,6 @@ requestAnimationFrame(
 
                 }
 
-
-                /*
-                 * MOUSE REPEL
-                 */
 
                 if (
                     pointer.active &&
@@ -6333,10 +6505,6 @@ requestAnimationFrame(
                 }
 
 
-                /*
-                 * SMOOTH
-                 */
-
                 const follow =
                     reducedMotion
                         ? 1
@@ -6360,10 +6528,6 @@ requestAnimationFrame(
                     *
                     follow;
 
-
-                /*
-                 * OPACITY
-                 */
 
                 ctx.globalAlpha =
                     clamp(
@@ -6602,6 +6766,62 @@ requestAnimationFrame(
 
 
 /* ============================================================
+   CIRCULAR TEXT
+   APISTACK * DATASET
+============================================================ */
+
+(() => {
+
+    const root = document.getElementById("circularText");
+    const wrapper = document.getElementById("circularTextWrap");
+
+    if (!root || !wrapper) return;
+
+    const text = "APISTACK * DATASET *";
+    const letters = Array.from(text);
+    const radius = 88;
+
+    root.innerHTML = "";
+
+    /*
+     * Setiap karakter dibuat sebagai elemen terpisah.
+     * Posisi dihitung dari pusat lingkaran sehingga tidak
+     * terjadi efek spiral/geser seperti implementasi lama.
+     */
+    letters.forEach((letter, index) => {
+
+        const span = document.createElement("span");
+        span.className = "circular-letter";
+        span.textContent = letter === " " ? "\u00A0" : letter;
+
+        const angle = -90 + (360 / letters.length) * index;
+
+        const transform = `
+            translate(-50%, -50%)
+            rotate(${angle}deg)
+            translateY(-${radius}px)
+            rotate(90deg)
+        `;
+
+        span.style.transform = transform;
+        span.style.webkitTransform = transform;
+
+        root.appendChild(span);
+    });
+
+    /* Hover seperti React Bits: speedUp */
+    wrapper.addEventListener("pointerenter", () => {
+        root.style.animationDuration = "5s";
+    });
+
+    wrapper.addEventListener("pointerleave", () => {
+        root.style.animationDuration = "20s";
+    });
+
+})();
+
+
+/* ============================================================
    TEXT LOOP
    SMOOTH RIGHT -> LEFT
 ============================================================ */
@@ -6686,10 +6906,6 @@ requestAnimationFrame(
         false;
 
 
-    let animationFrame =
-        null;
-
-
     let reducedMotion =
         window.matchMedia &&
         window.matchMedia(
@@ -6698,7 +6914,7 @@ requestAnimationFrame(
 
 
     /* ========================================================
-       MEASURE
+       SETUP
     ======================================================== */
 
     function setupTextLoop() {
@@ -6742,8 +6958,7 @@ requestAnimationFrame(
 
 
         /*
-         * Buat teks jauh lebih panjang daripada
-         * area visible.
+         * Buat teks sangat panjang.
          */
 
         const requiredLength =
@@ -6804,10 +7019,6 @@ requestAnimationFrame(
         }
 
 
-        /*
-         * Wrap berdasarkan ukuran satu unit.
-         */
-
         let wrapped =
             phase %
             unitWidth;
@@ -6825,8 +7036,7 @@ requestAnimationFrame(
 
 
         /*
-         * NEGATIVE startOffset =
-         * visual bergerak kanan -> kiri.
+         * Negatif = kanan ke kiri.
          */
 
         textPath.setAttribute(
@@ -6876,13 +7086,6 @@ requestAnimationFrame(
             0
         ) {
 
-            /*
-             * Phase terus bergerak.
-             *
-             * applyPhase akan mengulang
-             * tepat di satu unit teks.
-             */
-
             phase +=
                 CONFIG.speed *
                 (
@@ -6896,10 +7099,9 @@ requestAnimationFrame(
         }
 
 
-        animationFrame =
-            requestAnimationFrame(
-                animate
-            );
+        requestAnimationFrame(
+            animate
+        );
 
     }
 
@@ -7055,10 +7257,9 @@ requestAnimationFrame(
             performance.now();
 
 
-        animationFrame =
-            requestAnimationFrame(
-                animate
-            );
+        requestAnimationFrame(
+            animate
+        );
 
     }
 
