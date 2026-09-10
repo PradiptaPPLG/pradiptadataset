@@ -26,16 +26,26 @@
 
 :root {
 
-    --bg: #f4f4f2;
-    --paper: #ffffff;
+    --bg:
+        #f4f4f2;
 
-    --ink: #111111;
+    --paper:
+        #ffffff;
 
-    --muted: #777777;
-    --soft: #a4a4a4;
-    --line: #dededb;
+    --ink:
+        #111111;
 
-    --accent: #e9452f;
+    --muted:
+        #777777;
+
+    --soft:
+        #a4a4a4;
+
+    --line:
+        #dededb;
+
+    --accent:
+        #e9452f;
 
 
     --mono:
@@ -124,7 +134,7 @@ a {
 
 
 /* =========================================================
-   PAGE
+   PAGE FRAME
 ========================================================= */
 
 .page {
@@ -315,7 +325,8 @@ a {
 .hero {
 
     padding:
-        105px 0 105px;
+        105px 0
+        105px;
 
     display:
         grid;
@@ -348,7 +359,7 @@ a {
         27px;
 
     display:
-        flex;
+        inline-flex;
 
     align-items:
         center;
@@ -385,6 +396,9 @@ a {
     height:
         1px;
 
+    flex:
+        0 0 auto;
+
     background:
         var(--accent);
 
@@ -392,7 +406,7 @@ a {
 
 
 /* =========================================================
-   PARTICLE HERO
+   PARTICLE HERO TEXT
 ========================================================= */
 
 .hero-title {
@@ -513,6 +527,10 @@ a {
 }
 
 
+/* =========================================================
+   HERO RIGHT
+========================================================= */
+
 .hero-right {
 
     align-self:
@@ -574,13 +592,131 @@ a {
 
 
 /* =========================================================
+   SPLIT TEXT
+========================================================= */
+
+.split-parent {
+
+    display:
+        block;
+
+    overflow:
+        hidden;
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+
+.split-word {
+
+    display:
+        inline-block;
+
+    white-space:
+        nowrap;
+
+}
+
+
+.split-char {
+
+    display:
+        inline-block;
+
+    opacity:
+        0;
+
+    transform:
+        translate3d(
+            0,
+            40px,
+            0
+        );
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+
+/*
+ * State ketika character sudah aktif.
+ */
+
+.split-char.split-visible {
+
+    opacity:
+        1;
+
+    transform:
+        translate3d(
+            0,
+            0,
+            0
+        );
+
+}
+
+
+/*
+ * Sedikit easing tambahan supaya terasa
+ * seperti motion design, bukan linear.
+ */
+
+.split-char {
+
+    transition-property:
+        opacity,
+        transform;
+
+    transition-timing-function:
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+
+}
+
+
+/*
+ * Reduce motion.
+ */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    .split-char {
+
+        opacity:
+            1;
+
+        transform:
+            none;
+
+        transition:
+            none;
+
+    }
+
+}
+
+
+/* =========================================================
    LIBRARY
 ========================================================= */
 
 .library {
 
     padding:
-        55px 0 110px;
+        55px 0
+        110px;
 
 }
 
@@ -810,7 +946,7 @@ a {
 
 
 /* =========================================================
-   DATASET TABLE / LIST
+   DATASET LIST
 ========================================================= */
 
 .dataset-list {
@@ -1122,7 +1258,7 @@ a {
 
 
 /* =========================================================
-   TEXT LOOP / BLACK RIBBON
+   TEXT LOOP / RIBBON
 ========================================================= */
 
 .text-loop-section {
@@ -1183,6 +1319,12 @@ a {
 
 }
 
+
+/*
+ * Ribbon hitam.
+ *
+ * Curve sengaja kecil.
+ */
 
 .text-loop-path {
 
@@ -1272,8 +1414,7 @@ a {
         space-between;
 
     border-top:
-        1px solid
-        var(--ink);
+        0;
 
     color:
         var(--soft);
@@ -1394,6 +1535,10 @@ a {
 }
 
 
+/* =========================================================
+   MODAL TOP
+========================================================= */
+
 .modal-top {
 
     min-height:
@@ -1499,7 +1644,7 @@ a {
 
 
 /* =========================================================
-   META
+   MODAL META
 ========================================================= */
 
 .modal-meta {
@@ -2017,8 +2162,6 @@ a {
     }
 
 
-    /* TextLoop */
-
     .text-loop-svg {
 
         height:
@@ -2083,8 +2226,6 @@ a {
     }
 
 
-    /* TextLoop */
-
     .text-loop-svg {
 
         height:
@@ -2106,24 +2247,6 @@ a {
 
         stroke-width:
             49;
-
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (
-    prefers-reduced-motion: reduce
-) {
-
-    html {
-
-        scroll-behavior:
-            auto;
 
     }
 
@@ -2154,9 +2277,7 @@ a {
 
 
             <div class="logo-mark">
-
                 DP
-
             </div>
 
 
@@ -2164,16 +2285,12 @@ a {
 
 
                 <div class="logo-title">
-
                     Dataset Archive
-
                 </div>
 
 
                 <div class="logo-subtitle">
-
                     Pradipta / Public Collection
-
                 </div>
 
 
@@ -2188,19 +2305,20 @@ a {
 
             <div class="online">
 
+
                 <span
                     class="online-dot"
                 ></span>
 
+
                 Online archive
+
 
             </div>
 
 
             <span>
-
                 2026
-
             </span>
 
 
@@ -2221,22 +2339,35 @@ a {
         <div class="hero-left">
 
 
-            <div class="hero-index">
+            <!--
+                SplitText target:
+                Collection / 001
+            -->
 
+            <div
+                class="hero-index split-parent"
+                data-split="true"
+                data-split-delay="26"
+            >
 
                 <span
                     class="hero-index-line"
                 ></span>
 
 
-                Collection / 001
+                <span
+                    data-split-content
+                >
+                    Collection / 001
+                </span>
 
 
             </div>
 
 
+
             <!-- =================================================
-                 PARTICLE HERO TEXT
+                 PARTICLE HERO
             ================================================== -->
 
             <h1
@@ -2275,17 +2406,22 @@ a {
             </h1>
 
 
-            <p class="hero-description">
 
+            <!--
+                SplitText target:
+                Hero description
+            -->
 
+            <p
+                class="hero-description split-parent"
+                data-split="true"
+                data-split-delay="8"
+            >
                 Kumpulan dataset kecil yang dibuat untuk
                 eksperimen, database seeding, prototyping,
                 development, dan project berbasis otomotif.
-
                 Semua file disimpan dalam format source aslinya:
                 PHP dan SQL.
-
-
             </p>
 
 
@@ -2299,14 +2435,32 @@ a {
             <div class="hero-note">
 
 
-                <div class="hero-note-label">
+                <!--
+                    SplitText target:
+                    About this archive
+                -->
+
+                <div
+                    class="hero-note-label split-parent"
+                    data-split="true"
+                    data-split-delay="30"
+                >
 
                     About this archive
 
                 </div>
 
 
-                <div class="hero-note-text">
+                <!--
+                    SplitText target:
+                    About description
+                -->
+
+                <div
+                    class="hero-note-text split-parent"
+                    data-split="true"
+                    data-split-delay="11"
+                >
 
                     Bukan marketplace data.
                     Bukan dashboard analytics.
@@ -2339,16 +2493,34 @@ a {
             <div class="library-title-wrap">
 
 
-                <h2 class="library-title">
+                <!--
+                    SplitText:
+                    Car datasets
+                -->
+
+                <h2
+                    class="library-title split-parent"
+                    data-split="true"
+                    data-split-delay="35"
+                >
 
                     Car datasets
 
                 </h2>
 
 
+                <!--
+                    SplitText:
+                    Count.
+                    JS juga akan mengaktifkan ulang
+                    ketika count berubah.
+                -->
+
                 <span
-                    class="library-count"
+                    class="library-count split-parent"
                     id="libraryCount"
+                    data-split="true"
+                    data-split-delay="25"
                 >
 
                     08 FILES
@@ -2357,6 +2529,7 @@ a {
 
 
             </div>
+
 
 
             <label class="search">
@@ -2384,7 +2557,9 @@ a {
 
 
 
-        <!-- FILTER -->
+        <!-- =====================================================
+             FILTER
+        ====================================================== -->
 
         <div
             class="filter-row"
@@ -2396,9 +2571,7 @@ a {
                 class="filter active"
                 data-filter="all"
             >
-
                 ALL
-
             </button>
 
 
@@ -2406,9 +2579,7 @@ a {
                 class="filter"
                 data-filter="php"
             >
-
                 PHP
-
             </button>
 
 
@@ -2416,9 +2587,7 @@ a {
                 class="filter"
                 data-filter="sql"
             >
-
                 SQL
-
             </button>
 
 
@@ -2426,9 +2595,7 @@ a {
                 class="filter"
                 data-filter="vehicle"
             >
-
                 VEHICLE
-
             </button>
 
 
@@ -2436,9 +2603,7 @@ a {
                 class="filter"
                 data-filter="reference"
             >
-
                 REFERENCE
-
             </button>
 
 
@@ -2446,9 +2611,7 @@ a {
                 class="filter"
                 data-filter="database"
             >
-
                 DATABASE
-
             </button>
 
 
@@ -2456,7 +2619,9 @@ a {
 
 
 
-        <!-- DATASET LIST -->
+        <!-- =====================================================
+             DATASET LIST
+        ====================================================== -->
 
         <div
             class="dataset-list"
@@ -2469,7 +2634,7 @@ a {
 
 
     <!-- =====================================================
-         ANIMATED APISTACK / DATASET RIBBON
+         ANIMATED TEXT LOOP
     ====================================================== -->
 
     <section
@@ -2492,10 +2657,11 @@ a {
 
 
                 <!--
-                    Black ribbon.
+                    BLACK RIBBON ONLY.
 
-                    Amplitude dibuat kecil sehingga
-                    bentuknya hanya gentle wave.
+                    Background page tetap #f4f4f2.
+
+                    Gelombang dibuat sangat rendah.
                 -->
 
                 <path
@@ -2551,9 +2717,9 @@ a {
 
 
                 <!--
-                    SATU textPath.
+                    SATU textPath saja.
 
-                    Text dibuat sangat panjang oleh JS.
+                    JS mengisi teks repetitif.
                 -->
 
                 <text
@@ -2567,6 +2733,7 @@ a {
                         startOffset="0"
                     >
                         APISTACK ✦ DATASET ✦
+
                     </textPath>
 
                 </text>
@@ -2685,9 +2852,7 @@ a {
 
 
                 <div class="meta-label">
-
                     Format
-
                 </div>
 
 
@@ -2708,9 +2873,7 @@ a {
 
 
                 <div class="meta-label">
-
                     Type
-
                 </div>
 
 
@@ -2731,9 +2894,7 @@ a {
 
 
                 <div class="meta-label">
-
                     Directory
-
                 </div>
 
 
@@ -2754,9 +2915,7 @@ a {
 
 
                 <div class="meta-label">
-
                     File size
-
                 </div>
 
 
@@ -3314,17 +3473,82 @@ function escapeHTML(
 }
 
 
+/*
+ * setText juga mengurus SplitText.
+ *
+ * Ini penting untuk libraryCount:
+ *
+ * 08 FILES
+ * 06 FILES
+ * 01 FILES
+ *
+ * tetap bisa di-split ulang.
+ */
+
 function setText(
     element,
     value
 ) {
 
     if (
-        element
+        !element
     ) {
 
-        element.textContent =
-            value;
+        return;
+
+    }
+
+
+    /*
+     * Kalau elemen memiliki sistem split,
+     * hapus split lama terlebih dahulu.
+     */
+
+    if (
+        element.dataset &&
+        element.dataset.split ===
+        "true"
+    ) {
+
+        element
+            .querySelectorAll(
+                ".split-word"
+            )
+            .forEach(
+                word => {
+                    word
+                        .replaceWith(
+                            document.createTextNode(
+                                word.textContent
+                            )
+                        );
+                }
+            );
+
+
+        element
+            .normalize();
+
+    }
+
+
+    element.textContent =
+        value;
+
+
+    /*
+     * Re-split.
+     */
+
+    if (
+        element.dataset &&
+        element.dataset.split ===
+        "true"
+    ) {
+
+        splitTextElement(
+            element
+        );
 
     }
 
@@ -3332,7 +3556,483 @@ function setText(
 
 
 /* ============================================================
-   FILTER
+   SPLIT TEXT ENGINE
+============================================================ */
+
+function splitTextElement(
+    element
+) {
+
+    if (
+        !element
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+     * Ambil teks dari elemen.
+     */
+
+    let sourceText =
+        element.dataset.splitOriginal;
+
+
+    /*
+     * Untuk pertama kali,
+     * ambil innerText/textContent.
+     */
+
+    if (
+        sourceText ===
+        undefined
+    ) {
+
+        sourceText =
+            element.textContent
+                .replace(
+                    /\s+/g,
+                    " "
+                )
+                .trim();
+
+
+        element.dataset.splitOriginal =
+            sourceText;
+
+    }
+
+
+    /*
+     * Elemen mungkin memiliki child seperti
+     * hero-index-line.
+     *
+     * Simpan element children yang harus dipertahankan.
+     *
+     * Cara paling aman untuk elemen seperti hero-index:
+     * hanya split child [data-split-content].
+     */
+
+    const contentTarget =
+        element.querySelector(
+            "[data-split-content]"
+        );
+
+
+    if (
+        contentTarget
+    ) {
+
+        splitTextNodeTarget(
+            contentTarget
+        );
+
+
+        return;
+
+    }
+
+
+    splitTextNodeTarget(
+        element
+    );
+
+}
+
+
+function splitTextNodeTarget(
+    target
+) {
+
+    if (
+        !target
+    ) {
+
+        return;
+
+    }
+
+
+    const original =
+        target.dataset.splitOriginal ??
+        target.textContent
+            .replace(
+                /\s+/g,
+                " "
+            )
+            .trim();
+
+
+    target.dataset.splitOriginal =
+        original;
+
+
+    /*
+     * Jangan rebuild kalau sudah
+     * memiliki split character.
+     */
+
+    if (
+        target.querySelector(
+            ".split-word"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    target.textContent =
+        "";
+
+
+    /*
+     * Pisahkan berdasarkan kata.
+     *
+     * Setiap kata adalah inline-block,
+     * sementara character di dalamnya
+     * menjadi inline-block.
+     *
+     * Ini lebih aman untuk text wrapping
+     * daripada menjadikan setiap karakter
+     * independent layout item.
+     */
+
+    const words =
+        original.split(
+            " "
+        );
+
+
+    words.forEach(
+        (
+            word,
+            wordIndex
+        ) => {
+
+            if (
+                !word
+            ) {
+
+                return;
+
+            }
+
+
+            const wordElement =
+                document.createElement(
+                    "span"
+                );
+
+
+            wordElement.className =
+                "split-word";
+
+
+            [...word].forEach(
+                character => {
+
+                    const charElement =
+                        document.createElement(
+                            "span"
+                        );
+
+
+                    charElement.className =
+                        "split-char";
+
+
+                    charElement.textContent =
+                        character;
+
+
+                    wordElement.appendChild(
+                        charElement
+                    );
+
+                }
+            );
+
+
+            target.appendChild(
+                wordElement
+            );
+
+
+            /*
+             * Space antar kata.
+             */
+
+            if (
+                wordIndex <
+                words.length -
+                1
+            ) {
+
+                target.appendChild(
+                    document.createTextNode(
+                        " "
+                    )
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+function prepareSplitText() {
+
+    document
+        .querySelectorAll(
+            "[data-split='true']"
+        )
+        .forEach(
+            element => {
+
+                splitTextElement(
+                    element
+                );
+
+            }
+        );
+
+}
+
+
+/* ============================================================
+   SPLIT TEXT OBSERVER
+============================================================ */
+
+let splitObserver =
+    null;
+
+
+function createSplitObserver() {
+
+    /*
+     * Reduced motion:
+     * langsung tampil.
+     */
+
+    const reducedMotion =
+        window.matchMedia &&
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    /*
+     * Kalau browser tidak support IntersectionObserver,
+     * tampilkan langsung.
+     */
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+
+        document
+            .querySelectorAll(
+                ".split-char"
+            )
+            .forEach(
+                char => {
+
+                    char.classList.add(
+                        "split-visible"
+                    );
+
+
+                    char.style.transitionDelay =
+                        "0ms";
+
+                }
+            );
+
+
+        return;
+
+    }
+
+
+    splitObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            !entry.isIntersecting
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        const element =
+                            entry.target;
+
+
+                        animateSplitElement(
+                            element,
+                            reducedMotion
+                        );
+
+
+                        splitObserver.unobserve(
+                            element
+                        );
+
+                    }
+                );
+
+            },
+            {
+
+                threshold:
+                    0.1,
+
+                rootMargin:
+                    "-100px 0px -40px 0px"
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            "[data-split='true']"
+        )
+        .forEach(
+            element => {
+
+                splitObserver.observe(
+                    element
+                );
+
+            }
+        );
+
+}
+
+
+function animateSplitElement(
+    element,
+    reducedMotion = false
+) {
+
+    const chars =
+        element.querySelectorAll(
+            ".split-char"
+        );
+
+
+    if (
+        !chars.length
+    ) {
+
+        return;
+
+    }
+
+
+    const delay =
+        Number(
+            element.dataset.splitDelay
+            ||
+            30
+        );
+
+
+    chars.forEach(
+        (
+            char,
+            index
+        ) => {
+
+            if (
+                reducedMotion
+            ) {
+
+                char.style.transitionDuration =
+                    "0ms";
+
+
+                char.style.transitionDelay =
+                    "0ms";
+
+
+                char.classList.add(
+                    "split-visible"
+                );
+
+
+                return;
+
+            }
+
+
+            /*
+             * Durasi karakter sedikit lebih lama
+             * supaya terasa premium.
+             */
+
+            char.style.transitionDuration =
+                "720ms";
+
+
+            char.style.transitionDelay =
+                `${index * delay}ms`;
+
+
+            /*
+             * Force reflow sebelum menambahkan
+             * visible class.
+             */
+
+            void char.offsetWidth;
+
+
+            char.classList.add(
+                "split-visible"
+            );
+
+        }
+    );
+
+}
+
+
+/*
+ * Untuk elemen yang di-render ulang,
+ * observer perlu dipasang kembali.
+ */
+
+function refreshSplitObserver() {
+
+    if (
+        splitObserver
+    ) {
+
+        splitObserver.disconnect();
+
+    }
+
+
+    createSplitObserver();
+
+}
+
+
+/* ============================================================
+   FILTER DATASETS
 ============================================================ */
 
 function getFilteredDatasets() {
@@ -3361,7 +4061,7 @@ function getFilteredDatasets() {
                     activeFilter;
 
 
-            const content = [
+            const searchContent = [
 
                 dataset.name,
 
@@ -3387,7 +4087,7 @@ function getFilteredDatasets() {
             const matchesSearch =
                 query === ""
                 ||
-                content.includes(
+                searchContent.includes(
                     query
                 );
 
@@ -3743,8 +4443,10 @@ function openPreview(
 
 
     /*
-     * Preview menggunakan file TXT.
-     * Tidak memakai fetch().
+     * Preview menggunakan static TXT.
+     *
+     * Tidak menggunakan fetch()
+     * untuk preview utama.
      */
 
     if (
@@ -3881,6 +4583,14 @@ function downloadDataset(
 
     }
 
+
+    /*
+     * Source:
+     * static TXT preview.
+     *
+     * Nama hasil download:
+     * PHP / SQL asli.
+     */
 
     const link =
         document.createElement(
@@ -4070,7 +4780,25 @@ if (
 
     searchInput.addEventListener(
         "input",
-        renderDatasets
+        () => {
+
+            renderDatasets();
+
+
+            /*
+             * Count mendapat animasi lagi
+             * setelah search berubah.
+             */
+
+            requestAnimationFrame(
+                () => {
+
+                    refreshSplitObserver();
+
+                }
+            );
+
+        }
     );
 
 }
@@ -4123,6 +4851,15 @@ if (
 
 
                         renderDatasets();
+
+
+                        requestAnimationFrame(
+                            () => {
+
+                                refreshSplitObserver();
+
+                            }
+                        );
 
                     }
                 );
@@ -4221,10 +4958,31 @@ document.addEventListener(
 
 
 /* ============================================================
-   START DATASET
+   START DATASET UI
 ============================================================ */
 
 renderDatasets();
+
+
+/* ============================================================
+   START SPLIT TEXT
+============================================================ */
+
+prepareSplitText();
+
+
+/*
+ * Tunggu browser selesai melakukan layout
+ * baru observer dibuat.
+ */
+
+requestAnimationFrame(
+    () => {
+
+        refreshSplitObserver();
+
+    }
+);
 
 
 /* ============================================================
@@ -4597,7 +5355,7 @@ renderDatasets();
 
 
         /*
-         * Get H1 font.
+         * H1 font.
          */
 
         const style =
@@ -4644,7 +5402,7 @@ renderDatasets();
 
 
         /*
-         * Measure canvas.
+         * Measurement.
          */
 
         const measureCanvas =
@@ -4676,10 +5434,6 @@ renderDatasets();
             "alphabetic";
 
 
-        /*
-         * Process lines.
-         */
-
         sourceLines.forEach(
             (
                 element,
@@ -4700,6 +5454,10 @@ renderDatasets();
 
                 }
 
+
+                /*
+                 * Text width.
+                 */
 
                 let textWidth =
                     0;
@@ -4759,6 +5517,10 @@ renderDatasets();
                         0.16
                     );
 
+
+                /*
+                 * Offscreen canvas.
+                 */
 
                 const offscreen =
                     document.createElement(
@@ -4827,6 +5589,10 @@ renderDatasets();
                     ascent;
 
 
+                /*
+                 * Draw characters individually.
+                 */
+
                 for (
                     let i = 0;
                     i < text.length;
@@ -4864,6 +5630,10 @@ renderDatasets();
                 }
 
 
+                /*
+                 * Pixel data.
+                 */
+
                 const imageData =
                     offCtx.getImageData(
                         0,
@@ -4873,7 +5643,11 @@ renderDatasets();
                     );
 
 
-                const lineElementRect =
+                /*
+                 * DOM line position.
+                 */
+
+                const lineRect =
                     element
                         .getBoundingClientRect();
 
@@ -4884,12 +5658,12 @@ renderDatasets();
 
 
                 const lineY =
-                    lineElementRect.top -
+                    lineRect.top -
                     heroRect.top;
 
 
                 const lineBoxHeight =
-                    lineElementRect.height;
+                    lineRect.height;
 
 
                 const glyphHeight =
@@ -4913,6 +5687,10 @@ renderDatasets();
                     CONFIG.density;
 
 
+                /*
+                 * Sample mask pixels.
+                 */
+
                 for (
                     let y = 0;
                     y < offscreen.height;
@@ -4925,7 +5703,7 @@ renderDatasets();
                         x += step
                     ) {
 
-                        const index =
+                        const pixelIndex =
                             (
                                 (
                                     y *
@@ -4941,7 +5719,7 @@ renderDatasets();
                         const alpha =
                             imageData
                                 .data[
-                                    index +
+                                    pixelIndex +
                                     3
                                 ];
 
@@ -4977,7 +5755,14 @@ renderDatasets();
                             targetX >
                             width +
                             4
-                            ||
+                        ) {
+
+                            continue;
+
+                        }
+
+
+                        if (
                             targetY <
                             -4
                             ||
@@ -5146,7 +5931,8 @@ renderDatasets();
                             size:
                                 Math.max(
                                     1,
-                                    CONFIG.particleSize *
+                                    CONFIG.particleSize
+                                    *
                                     (
                                         0.78 +
                                         (
@@ -5184,7 +5970,7 @@ renderDatasets();
 
 
         /*
-         * Limit particles.
+         * Limit particle count.
          */
 
         if (
@@ -5237,7 +6023,7 @@ renderDatasets();
 
 
         /*
-         * Formation reset.
+         * Restart formation.
          */
 
         gatherStart =
@@ -5305,10 +6091,10 @@ renderDatasets();
             particle.x,
             particle.y,
             particle.size /
-            2,
+                2,
             0,
             Math.PI *
-            2
+                2
         );
 
 
@@ -5332,6 +6118,10 @@ renderDatasets();
             height
         );
 
+
+        /*
+         * Smooth pointer.
+         */
 
         pointer.smoothX +=
             (
@@ -5369,6 +6159,10 @@ renderDatasets();
                 let progress =
                     1;
 
+
+                /*
+                 * GATHER
+                 */
 
                 if (
                     gathering
@@ -5429,6 +6223,10 @@ renderDatasets();
                 }
 
 
+                /*
+                 * IDLE
+                 */
+
                 else if (
                     !reducedMotion
                 ) {
@@ -5465,6 +6263,10 @@ renderDatasets();
 
                 }
 
+
+                /*
+                 * MOUSE REPEL
+                 */
 
                 if (
                     pointer.active &&
@@ -5531,6 +6333,10 @@ renderDatasets();
                 }
 
 
+                /*
+                 * SMOOTH
+                 */
+
                 const follow =
                     reducedMotion
                         ? 1
@@ -5554,6 +6360,10 @@ renderDatasets();
                     *
                     follow;
 
+
+                /*
+                 * OPACITY
+                 */
 
                 ctx.globalAlpha =
                     clamp(
@@ -5840,28 +6650,11 @@ renderDatasets();
 
     const CONFIG = {
 
-        /*
-         * Unit teks yang akan diulang.
-         */
-
         unit:
             "APISTACK ✦ DATASET ✦",
 
-
-        /*
-         * Kecepatan dalam SVG units / second.
-         *
-         * 42 = smooth / cinematic
-         * 60 = lebih cepat
-         */
-
         speed:
             48,
-
-
-        /*
-         * Pause ketika hover.
-         */
 
         pauseOnHover:
             true
@@ -5908,22 +6701,13 @@ renderDatasets();
        MEASURE
     ======================================================== */
 
-    function setupText() {
+    function setupTextLoop() {
 
         try {
-
-            /*
-             * Path length hanya dipakai untuk mengetahui
-             * berapa banyak teks yang diperlukan.
-             */
 
             pathLength =
                 path.getTotalLength();
 
-
-            /*
-             * Measurement dari SATU pattern.
-             */
 
             measure.textContent =
                 CONFIG.unit;
@@ -5958,8 +6742,8 @@ renderDatasets();
 
 
         /*
-         * Buat text jauh lebih panjang daripada
-         * area yang terlihat.
+         * Buat teks jauh lebih panjang daripada
+         * area visible.
          */
 
         const requiredLength =
@@ -5969,7 +6753,7 @@ renderDatasets();
 
         const repeatCount =
             Math.max(
-                40,
+                50,
                 Math.ceil(
                     requiredLength /
                     unitWidth
@@ -5977,7 +6761,7 @@ renderDatasets();
             );
 
 
-        textPath.textContent =
+        const repeatedText =
             Array(
                 repeatCount
             )
@@ -5989,9 +6773,9 @@ renderDatasets();
                 );
 
 
-        /*
-         * Start dari posisi 0.
-         */
+        textPath.textContent =
+            repeatedText;
+
 
         phase =
             0;
@@ -6021,21 +6805,28 @@ renderDatasets();
 
 
         /*
-         * Kita hanya menggerakkan SATU unit teks.
-         *
-         * Setelah mencapai unitWidth,
-         * kembali ke posisi ekuivalen.
-         *
-         * Karena pola identik, reset tidak terlihat.
+         * Wrap berdasarkan ukuran satu unit.
          */
 
-        const wrapped =
+        let wrapped =
             phase %
             unitWidth;
 
 
+        if (
+            wrapped <
+            0
+        ) {
+
+            wrapped +=
+                unitWidth;
+
+        }
+
+
         /*
-         * NEGATIVE = bergerak kanan -> kiri.
+         * NEGATIVE startOffset =
+         * visual bergerak kanan -> kiri.
          */
 
         textPath.setAttribute(
@@ -6086,10 +6877,10 @@ renderDatasets();
         ) {
 
             /*
-             * Phase bertambah.
+             * Phase terus bergerak.
              *
-             * applyPhase() memberikan nilai negatif,
-             * sehingga visual bergerak kanan -> kiri.
+             * applyPhase akan mengulang
+             * tepat di satu unit teks.
              */
 
             phase +=
@@ -6114,7 +6905,7 @@ renderDatasets();
 
 
     /* ========================================================
-       HOVER
+       HOVER PAUSE
     ======================================================== */
 
     if (
@@ -6139,11 +6930,6 @@ renderDatasets();
                 paused =
                     false;
 
-
-                /*
-                 * Reset waktu agar saat resume
-                 * tidak terjadi lonjakan delta.
-                 */
 
                 lastTime =
                     performance.now();
@@ -6217,7 +7003,7 @@ renderDatasets();
                 setTimeout(
                     () => {
 
-                        setupText();
+                        setupTextLoop();
 
                     },
                     120
@@ -6232,13 +7018,6 @@ renderDatasets();
     ======================================================== */
 
     async function start() {
-
-        /*
-         * Tunggu font.
-         *
-         * Ini penting supaya unitWidth tidak berubah
-         * setelah animasi sudah berjalan.
-         */
 
         if (
             document.fonts &&
@@ -6256,26 +7035,17 @@ renderDatasets();
         }
 
 
-        /*
-         * Setup pertama.
-         */
-
         const ready =
-            setupText();
+            setupTextLoop();
 
-
-        /*
-         * Browser kadang membutuhkan
-         * satu layout pass tambahan.
-         */
 
         if (
             !ready
         ) {
 
             setTimeout(
-                setupText,
-                200
+                setupTextLoop,
+                250
             );
 
         }
