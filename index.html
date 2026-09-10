@@ -778,10 +778,11 @@ a {
 .circular-logo {
     position: absolute;
     left: 50%;
-    top: 46%;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
+    top: 50%;
+    width: 72px;
+    height: 72px;
+    display: block;
+    object-fit: contain;
     object-position: center;
     transform: translate(-50%, -50%);
     z-index: 30;
@@ -792,6 +793,153 @@ a {
 @media (prefers-reduced-motion: reduce) {
     .circular-text {
         animation: none;
+    }
+}
+
+
+
+
+/* =========================================================
+   TECHNOLOGY LOGO LOOP
+   Inspired by the LogoLoop reference, adapted to vanilla HTML/CSS.
+========================================================= */
+
+.tech-loop {
+    position: relative;
+    width: 100%;
+    height: 112px;
+    margin-top: 28px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.tech-loop::before,
+.tech-loop::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 70px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.tech-loop::before {
+    left: 0;
+    background: linear-gradient(to right, var(--bg), rgba(244,244,242,0));
+}
+
+.tech-loop::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg), rgba(244,244,242,0));
+}
+
+.tech-loop-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    will-change: transform;
+    animation: techLogoLoop 24s linear infinite;
+}
+
+.tech-loop-group {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 48px;
+    padding: 0 24px;
+}
+
+.tech-logo {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #111111;
+    opacity: 0.94;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.tech-logo:hover {
+    transform: scale(1.12);
+    opacity: 1;
+}
+
+.tech-logo svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+.tech-logo--ts {
+    width: 46px;
+    height: 46px;
+    border-radius: 3px;
+    background: #111111;
+    color: #f4f4f2;
+    font-family: var(--sans);
+    font-size: 23px;
+    font-weight: 900;
+    letter-spacing: -0.08em;
+}
+
+.tech-logo--tailwind svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.tech-logo--vercel svg {
+    fill: currentColor;
+    stroke: none;
+}
+
+.tech-logo--github svg {
+    fill: currentColor;
+    stroke: none;
+}
+
+.tech-logo--docker svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.tech-logo--next svg {
+    fill: currentColor;
+    stroke: none;
+}
+
+@keyframes techLogoLoop {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(calc(-1 * var(--tech-loop-distance, 0px)), 0, 0);
+    }
+}
+
+/* Icon tidak interaktif: tidak ada hover/click trigger */
+.tech-logo {
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tech-loop-track {
+        animation: none;
+        transform: translate3d(0, 0, 0);
     }
 }
 
@@ -2125,10 +2273,10 @@ a {
     .circular-logo {
 
         width:
-            46px;
+            52px;
 
         height:
-            46px;
+            52px;
 
     }
 
@@ -2458,10 +2606,10 @@ a {
     .circular-logo {
 
         width:
-            32px;
+            38px;
 
         height:
-            32px;
+            38px;
 
     }
 
@@ -2549,6 +2697,53 @@ a {
 
     }
 
+}
+
+
+
+@media (max-width: 980px) {
+    .tech-loop {
+        height: 96px;
+        margin-top: 22px;
+    }
+
+    .tech-loop-group {
+        gap: 42px;
+        padding: 0 21px;
+    }
+
+    .tech-logo,
+    .tech-logo--ts {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 640px) {
+    .tech-loop {
+        height: 82px;
+        border-radius: 12px;
+    }
+
+    .tech-loop::before,
+    .tech-loop::after {
+        width: 38px;
+    }
+
+    .tech-loop-group {
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    .tech-logo,
+    .tech-logo--ts {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+        font-size: 20px;
+    }
 }
 
 </style>
@@ -2756,13 +2951,15 @@ a {
 
             <img
                 class="circular-logo"
-                src="assets/logo.webp"
+                src="./assets/logo.webp"
                 alt=""
                 aria-hidden="true"
                 draggable="false"
             >
 
         </div>
+
+
 
 
 
@@ -3077,6 +3274,111 @@ a {
 
     </section>
 
+
+
+    <!-- =====================================================
+         TECHNOLOGY LOGO LOOP
+         Moved to the bottom, directly above the footer.
+    ====================================================== -->
+
+            <!-- ===============================================
+                 TECHNOLOGY LOGO LOOP
+            ================================================ -->
+
+            <div
+                class="tech-loop"
+                aria-label="Technology stack"
+            >
+
+                <div class="tech-loop-track">
+
+                    <div class="tech-loop-group">
+
+                        <!-- Next.js -->
+                        <span class="tech-logo tech-logo--next" title="Next.js" aria-label="Next.js">
+                            <svg viewBox="0 0 64 64" aria-hidden="true">
+                                <circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="4"/>
+                                <path d="M21 43V21l25 27V21M21 21h10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+
+                        <!-- TypeScript -->
+                        <span class="tech-logo tech-logo--ts" title="TypeScript" aria-label="TypeScript">TS</span>
+
+                        <!-- Tailwind CSS -->
+                        <span class="tech-logo tech-logo--tailwind" title="Tailwind CSS" aria-label="Tailwind CSS">
+                            <svg viewBox="0 0 64 64" aria-hidden="true">
+                                <path d="M10 32c5.2-10.8 12.2-16.2 21-16.2 13.2 0 12.5 10.4 21 10.4 3.2 0 5.5-1.2 7-3.5-2.4 7.1-7.4 10.7-15 10.7-11.4 0-12.6-10.4-21-10.4-4.8 0-9.1 3-13 9z"/>
+                                <path d="M10 48c5.2-10.8 12.2-16.2 21-16.2 13.2 0 12.5 10.4 21 10.4 3.2 0 5.5-1.2 7-3.5-2.4 7.1-7.4 10.7-15 10.7-11.4 0-12.6-10.4-21-10.4-4.8 0-9.1 3-13 9z"/>
+                            </svg>
+                        </span>
+
+                        <!-- Vercel -->
+                        <span class="tech-logo tech-logo--vercel" title="Vercel" aria-label="Vercel">
+                            <svg viewBox="0 0 64 64" aria-hidden="true">
+                                <path d="M32 10 57 52H7L32 10Z"/>
+                            </svg>
+                        </span>
+
+                        <!-- GitHub -->
+                        <span class="tech-logo tech-logo--github" title="GitHub" aria-label="GitHub">
+                            <svg viewBox="0 0 64 64" aria-hidden="true">
+                                <path d="M32 7.5a25 25 0 0 0-7.9 48.7c1.25.23 1.7-.54 1.7-1.2v-4.7c-6.9 1.5-8.35-2.92-8.35-2.92-1.14-2.9-2.78-3.68-2.78-3.68-2.27-1.55.17-1.52.17-1.52 2.51.18 3.83 2.58 3.83 2.58 2.23 3.82 5.85 2.72 7.28 2.08.22-1.62.87-2.72 1.58-3.35-5.51-.63-11.3-2.75-11.3-12.25 0-2.71.97-4.93 2.57-6.67-.26-.63-1.11-3.17.24-6.59 0 0 2.1-.67 6.88 2.55a23.8 23.8 0 0 1 12.52 0c4.78-3.22 6.87-2.55 6.87-2.55 1.36 3.42.51 5.96.25 6.59 1.6 1.74 2.57 3.96 2.57 6.67 0 9.52-5.8 11.61-11.33 12.23.89.77 1.68 2.28 1.68 4.6V55c0 .66.45 1.44 1.71 1.19A25 25 0 0 0 32 7.5Z"/>
+                            </svg>
+                        </span>
+
+                        <!-- Docker -->
+                        <span class="tech-logo tech-logo--docker" title="Docker" aria-label="Docker">
+                            <svg viewBox="0 0 64 64" aria-hidden="true">
+                                <rect x="10" y="25" width="8" height="7"/>
+                                <rect x="20" y="25" width="8" height="7"/>
+                                <rect x="30" y="25" width="8" height="7"/>
+                                <rect x="20" y="16" width="8" height="7"/>
+                                <rect x="30" y="16" width="8" height="7"/>
+                                <rect x="40" y="25" width="8" height="7"/>
+                                <path d="M7 35h43c-1.5 7.8-7.8 13-17.3 13H24C14.2 48 8.8 43.5 7 35Z"/>
+                                <path d="M50 35c3.8-1.8 7.2-1.6 9.5-.1-1.8 2.8-4.5 4.4-8.4 4.1"/>
+                            </svg>
+                        </span>
+
+                        <!-- Abstract stack mark -->
+                        <span class="tech-logo" title="API Stack" aria-label="API Stack">
+                            <svg viewBox="0 0 64 64" aria-hidden="true">
+                                <path d="M32 8 53 45H11L32 8Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/>
+                                <path d="m20 45 12-14 12 14" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+
+                    </div>
+
+                    <!-- Duplicate for seamless loop -->
+                    <div class="tech-loop-group" aria-hidden="true">
+
+                        <span class="tech-logo tech-logo--next">
+                            <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="27" fill="none" stroke="currentColor" stroke-width="4"/><path d="M21 43V21l25 27V21M21 21h10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+                        <span class="tech-logo tech-logo--ts">TS</span>
+                        <span class="tech-logo tech-logo--tailwind">
+                            <svg viewBox="0 0 64 64"><path d="M10 32c5.2-10.8 12.2-16.2 21-16.2 13.2 0 12.5 10.4 21 10.4 3.2 0 5.5-1.2 7-3.5-2.4 7.1-7.4 10.7-15 10.7-11.4 0-12.6-10.4-21-10.4-4.8 0-9.1 3-13 9z"/><path d="M10 48c5.2-10.8 12.2-16.2 21-16.2 13.2 0 12.5 10.4 21 10.4 3.2 0 5.5-1.2 7-3.5-2.4 7.1-7.4 10.7-15 10.7-11.4 0-12.6-10.4-21-10.4-4.8 0-9.1 3-13 9z"/></svg>
+                        </span>
+                        <span class="tech-logo tech-logo--vercel">
+                            <svg viewBox="0 0 64 64"><path d="M32 10 57 52H7L32 10Z"/></svg>
+                        </span>
+                        <span class="tech-logo tech-logo--github">
+                            <svg viewBox="0 0 64 64"><path d="M32 7.5a25 25 0 0 0-7.9 48.7c1.25.23 1.7-.54 1.7-1.2v-4.7c-6.9 1.5-8.35-2.92-8.35-2.92-1.14-2.9-2.78-3.68-2.78-3.68-2.27-1.55.17-1.52.17-1.52 2.51.18 3.83 2.58 3.83 2.58 2.23 3.82 5.85 2.72 7.28 2.08.22-1.62.87-2.72 1.58-3.35-5.51-.63-11.3-2.75-11.3-12.25 0-2.71.97-4.93 2.57-6.67-.26-.63-1.11-3.17.24-6.59 0 0 2.1-.67 6.88 2.55a23.8 23.8 0 0 1 12.52 0c4.78-3.22 6.87-2.55 6.87-2.55 1.36 3.42.51 5.96.25 6.59 1.6 1.74 2.57 3.96 2.57 6.67 0 9.52-5.8 11.61-11.33 12.23.89.77 1.68 2.28 1.68 4.6V55c0 .66.45 1.44 1.71 1.19A25 25 0 0 0 32 7.5Z"/></svg>
+                        </span>
+                        <span class="tech-logo tech-logo--docker">
+                            <svg viewBox="0 0 64 64"><rect x="10" y="25" width="8" height="7"/><rect x="20" y="25" width="8" height="7"/><rect x="30" y="25" width="8" height="7"/><rect x="20" y="16" width="8" height="7"/><rect x="30" y="16" width="8" height="7"/><rect x="40" y="25" width="8" height="7"/><path d="M7 35h43c-1.5 7.8-7.8 13-17.3 13H24C14.2 48 8.8 43.5 7 35Z"/><path d="M50 35c3.8-1.8 7.2-1.6 9.5-.1-1.8 2.8-4.5 4.4-8.4 4.1"/></svg>
+                        </span>
+                        <span class="tech-logo">
+                            <svg viewBox="0 0 64 64"><path d="M32 8 53 45H11L32 8Z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path d="m20 45 12-14 12 14" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
     <!-- =====================================================
@@ -6777,7 +7079,7 @@ requestAnimationFrame(
 
     if (!root || !wrapper) return;
 
-    const text = "DATA * API * JSON * PHP * SQL * ";
+    const text = "APISTACK * DATASET *";
     const letters = Array.from(text);
     const radius = 88;
 
@@ -7270,6 +7572,55 @@ requestAnimationFrame(
 
 </script>
 
+
+<script>
+/* ============================================================
+   TECHNOLOGY LOGO LOOP
+   Seamless infinite loop — no hover/click interaction.
+============================================================ */
+(() => {
+    const loop = document.querySelector('.tech-loop');
+    const track = document.querySelector('.tech-loop-track');
+    if (!loop || !track) return;
+
+    let animationFrame = 0;
+
+    function setupTechLoop() {
+        cancelAnimationFrame(animationFrame);
+
+        const groups = Array.from(track.querySelectorAll('.tech-loop-group'));
+        const firstGroup = groups[0];
+        if (!firstGroup) return;
+
+        /*
+         * Tambahkan copy sebanyak yang dibutuhkan agar tidak pernah
+         * ada area kosong saat satu putaran selesai.
+         */
+        track.querySelectorAll('.tech-loop-group[data-loop-clone="true"]').forEach(el => el.remove());
+
+        const groupWidth = firstGroup.getBoundingClientRect().width;
+        if (!groupWidth) return;
+
+        let totalWidth = track.scrollWidth;
+        while (totalWidth < loop.clientWidth + groupWidth * 2) {
+            const clone = firstGroup.cloneNode(true);
+            clone.setAttribute('data-loop-clone', 'true');
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+            totalWidth = track.scrollWidth;
+        }
+
+        track.style.setProperty('--tech-loop-distance', `${groupWidth}px`);
+    }
+
+    function refresh() {
+        animationFrame = requestAnimationFrame(setupTechLoop);
+    }
+
+    refresh();
+    window.addEventListener('resize', refresh, { passive: true });
+})();
+</script>
 
 </body>
 
