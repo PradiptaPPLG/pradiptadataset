@@ -8903,6 +8903,61 @@ function applyFilter(filterValue) {
 }
 </script>
 
+<script>
+/* ============================================================
+   CARD NAV — Hide on scroll-down, reveal on scroll-up
+============================================================ */
+(function () {
+    const container = document.querySelector('.card-nav-container');
+    const nav       = document.getElementById('cardNav');
+    if (!container) return;
+
+    const SCROLL_THRESHOLD = 60;   // px scrolled before triggering hide
+    const HIDE_AFTER_PX   = 80;    // only hide once user passed this point
+
+    let lastScrollY  = window.scrollY;
+    let ticking      = false;
+
+    function handleScroll() {
+        const currentY = window.scrollY;
+        const delta    = currentY - lastScrollY;
+
+        // Don't hide if we're near the very top
+        if (currentY < HIDE_AFTER_PX) {
+            container.classList.remove('cn-nav-hidden');
+            lastScrollY = currentY;
+            return;
+        }
+
+        if (Math.abs(delta) < 4) return; // ignore tiny jitter
+
+        if (delta > 0) {
+            // Scrolling DOWN → hide nav, also close if open
+            container.classList.add('cn-nav-hidden');
+            if (nav && nav.classList.contains('cn-open') &&
+                typeof window.closeCardNav === 'function') {
+                window.closeCardNav();
+            }
+        } else {
+            // Scrolling UP → reveal nav
+            container.classList.remove('cn-nav-hidden');
+        }
+
+        lastScrollY = currentY;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(function () {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+})();
+</script>
+
 </body>
 
 </html>
