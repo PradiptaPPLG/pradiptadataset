@@ -779,8 +779,8 @@ a {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 72px;
-    height: 72px;
+    width: 120px;
+    height: 120px;
     display: block;
     object-fit: contain;
     object-position: center;
@@ -1489,6 +1489,215 @@ a {
 
     font-size:
         11px;
+
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.pagination {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    padding:
+        20px 0
+        30px;
+
+    border-top:
+        1px solid
+        var(--line);
+
+}
+
+
+.pagination-info {
+
+    color:
+        var(--soft);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        0.05em;
+
+}
+
+
+.pagination-controls {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+}
+
+
+.page-btn {
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        transparent;
+
+    font-size:
+        14px;
+
+    color:
+        var(--ink);
+
+    transition:
+        0.18s ease;
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-weight:
+        700;
+
+}
+
+
+.page-btn:hover:not(:disabled) {
+
+    border-color:
+        var(--ink);
+
+    background:
+        var(--ink);
+
+    color:
+        white;
+
+}
+
+
+.page-btn:disabled {
+
+    opacity:
+        0.3;
+
+    cursor:
+        not-allowed;
+
+}
+
+
+.page-input-wrap {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        6px;
+
+    color:
+        var(--soft);
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        0.05em;
+
+}
+
+
+.page-input {
+
+    width:
+        44px;
+
+    height:
+        34px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        transparent;
+
+    text-align:
+        center;
+
+    font-family:
+        var(--mono);
+
+    font-size:
+        11px;
+
+    color:
+        var(--ink);
+
+    outline:
+        none;
+
+    transition:
+        border-color
+        0.18s ease;
+
+}
+
+
+.page-input:focus {
+
+    border-color:
+        var(--ink);
+
+}
+
+
+.page-input::-webkit-inner-spin-button,
+.page-input::-webkit-outer-spin-button {
+
+    -webkit-appearance:
+        none;
+
+}
+
+
+.page-input {
+
+    -moz-appearance:
+        textfield;
 
 }
 
@@ -2746,6 +2955,320 @@ a {
     }
 }
 
+
+/* =========================================================
+   CARD NAV
+   Floating pill navbar — CardNav style adapted to project palette.
+========================================================= */
+
+.card-nav-container {
+    position: fixed;
+    top: 1.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(860px, calc(100% - 32px));
+    z-index: 999;
+    box-sizing: border-box;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity   0.35s ease;
+    will-change: transform, opacity;
+}
+
+.card-nav-container.cn-nav-hidden {
+    transform: translateX(-50%) translateY(calc(-100% - 2em));
+    opacity: 0;
+    pointer-events: none;
+}
+
+.card-nav {
+    display: block;
+    height: 58px;
+    background-color: #ffffff;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow:
+        0 2px 8px rgba(0,0,0,0.06),
+        0 0 0 0.5px rgba(0,0,0,0.04);
+    position: relative;
+    overflow: hidden;
+    will-change: height;
+    transition: height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.3s ease;
+}
+
+.card-nav.cn-open {
+    height: 270px;
+    box-shadow:
+        0 12px 40px rgba(0,0,0,0.12),
+        0 0 0 0.5px rgba(0,0,0,0.06);
+}
+
+.card-nav-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 6px 0 14px;
+    z-index: 2;
+}
+
+/* Hamburger */
+.cn-hamburger {
+    width: 38px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 5px;
+    flex-shrink: 0;
+    border: none;
+    background: none;
+    padding: 0;
+    color: var(--ink);
+}
+
+.cn-hamburger:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+.cn-line {
+    display: block;
+    width: 22px;
+    height: 1.8px;
+    background: currentColor;
+    border-radius: 2px;
+    transition:
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity   0.2s ease;
+    transform-origin: 50% 50%;
+}
+
+.cn-hamburger.cn-open .cn-line:first-child {
+    transform: translateY(3.4px) rotate(45deg);
+}
+
+.cn-hamburger.cn-open .cn-line:last-child {
+    transform: translateY(-3.4px) rotate(-45deg);
+}
+
+/* Logo centre */
+.cn-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink);
+    pointer-events: auto;
+}
+
+.cn-logo-mark {
+    width: 28px;
+    height: 28px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+    letter-spacing: -0.02em;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.cn-logo-name {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+/* CTA button */
+.cn-cta {
+    border: none;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 9px;
+    padding: 0 15px;
+    height: 38px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    transition: background 0.25s ease, transform 0.15s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.cn-cta:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+.cn-cta:active {
+    transform: translateY(0);
+}
+
+/* Cards content area */
+.cn-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 58px;
+    bottom: 0;
+    padding: 8px 8px 8px;
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.card-nav.cn-open .cn-content {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Individual nav cards */
+.cn-card {
+    flex: 1 1 0;
+    min-width: 0;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    padding: 14px 16px;
+    gap: 6px;
+    user-select: none;
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity   0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-nav.cn-open .cn-card:nth-child(1) { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
+.card-nav.cn-open .cn-card:nth-child(2) { opacity: 1; transform: translateY(0); transition-delay: 0.12s; }
+.card-nav.cn-open .cn-card:nth-child(3) { opacity: 1; transform: translateY(0); transition-delay: 0.19s; }
+
+.cn-card-label {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.cn-card-links {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.cn-card-link {
+    font-size: 13px;
+    font-family: var(--mono);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.cn-card-link:hover {
+    opacity: 0.65;
+    transform: translateX(3px);
+}
+
+.cn-arrow {
+    display: inline-block;
+    flex-shrink: 0;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 1;
+}
+
+/* Backdrop blur overlay when open */
+.cn-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background: transparent;
+    display: none;
+    cursor: default;
+}
+
+.cn-backdrop.cn-visible {
+    display: block;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .card-nav-container {
+        top: 1em;
+        width: calc(100% - 24px);
+    }
+
+    .card-nav.cn-open {
+        height: auto;
+        max-height: 90vh;
+    }
+
+    .cn-content {
+        position: static;
+        flex-direction: column;
+        padding: 8px;
+        visibility: hidden;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.42s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    .card-nav.cn-open .cn-content {
+        visibility: visible;
+        max-height: 600px;
+    }
+
+    .cn-card {
+        min-height: 64px;
+        flex: none;
+    }
+
+    .cn-logo-name {
+        display: none;
+    }
+
+    .cn-cta {
+        display: none;
+    }
+
+    .cn-card-label {
+        font-size: 16px;
+    }
+
+    .cn-card-link {
+        font-size: 12px;
+    }
+}
+
+/* Offset page body so floating nav doesn't overlap */
+.page-offset {
+    padding-top: 90px;
+}
+
 </style>
 
 </head>
@@ -2754,80 +3277,132 @@ a {
 <body>
 
 
-<div class="page">
+<!-- Backdrop: closes nav when clicking outside -->
+<div class="cn-backdrop" id="cnBackdrop" aria-hidden="true"></div>
+
+<div class="card-nav-container" role="navigation" aria-label="Main navigation">
+
+    <nav class="card-nav" id="cardNav">
+
+        <!-- Top bar -->
+        <div class="card-nav-top">
+
+            <!-- Hamburger -->
+            <button
+                class="cn-hamburger"
+                id="cnHamburger"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="cnContent"
+            >
+                <span class="cn-line"></span>
+                <span class="cn-line"></span>
+            </button>
+
+            <!-- Logo centred -->
+            <a href="#" class="cn-logo" aria-label="Dataset Archive by Pradipta">
+                <div class="cn-logo-mark">DP</div>
+                <span class="cn-logo-name">Dataset Archive</span>
+            </a>
+
+            <!-- CTA -->
+            <button
+                class="cn-cta"
+                onclick="document.getElementById('datasetList').scrollIntoView({behavior:'smooth'})"
+                type="button"
+            >
+                Browse Datasets
+            </button>
+
+        </div><!-- /card-nav-top -->
+
+
+        <!-- Expanded cards -->
+        <div class="cn-content" id="cnContent" aria-hidden="true">
+
+
+            <!-- Card 1: Categories -->
+            <div
+                class="cn-card"
+                style="background:#111111; color:#f4f4f2;"
+            >
+                <div class="cn-card-label">Categories</div>
+                <div class="cn-card-links">
+                    <a class="cn-card-link" href="#" onclick="applyFilter('vehicle'); closeCardNav(); return false;" aria-label="Vehicle datasets">
+                        <span class="cn-arrow">&#8599;</span> Vehicle
+                    </a>
+                    <a class="cn-card-link" href="#" onclick="applyFilter('health'); closeCardNav(); return false;" aria-label="Health datasets">
+                        <span class="cn-arrow">&#8599;</span> Health
+                    </a>
+                    <a class="cn-card-link" href="#" onclick="applyFilter('plane'); closeCardNav(); return false;" aria-label="Plane datasets">
+                        <span class="cn-arrow">&#8599;</span> Plane
+                    </a>
+                    <a class="cn-card-link" href="#" onclick="applyFilter('ai'); closeCardNav(); return false;" aria-label="AI datasets">
+                        <span class="cn-arrow">&#8599;</span> AI
+                    </a>
+                    <a class="cn-card-link" href="#" onclick="applyFilter('songs'); closeCardNav(); return false;" aria-label="Songs datasets">
+                        <span class="cn-arrow">&#8599;</span> Songs
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Card 2: Formats -->
+            <div
+                class="cn-card"
+                style="background:#1e1e1e; color:#f4f4f2;"
+            >
+                <div class="cn-card-label">Formats</div>
+                <div class="cn-card-links">
+                    <a class="cn-card-link" href="#" onclick="applyFilter('php'); closeCardNav(); return false;" aria-label="PHP datasets">
+                        <span class="cn-arrow">&#8599;</span> PHP
+                    </a>
+                    <a class="cn-card-link" href="#" onclick="applyFilter('sql'); closeCardNav(); return false;" aria-label="SQL datasets">
+                        <span class="cn-arrow">&#8599;</span> SQL
+                    </a>
+                    <a class="cn-card-link" href="#" onclick="applyFilter('database'); closeCardNav(); return false;" aria-label="Database datasets">
+                        <span class="cn-arrow">&#8599;</span> Database
+                    </a>
+                    <a class="cn-card-link" href="#" onclick="applyFilter('reference'); closeCardNav(); return false;" aria-label="Reference datasets">
+                        <span class="cn-arrow">&#8599;</span> Reference
+                    </a>
+                </div>
+            </div>
+
+
+            <!-- Card 3: Author -->
+            <div
+                class="cn-card"
+                style="background:#e9452f; color:#ffffff;"
+            >
+                <div class="cn-card-label">Author</div>
+                <div class="cn-card-links">
+                    <a class="cn-card-link" href="https://github.com/PradiptaPPLG" target="_blank" rel="noopener" aria-label="GitHub profile">
+                        <span class="cn-arrow">&#8599;</span> GitHub
+                    </a>
+                    <a class="cn-card-link" href="https://kaggle.com" target="_blank" rel="noopener" aria-label="Kaggle profile">
+                        <span class="cn-arrow">&#8599;</span> Kaggle
+                    </a>
+                    <a class="cn-card-link" href="mailto:pradipta@example.com" aria-label="Send email">
+                        <span class="cn-arrow">&#8599;</span> Contact
+                    </a>
+                </div>
+            </div>
+
+
+        </div><!-- /cn-content -->
+
+    </nav>
+
+</div><!-- /card-nav-container -->
+
+
+<div class="page page-offset">
 
 
     <!-- =====================================================
-         HEADER
+         CARD NAV (duplicate removed — moved above .page)
     ====================================================== -->
-
-    <header class="header">
-
-
-        <a
-            href="#"
-            class="logo"
-        >
-
-
-            <div class="logo-mark">
-
-                DP
-
-            </div>
-
-
-            <div class="logo-text">
-
-
-                <div class="logo-title">
-
-                    Dataset Archive
-
-                </div>
-
-
-                <div class="logo-subtitle">
-
-                    Pradipta / Public Collection
-
-                </div>
-
-
-            </div>
-
-
-        </a>
-
-
-        <div class="header-right">
-
-
-            <div class="online">
-
-
-                <span
-                    class="online-dot"
-                ></span>
-
-
-                Online archive
-
-
-            </div>
-
-
-            <span>
-
-                2026
-
-            </span>
-
-
-        </div>
-
-
-    </header>
 
 
 
@@ -3027,7 +3602,7 @@ a {
                     data-split-delay="35"
                 >
 
-                    Car datasets
+                    Dataset Library
 
                 </h2>
 
@@ -3039,7 +3614,7 @@ a {
                     data-split-delay="25"
                 >
 
-                    08 FILES
+                    38 FILES
 
                 </span>
 
@@ -3127,6 +3702,46 @@ a {
 
             <button
                 class="filter"
+                data-filter="health"
+            >
+
+                HEALTH
+
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="plane"
+            >
+
+                PLANE
+
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="ai"
+            >
+
+                AI
+
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="songs"
+            >
+
+                SONGS
+
+            </button>
+
+
+            <button
+                class="filter"
                 data-filter="reference"
             >
 
@@ -3157,6 +3772,82 @@ a {
             class="dataset-list"
             id="datasetList"
         ></div>
+
+
+        <!-- =================================================
+             PAGINATION
+        ================================================== -->
+
+        <div
+            class="pagination"
+            id="paginationBar"
+            style="display:none"
+        >
+
+
+            <span
+                class="pagination-info"
+                id="paginationInfo"
+            >
+
+                —
+
+            </span>
+
+
+            <div class="pagination-controls">
+
+
+                <button
+                    class="page-btn"
+                    id="pagePrev"
+                    aria-label="Previous page"
+                    title="Previous page"
+                >
+
+                    &#8249;
+
+                </button>
+
+
+                <div class="page-input-wrap">
+
+
+                    <span>Page</span>
+
+
+                    <input
+                        type="number"
+                        class="page-input"
+                        id="pageInput"
+                        min="1"
+                        value="1"
+                        aria-label="Go to page"
+                    >
+
+
+                    <span id="pageTotalLabel">of 1</span>
+
+
+                </div>
+
+
+                <button
+                    class="page-btn"
+                    id="pageNext"
+                    aria-label="Next page"
+                    title="Next page"
+                >
+
+                    &#8250;
+
+                </button>
+
+
+            </div>
+
+
+        </div>
 
 
     </main>
@@ -3239,7 +3930,7 @@ a {
                     class="text-loop-measure"
                 >
 
-                    APISTACK ✦ DATASET ✦
+                    APISTACK ✦ DATASET ✦ ANALYTICS ✦ 
 
                 </text>
 
@@ -3259,7 +3950,7 @@ a {
                         startOffset="0"
                     >
 
-                        APISTACK ✦ DATASET ✦
+                        APISTACK ✦ DATASET ✦ ANALYTICS ✦
 
                     </textPath>
 
@@ -3397,7 +4088,7 @@ a {
 
         <span class="footer-right">
 
-            PHP · SQL · CAR
+            PHP · SQL · CAR · HEALTH · PLANE · AI · SONGS
 
         </span>
 
@@ -3693,280 +4384,412 @@ a {
 
 const datasets = [
 
+    /* --------------------------------------------------------
+       CAR DATASETS
+    -------------------------------------------------------- */
+
     {
-        id:
-            "01",
+        id: "01",
+        name: "Dummy Dealer Indonesia",
+        description: "Dummy dealer mobil Indonesia untuk testing, prototyping, dan database seeding.",
+        file: "data-dummy-dealer-in-indonesian.php",
+        preview: "car/preview/data-dummy-dealer-in-indonesian.php.txt",
+        format: "PHP",
+        type: "Dummy Data",
+        directory: "car / php",
+        tags: ["php", "database", "vehicle"]
+    },
 
-        name:
-            "Dummy Dealer Indonesia",
+    {
+        id: "02",
+        name: "Indonesian Car Dataset",
+        description: "Dataset kendaraan Indonesia untuk katalog kendaraan, aplikasi otomotif, dan eksperimen data.",
+        file: "data-indonesian-car-by-pradipta.php",
+        preview: "car/preview/data-indonesian-car-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Vehicle",
+        directory: "car / php",
+        tags: ["php", "vehicle"]
+    },
 
-        description:
-            "Dummy dealer mobil Indonesia untuk testing, prototyping, dan database seeding.",
+    {
+        id: "03",
+        name: "Indonesian Number Plate",
+        description: "Reference dataset nomor polisi kendaraan Indonesia.",
+        file: "data-indonesian-number-plate-by-pradipta.php",
+        preview: "car/preview/data-indonesian-number-plate-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Reference",
+        directory: "car / php",
+        tags: ["php", "reference", "vehicle"]
+    },
 
-        file:
-            "data-dummy-dealer-in-indonesian.php",
+    {
+        id: "04",
+        name: "Type Engine Car",
+        description: "Reference dataset tipe dan konfigurasi mesin kendaraan.",
+        file: "data-type-engine-car-by-pradipta.php",
+        preview: "car/preview/data-type-engine-car-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Reference",
+        directory: "car / php",
+        tags: ["php", "reference", "vehicle"]
+    },
 
-        preview:
-            "car/preview/data-dummy-dealer-in-indonesian.php.txt",
+    {
+        id: "05",
+        name: "Dummy Dealer Indonesia",
+        description: "SQL dataset dealer Indonesia untuk import database.",
+        file: "data-dummy-dealer-in-indonesian.sql",
+        preview: "car/preview/data-dummy-dealer-in-indonesian.sql.txt",
+        format: "SQL",
+        type: "Database",
+        directory: "car / sql",
+        tags: ["sql", "database", "vehicle"]
+    },
 
-        format:
-            "PHP",
+    {
+        id: "06",
+        name: "Indonesian Car Dataset",
+        description: "SQL dataset kendaraan Indonesia untuk database dan aplikasi otomotif.",
+        file: "data-indonesian-car-by-pradipta.sql",
+        preview: "car/preview/data-indonesian-car-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Database",
+        directory: "car / sql",
+        tags: ["sql", "database", "vehicle"]
+    },
 
-        type:
-            "Dummy Data",
+    {
+        id: "07",
+        name: "Indonesian Number Plate",
+        description: "SQL reference dataset nomor polisi kendaraan Indonesia.",
+        file: "data-indonesian-number-plate-by-pradipta.sql",
+        preview: "car/preview/data-indonesian-number-plate-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Reference",
+        directory: "car / sql",
+        tags: ["sql", "reference", "vehicle"]
+    },
 
-        directory:
-            "car / php",
-
-        tags:
-            [
-                "php",
-                "database"
-            ]
-
+    {
+        id: "08",
+        name: "Type Engine Car",
+        description: "SQL reference dataset tipe engine kendaraan.",
+        file: "data-type-engine-car-by-pradipta.sql",
+        preview: "car/preview/data-type-engine-car-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Reference",
+        directory: "car / sql",
+        tags: ["sql", "reference", "vehicle"]
     },
 
 
+    /* --------------------------------------------------------
+       HEALTH DATASETS
+    -------------------------------------------------------- */
+
     {
-        id:
-            "02",
+        id: "09",
+        name: "Disease World",
+        description: "Dataset penyakit dunia untuk aplikasi medis, riset, dan eksperimen data kesehatan.",
+        file: "data-disease-world-by-pradipta.php",
+        preview: "health/preview/data-disease-world-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Health",
+        directory: "health / php",
+        tags: ["php", "health", "reference"]
+    },
 
-        name:
-            "Indonesian Car Dataset",
+    {
+        id: "10",
+        name: "Farmacy Drugs",
+        description: "Dataset obat-obatan farmasi Indonesia untuk aplikasi apotek dan sistem manajemen obat.",
+        file: "data-farmacy-drugs-by-pradipta.php",
+        preview: "health/preview/data-farmacy-drugs-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Health",
+        directory: "health / php",
+        tags: ["php", "health", "database"]
+    },
 
-        description:
-            "Dataset kendaraan Indonesia untuk katalog kendaraan, aplikasi otomotif, dan eksperimen data.",
+    {
+        id: "11",
+        name: "Health Workers",
+        description: "Dataset tenaga kesehatan Indonesia untuk sistem manajemen tenaga medis dan SDM kesehatan.",
+        file: "data-health-workers-by-pradipta.php",
+        preview: "health/preview/data-health-workers-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Health",
+        directory: "health / php",
+        tags: ["php", "health", "database"]
+    },
 
-        file:
-            "data-indonesian-car-by-pradipta.php",
+    {
+        id: "12",
+        name: "Hospital in Indonesian",
+        description: "Dataset rumah sakit di Indonesia untuk aplikasi direktori kesehatan dan pemetaan fasilitas medis.",
+        file: "data-hospital-in-indonesian-by-pradipta.php",
+        preview: "health/preview/data-hospital-in-indonesian-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Health",
+        directory: "health / php",
+        tags: ["php", "health", "reference"]
+    },
 
-        preview:
-            "car/preview/data-indonesian-car-by-pradipta.php.txt",
+    {
+        id: "13",
+        name: "Medical Device",
+        description: "Dataset alat kesehatan untuk sistem inventori, pengadaan, dan manajemen peralatan medis.",
+        file: "data-medical-device-by-pradipta.php",
+        preview: "health/preview/data-medical-device-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Health",
+        directory: "health / php",
+        tags: ["php", "health", "database"]
+    },
 
-        format:
-            "PHP",
+    {
+        id: "14",
+        name: "Medical Drugs",
+        description: "Dataset obat-obatan medis untuk sistem resep, apotek, dan manajemen farmasi.",
+        file: "data-medical-drugs-by-pradipta.php",
+        preview: "health/preview/data-medical-drugs-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Health",
+        directory: "health / php",
+        tags: ["php", "health", "database"]
+    },
 
-        type:
-            "Vehicle",
+    {
+        id: "15",
+        name: "Virus World",
+        description: "Dataset virus dunia untuk aplikasi epidemiologi, riset biologi, dan sistem pelacak penyakit.",
+        file: "data-virus-world-by-pradipta.php",
+        preview: "health/preview/data-virus-world-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Health",
+        directory: "health / php",
+        tags: ["php", "health", "reference"]
+    },
 
-        directory:
-            "car / php",
+    {
+        id: "16",
+        name: "Disease World",
+        description: "SQL dataset penyakit dunia untuk import database aplikasi medis dan riset kesehatan.",
+        file: "data-disease-world-by-pradipta.sql",
+        preview: "health/preview/data-disease-world-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Health",
+        directory: "health / sql",
+        tags: ["sql", "health", "database"]
+    },
 
-        tags:
-            [
-                "php",
-                "vehicle"
-            ]
+    {
+        id: "17",
+        name: "Farmacy Drugs",
+        description: "SQL dataset obat-obatan farmasi untuk import database apotek dan sistem manajemen obat.",
+        file: "data-farmacy-drugs-by-pradipta.sql",
+        preview: "health/preview/data-farmacy-drugs-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Health",
+        directory: "health / sql",
+        tags: ["sql", "health", "database"]
+    },
 
+    {
+        id: "18",
+        name: "Health Workers",
+        description: "SQL dataset tenaga kesehatan Indonesia untuk import database sistem manajemen SDM medis.",
+        file: "data-health-workers-by-pradipta.sql",
+        preview: "health/preview/data-health-workers-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Health",
+        directory: "health / sql",
+        tags: ["sql", "health", "database"]
+    },
+
+    {
+        id: "19",
+        name: "Hospital in Indonesian",
+        description: "SQL dataset rumah sakit Indonesia untuk import database direktori fasilitas medis.",
+        file: "data-hospital-in-indonesian-by-pradipta.sql",
+        preview: "health/preview/data-hospital-in-indonesian-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Health",
+        directory: "health / sql",
+        tags: ["sql", "health", "reference"]
+    },
+
+    {
+        id: "20",
+        name: "Medical Device",
+        description: "SQL dataset alat kesehatan untuk import database inventori dan manajemen peralatan medis.",
+        file: "data-medical-device-by-pradipta.sql",
+        preview: "health/preview/data-medical-device-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Health",
+        directory: "health / sql",
+        tags: ["sql", "health", "database"]
+    },
+
+    {
+        id: "21",
+        name: "Medical Drugs",
+        description: "SQL dataset obat-obatan medis untuk import database sistem resep dan farmasi.",
+        file: "data-medical-drugs-by-pradipta.sql",
+        preview: "health/preview/data-medical-drugs-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Health",
+        directory: "health / sql",
+        tags: ["sql", "health", "database"]
+    },
+
+    {
+        id: "22",
+        name: "Virus World",
+        description: "SQL dataset virus dunia untuk import database epidemiologi dan sistem pelacak penyakit.",
+        file: "data-virus-world-by-pradipta.sql",
+        preview: "health/preview/data-virus-world-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Health",
+        directory: "health / sql",
+        tags: ["sql", "health", "database"]
     },
 
 
+    /* --------------------------------------------------------
+       PLANE DATASETS
+    -------------------------------------------------------- */
+
     {
-        id:
-            "03",
+        id: "23",
+        name: "Airport in Indonesian",
+        description: "Dataset bandara di Indonesia untuk aplikasi penerbangan, pemetaan, dan direktori transportasi udara.",
+        file: "data-airport-in-indonesian-by-pradipta.php",
+        preview: "plane/preview/data-airport-in-indonesian-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Reference",
+        directory: "plane / php",
+        tags: ["php", "plane", "reference"]
+    },
 
-        name:
-            "Indonesian Number Plate",
+    {
+        id: "24",
+        name: "Plane in Indonesian",
+        description: "Dataset armada pesawat maskapai Indonesia untuk aplikasi penerbangan dan manajemen armada.",
+        file: "data-plane-in-indonesian-by-pradipta.php",
+        preview: "plane/preview/data-plane-in-indonesian-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Vehicle",
+        directory: "plane / php",
+        tags: ["php", "plane", "vehicle"]
+    },
 
-        description:
-            "Reference dataset nomor polisi kendaraan Indonesia.",
+    {
+        id: "25",
+        name: "Airport in Indonesian",
+        description: "SQL dataset bandara Indonesia untuk import database aplikasi penerbangan dan transportasi udara.",
+        file: "data-airport-in-indonesian-by-pradipta.sql",
+        preview: "plane/preview/data-airport-in-indonesian-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Reference",
+        directory: "plane / sql",
+        tags: ["sql", "plane", "reference"]
+    },
 
-        file:
-            "data-indonesian-number-plate-by-pradipta.php",
-
-        preview:
-            "car/preview/data-indonesian-number-plate-by-pradipta.php.txt",
-
-        format:
-            "PHP",
-
-        type:
-            "Reference",
-
-        directory:
-            "car / php",
-
-        tags:
-            [
-                "php",
-                "reference",
-                "vehicle"
-            ]
-
+    {
+        id: "26",
+        name: "Plane in Indonesian",
+        description: "SQL dataset armada pesawat maskapai Indonesia untuk import database penerbangan.",
+        file: "data-plane-in-indonesian-by-pradipta.sql",
+        preview: "plane/preview/data-plane-in-indonesian-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Vehicle",
+        directory: "plane / sql",
+        tags: ["sql", "plane", "vehicle"]
     },
 
 
+    /* --------------------------------------------------------
+       AI DATASETS
+    -------------------------------------------------------- */
+
     {
-        id:
-            "04",
+        id: "27",
+        name: "AI Model Dataset",
+        description: "Dataset model AI & LLM dari berbagai provider untuk perbandingan, benchmark, dan riset AI.",
+        file: "data-model-ai-by-pradipta.php",
+        preview: "AI/preview/data-model-ai-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Reference",
+        directory: "AI / php",
+        tags: ["php", "ai", "reference"]
+    },
 
-        name:
-            "Type Engine Car",
+    {
+        id: "28",
+        name: "AI Model Rating",
+        description: "Dataset rating dan skor model AI untuk perbandingan performa dan evaluasi benchmark LLM.",
+        file: "data-rating-model-ai-by-pradipta.php",
+        preview: "AI/preview/data-rating-model-ai-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Reference",
+        directory: "AI / php",
+        tags: ["php", "ai", "reference"]
+    },
 
-        description:
-            "Reference dataset tipe dan konfigurasi mesin kendaraan.",
+    {
+        id: "29",
+        name: "AI Model Dataset",
+        description: "SQL dataset model AI & LLM untuk import database, benchmark, dan riset kecerdasan buatan.",
+        file: "data-model-ai-by-pradipta.sql",
+        preview: "AI/preview/data-model-ai-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Reference",
+        directory: "AI / sql",
+        tags: ["sql", "ai", "database"]
+    },
 
-        file:
-            "data-type-engine-car-by-pradipta.php",
-
-        preview:
-            "car/preview/data-type-engine-car-by-pradipta.php.txt",
-
-        format:
-            "PHP",
-
-        type:
-            "Reference",
-
-        directory:
-            "car / php",
-
-        tags:
-            [
-                "php",
-                "reference",
-                "vehicle"
-            ]
-
+    {
+        id: "30",
+        name: "AI Model Rating",
+        description: "SQL dataset rating model AI untuk import database evaluasi performa dan benchmark LLM.",
+        file: "data-rating-model-ai-by-pradipta.sql",
+        preview: "AI/preview/data-rating-model-ai-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Reference",
+        directory: "AI / sql",
+        tags: ["sql", "ai", "reference"]
     },
 
 
+    /* --------------------------------------------------------
+       SONGS DATASETS
+    -------------------------------------------------------- */
+
     {
-        id:
-            "05",
-
-        name:
-            "Dummy Dealer Indonesia",
-
-        description:
-            "SQL dataset dealer Indonesia untuk import database.",
-
-        file:
-            "data-dummy-dealer-in-indonesian.sql",
-
-        preview:
-            "car/preview/data-dummy-dealer-in-indonesian.sql.txt",
-
-        format:
-            "SQL",
-
-        type:
-            "Database",
-
-        directory:
-            "car / sql",
-
-        tags:
-            [
-                "sql",
-                "database"
-            ]
-
+        id: "31",
+        name: "Trending Songs",
+        description: "Dataset lagu trending dunia untuk aplikasi musik, rekomendasi lagu, dan analisis tren audio.",
+        file: "data-trending-songs-by-pradipta.php",
+        preview: "songs/preview/data-trending-songs-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Entertainment",
+        directory: "songs / php",
+        tags: ["php", "songs", "reference"]
     },
 
-
     {
-        id:
-            "06",
-
-        name:
-            "Indonesian Car Dataset",
-
-        description:
-            "SQL dataset kendaraan Indonesia untuk database dan aplikasi otomotif.",
-
-        file:
-            "data-indonesian-car-by-pradipta.sql",
-
-        preview:
-            "car/preview/data-indonesian-car-by-pradipta.sql.txt",
-
-        format:
-            "SQL",
-
-        type:
-            "Database",
-
-        directory:
-            "car / sql",
-
-        tags:
-            [
-                "sql",
-                "database",
-                "vehicle"
-            ]
-
-    },
-
-
-    {
-        id:
-            "07",
-
-        name:
-            "Indonesian Number Plate",
-
-        description:
-            "SQL reference dataset nomor polisi kendaraan Indonesia.",
-
-        file:
-            "data-indonesian-number-plate-by-pradipta.sql",
-
-        preview:
-            "car/preview/data-indonesian-number-plate-by-pradipta.sql.txt",
-
-        format:
-            "SQL",
-
-        type:
-            "Reference",
-
-        directory:
-            "car / sql",
-
-        tags:
-            [
-                "sql",
-                "reference",
-                "vehicle"
-            ]
-
-    },
-
-
-    {
-        id:
-            "08",
-
-        name:
-            "Type Engine Car",
-
-        description:
-            "SQL reference dataset tipe engine kendaraan.",
-
-        file:
-            "data-type-engine-car-by-pradipta.sql",
-
-        preview:
-            "car/preview/data-type-engine-car-by-pradipta.sql.txt",
-
-        format:
-            "SQL",
-
-        type:
-            "Reference",
-
-        directory:
-            "car / sql",
-
-        tags:
-            [
-                "sql",
-                "reference",
-                "vehicle"
-            ]
-
+        id: "32",
+        name: "Trending Songs",
+        description: "SQL dataset lagu trending dunia untuk import database aplikasi musik dan analisis tren audio.",
+        file: "data-trending-songs-by-pradipta.sql",
+        preview: "songs/preview/data-trending-songs-by-pradipta.sql.txt",
+        format: "SQL",
+        type: "Entertainment",
+        directory: "songs / sql",
+        tags: ["sql", "songs", "database"]
     }
 
 ];
@@ -3986,6 +4809,14 @@ let activeDataset =
 
 let toastTimer =
     null;
+
+
+const PAGE_SIZE =
+    10;
+
+
+let currentPage =
+    1;
 
 
 /* ============================================================
@@ -4680,6 +5511,157 @@ function getFilteredDatasets() {
 
 
 /* ============================================================
+   PAGINATION HELPERS
+============================================================ */
+
+const paginationBar =
+    document.getElementById(
+        "paginationBar"
+    );
+
+
+const paginationInfo =
+    document.getElementById(
+        "paginationInfo"
+    );
+
+
+const pagePrev =
+    document.getElementById(
+        "pagePrev"
+    );
+
+
+const pageNext =
+    document.getElementById(
+        "pageNext"
+    );
+
+
+const pageInput =
+    document.getElementById(
+        "pageInput"
+    );
+
+
+const pageTotalLabel =
+    document.getElementById(
+        "pageTotalLabel"
+    );
+
+
+function getTotalPages(
+    totalItems
+) {
+
+    return Math.max(
+        1,
+        Math.ceil(
+            totalItems /
+            PAGE_SIZE
+        )
+    );
+
+}
+
+
+function updatePagination(
+    totalItems
+) {
+
+    const totalPages =
+        getTotalPages(
+            totalItems
+        );
+
+
+    const start =
+        (currentPage - 1) *
+        PAGE_SIZE +
+        1;
+
+
+    const end =
+        Math.min(
+            currentPage *
+            PAGE_SIZE,
+            totalItems
+        );
+
+
+    if (
+        paginationBar
+    ) {
+
+        paginationBar.style.display =
+            totalItems > PAGE_SIZE
+                ? "flex"
+                : "none";
+
+    }
+
+
+    if (
+        paginationInfo
+    ) {
+
+        paginationInfo.textContent =
+            `Showing ${start}–${end} of ${totalItems} files`;
+
+    }
+
+
+    if (
+        pageTotalLabel
+    ) {
+
+        pageTotalLabel.textContent =
+            `of ${totalPages}`;
+
+    }
+
+
+    if (
+        pageInput
+    ) {
+
+        pageInput.max =
+            String(
+                totalPages
+            );
+
+
+        pageInput.value =
+            String(
+                currentPage
+            );
+
+    }
+
+
+    if (
+        pagePrev
+    ) {
+
+        pagePrev.disabled =
+            currentPage <= 1;
+
+    }
+
+
+    if (
+        pageNext
+    ) {
+
+        pageNext.disabled =
+            currentPage >= totalPages;
+
+    }
+
+}
+
+
+/* ============================================================
    RENDER DATASETS
 ============================================================ */
 
@@ -4696,6 +5678,24 @@ function renderDatasets() {
 
     const list =
         getFilteredDatasets();
+
+
+    const totalPages =
+        getTotalPages(
+            list.length
+        );
+
+
+    /* Clamp current page jika filter mengubah total halaman */
+
+    if (
+        currentPage > totalPages
+    ) {
+
+        currentPage =
+            totalPages;
+
+    }
 
 
     setText(
@@ -4730,9 +5730,29 @@ function renderDatasets() {
         `;
 
 
+        updatePagination(
+            0
+        );
+
+
         return;
 
     }
+
+
+    /* Potong sesuai halaman */
+
+    const pageStart =
+        (currentPage - 1) *
+        PAGE_SIZE;
+
+
+    const paginated =
+        list.slice(
+            pageStart,
+            pageStart +
+            PAGE_SIZE
+        );
 
 
     datasetList.innerHTML = `
@@ -4762,7 +5782,7 @@ function renderDatasets() {
         </div>
 
 
-        ${list
+        ${paginated
             .map(
                 dataset => `
 
@@ -4874,6 +5894,11 @@ function renderDatasets() {
             .join("")}
 
     `;
+
+
+    updatePagination(
+        list.length
+    );
 
 
     bindDatasetButtons();
@@ -5344,6 +6369,10 @@ if (
         "input",
         () => {
 
+            currentPage =
+                1;
+
+
             renderDatasets();
 
 
@@ -5405,6 +6434,10 @@ if (
                                 .filter
                             ||
                             "all";
+
+
+                        currentPage =
+                            1;
 
 
                         renderDatasets();
@@ -5512,6 +6545,166 @@ document.addEventListener(
 
     }
 );
+
+
+/* ============================================================
+   PAGINATION EVENTS
+============================================================ */
+
+if (
+    pagePrev
+) {
+
+    pagePrev.addEventListener(
+        "click",
+        () => {
+
+            if (
+                currentPage > 1
+            ) {
+
+                currentPage--;
+
+
+                renderDatasets();
+
+
+                datasetList.scrollIntoView(
+                    {
+                        behavior: "smooth",
+                        block: "start"
+                    }
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+if (
+    pageNext
+) {
+
+    pageNext.addEventListener(
+        "click",
+        () => {
+
+            const list =
+                getFilteredDatasets();
+
+
+            const totalPages =
+                getTotalPages(
+                    list.length
+                );
+
+
+            if (
+                currentPage < totalPages
+            ) {
+
+                currentPage++;
+
+
+                renderDatasets();
+
+
+                datasetList.scrollIntoView(
+                    {
+                        behavior: "smooth",
+                        block: "start"
+                    }
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+if (
+    pageInput
+) {
+
+    pageInput.addEventListener(
+        "change",
+        () => {
+
+            const list =
+                getFilteredDatasets();
+
+
+            const totalPages =
+                getTotalPages(
+                    list.length
+                );
+
+
+            const requested =
+                parseInt(
+                    pageInput.value,
+                    10
+                );
+
+
+            if (
+                !isNaN(
+                    requested
+                )
+            ) {
+
+                currentPage =
+                    Math.max(
+                        1,
+                        Math.min(
+                            requested,
+                            totalPages
+                        )
+                    );
+
+
+                renderDatasets();
+
+
+                datasetList.scrollIntoView(
+                    {
+                        behavior: "smooth",
+                        block: "start"
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    pageInput.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key ===
+                "Enter"
+            ) {
+
+                pageInput.dispatchEvent(
+                    new Event(
+                        "change"
+                    )
+                );
+
+            }
+
+        }
+    );
+
+}
 
 
 /* ============================================================
@@ -7079,7 +8272,7 @@ requestAnimationFrame(
 
     if (!root || !wrapper) return;
 
-    const text = "APISTACK * DATASET *";
+    const text = "APISTACK * DATASET * ANALYTICS * ";
     const letters = Array.from(text);
     const radius = 88;
 
@@ -7173,7 +8366,7 @@ requestAnimationFrame(
     const CONFIG = {
 
         unit:
-            "APISTACK ✦ DATASET ✦",
+            "APISTACK ✦ DATASET ✦ ANALYTICS ✦ ",
 
         speed:
             48,
@@ -7620,6 +8813,94 @@ requestAnimationFrame(
     refresh();
     window.addEventListener('resize', refresh, { passive: true });
 })();
+</script>
+
+
+<script>
+/* ============================================================
+   CARD NAV — Toggle & Backdrop
+============================================================ */
+(function () {
+    const nav       = document.getElementById('cardNav');
+    const hamburger = document.getElementById('cnHamburger');
+    const content   = document.getElementById('cnContent');
+    const backdrop  = document.getElementById('cnBackdrop');
+
+    if (!nav || !hamburger || !content || !backdrop) return;
+
+    let isOpen = false;
+
+    function openNav() {
+        isOpen = true;
+        nav.classList.add('cn-open');
+        hamburger.classList.add('cn-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.setAttribute('aria-label', 'Close menu');
+        content.setAttribute('aria-hidden', 'false');
+        backdrop.classList.add('cn-visible');
+    }
+
+    function closeNavInternal() {
+        isOpen = false;
+        nav.classList.remove('cn-open');
+        hamburger.classList.remove('cn-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open menu');
+        content.setAttribute('aria-hidden', 'true');
+        backdrop.classList.remove('cn-visible');
+    }
+
+    // Expose for nav card link onclick
+    window.closeCardNav = closeNavInternal;
+
+    hamburger.addEventListener('click', function () {
+        isOpen ? closeNavInternal() : openNav();
+    });
+
+    backdrop.addEventListener('click', closeNavInternal);
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isOpen) closeNavInternal();
+    });
+})();
+
+
+/* ============================================================
+   CARD NAV — applyFilter helper
+   Programmatically activates a filter button by its data-filter
+   value, syncing with the existing filterRow UI.
+============================================================ */
+function applyFilter(filterValue) {
+    // Find the matching filter button and click it to sync state
+    const filterRow = document.getElementById('filterRow');
+    if (filterRow) {
+        const btn = filterRow.querySelector(
+            '[data-filter="' + filterValue + '"]'
+        );
+        if (btn) {
+            btn.click();
+            // Scroll dataset section into view after a brief delay
+            setTimeout(function () {
+                const list = document.getElementById('datasetList');
+                if (list) {
+                    list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 120);
+            return;
+        }
+    }
+
+    // Fallback: directly set activeFilter if variable is in scope
+    if (typeof activeFilter !== 'undefined') {
+        activeFilter = filterValue;
+        if (typeof currentPage !== 'undefined') currentPage = 1;
+        if (typeof renderDatasets === 'function') renderDatasets();
+        setTimeout(function () {
+            const list = document.getElementById('datasetList');
+            if (list) list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 80);
+    }
+}
 </script>
 
 </body>
