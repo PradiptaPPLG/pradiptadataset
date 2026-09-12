@@ -2399,203 +2399,409 @@ a {
    RESPONSIVE
 ========================================================= */
 
+/* =========================================================
+   RESPONSIVE — 1150px (wide tablet)
+========================================================= */
+
 @media (max-width: 1150px) {
 
     .circular-text-wrap {
-
-        right:
-            150px;
-
+        right: 150px;
     }
 
 }
 
 
+/* =========================================================
+   RESPONSIVE — 950px (tablet landscape)
+========================================================= */
+
 @media (max-width: 950px) {
 
     .hero {
-
-        grid-template-columns:
-            1fr;
-
-        gap:
-            55px;
-
-        padding:
-            75px 0;
-
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 72px 0;
     }
-
 
     .hero-right {
-
-        align-self:
-            start;
-
+        align-self: start;
     }
-
-
-    /*
-     * Circle ikut flow layout.
-     */
 
     .circular-text-wrap {
-
-        position:
-            relative;
-
-        right:
-            auto;
-
-        top:
-            auto;
-
-        width:
-            150px;
-
-        height:
-            150px;
-
-        margin:
-            15px
-            0
-            0
-            auto;
-
-        transform:
-            none;
-
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 150px;
+        height: 150px;
+        margin: 15px 0 0 auto;
+        transform: none;
     }
-
 
     .circular-text {
-
-        width:
-            150px;
-
-        height:
-            150px;
-
+        width: 150px;
+        height: 150px;
     }
-
 
     .circular-logo {
-
-        width:
-            52px;
-
-        height:
-            52px;
-
+        width: 52px;
+        height: 52px;
     }
-
 
     .circular-item {
-
-        font-size:
-            11px;
-
+        font-size: 11px;
     }
-
 
     .circular-text-center {
-
-        width:
-            26px;
-
-        height:
-            26px;
-
+        width: 26px;
+        height: 26px;
     }
-
 
     .dataset-heading,
     .dataset-item {
-
         grid-template-columns:
             50px
             minmax(250px, 1fr)
             115px
             100px;
-
     }
 
-
     .dataset-source {
-
-        display:
-            none;
-
+        display: none;
     }
 
 }
 
 
+/* =========================================================
+   RESPONSIVE — 720px (tablet portrait / large phone)
+========================================================= */
+
 @media (max-width: 720px) {
 
+    /* Layout */
     .page {
-
-        width:
-            calc(
-                100% -
-                24px
-            );
-
+        width: calc(100% - 24px);
     }
 
-
-    .header {
-
-        height:
-            68px;
-
+    .page-offset {
+        padding-top: 74px;
     }
 
-
-    .header-right {
-
-        display:
-            none;
-
-    }
-
-
+    /* Hero */
     .hero {
-
-        padding:
-            60px 0;
-
+        padding: 52px 0 60px;
+        gap: 36px;
     }
-
 
     .hero-title {
-
-        font-size:
-            58px;
-
+        font-size: clamp(46px, 13vw, 70px);
+        line-height: 0.94;
     }
 
+    .hero-description {
+        font-size: 14px;
+        margin-top: 24px;
+    }
 
+    /* Library */
     .library {
-
-        padding-top:
-            40px;
-
+        padding-top: 36px;
+        padding-bottom: 80px;
     }
-
 
     .library-header {
-
-        align-items:
-            stretch;
-
-        flex-direction:
-            column;
-
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        margin-bottom: 20px;
     }
 
+    .library-title {
+        font-size: 18px;
+    }
 
     .search {
+        width: 100%;
+    }
+
+    /* Dataset list — 2-column card: number | content */
+    .dataset-heading {
+        display: none;
+    }
+
+    .dataset-item {
+        grid-template-columns: 32px 1fr;
+        column-gap: 13px;
+        padding: 20px 0;
+        align-items: start;
+    }
+
+    .dataset-number {
+        padding-top: 3px;
+        font-size: 9px;
+    }
+
+    .dataset-source {
+        display: none;
+    }
+
+    .dataset-type {
+        display: inline-block;
+        margin-top: 5px;
+        font-size: 8px;
+        padding: 3px 6px;
+        border: 1px solid var(--line);
+        border-radius: 3px;
+    }
+
+    .dataset-actions {
+        grid-column: 2;
+        justify-content: flex-start;
+        margin-top: 12px;
+        gap: 8px;
+    }
+
+    .action {
+        flex: 1;
+        max-width: 120px;
+        text-align: center;
+    }
+
+    /* Modal — near fullscreen */
+    .modal-meta {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .meta {
+        border-bottom: 1px solid var(--line);
+    }
+
+    .meta:nth-child(2) {
+        border-right: 0;
+    }
+
+    /* Pagination */
+    .pagination {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 0 24px;
+    }
+
+    /* Circular text */
+    .circular-text-wrap {
+        position: relative;
+        right: auto;
+        top: auto;
+        width: 125px;
+        height: 125px;
+        margin: 30px 0 0 auto;
+        transform: none;
+    }
+
+    .circular-text {
+        width: 125px;
+        height: 125px;
+    }
+
+    .circular-letter {
+        font-size: 9px;
+    }
+
+    /* Text loop ribbon */
+    .text-loop-svg {
+        height: 105px;
+    }
+
+    .text-loop-text,
+    .text-loop-measure {
+        font-size: 29px;
+    }
+
+    .text-loop-path {
+        stroke-width: 61;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — 480px (standard phone)
+========================================================= */
+
+@media (max-width: 480px) {
+
+    /* Layout */
+    .page {
+        width: calc(100% - 20px);
+    }
+
+    .page-offset {
+        padding-top: 68px;
+    }
+
+    /* Hero */
+    .hero {
+        padding: 44px 0 52px;
+        gap: 28px;
+    }
+
+    .hero-title {
+        font-size: clamp(40px, 12vw, 56px);
+        letter-spacing: -0.07em;
+    }
+
+    .hero-index {
+        margin-bottom: 20px;
+    }
+
+    .hero-description {
+        font-size: 13.5px;
+        line-height: 1.7;
+        margin-top: 20px;
+    }
+
+    .hero-note-text {
+        font-size: 12px;
+    }
+
+    /* Library */
+    .library {
+        padding-top: 28px;
+        padding-bottom: 64px;
+    }
+
+    .library-title {
+        font-size: 16px;
+    }
+
+    .filter {
+        height: 30px;
+        padding: 0 10px;
+        font-size: 9px;
+    }
+
+    /* Dataset item */
+    .dataset-name {
+        font-size: 13.5px;
+    }
+
+    .dataset-description {
+        font-size: 11px;
+    }
+
+    .action {
+        height: 30px;
+        font-size: 9px;
+        padding: 0 9px;
+    }
+
+    /* Modal — fullscreen on small phone */
+    .modal-panel {
+        width: calc(100% - 12px);
+        height: calc(100dvh - 12px);
+        border-radius: 0;
+    }
+
+    .modal-top {
+        min-height: 72px;
+        padding: 0 14px;
+    }
+
+    .modal-title {
+        font-size: 15px;
+    }
+
+    .modal-meta {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .meta {
+        padding: 12px 14px;
+    }
+
+    /* Circular text */
+    .circular-text-wrap {
+        width: 105px;
+        height: 105px;
+    }
+
+    .circular-text {
+        width: 105px;
+        height: 105px;
+    }
+
+    .circular-logo {
+        width: 38px;
+        height: 38px;
+    }
+
+    .circular-item {
+        font-size: 7px;
+    }
+
+    .circular-text-center {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Text loop ribbon */
+    .text-loop-svg {
+        height: 86px;
+    }
+
+    .text-loop-text,
+    .text-loop-measure {
+        font-size: 23px;
+    }
+
+    .text-loop-path {
+        stroke-width: 49;
+    }
+
+    /* Footer */
+    .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 18px 0;
+        min-height: unset;
+    }
+
+    /* CardNav — ensure logo name shows on small phones  */
+    .cn-logo-name {
+        display: block;
+        font-size: 11px;
+    }
+
+    .cn-card-label {
+        font-size: 14px;
+    }
+
+    .cn-card-link {
+        font-size: 11px;
+    }
+
+    /* Cards go horizontal (2 per row) on very small screens */
+    .cn-content {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 6px;
+    }
+
+    .cn-card {
+        flex: 1 1 calc(50% - 6px);
+        min-height: 80px;
+        padding: 10px 12px;
+    }
+
+    .cn-card:last-child {
+        flex: 1 1 100%;
+    }
+
+}
 
         width:
             100%;
