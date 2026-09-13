@@ -3239,6 +3239,9 @@ a {
                     <a class="cn-card-link" href="#" onclick="applyFilter('songs'); closeCardNav(); return false;" aria-label="Songs datasets">
                         <span class="cn-arrow">&#8599;</span> Songs
                     </a>
+                    <a class="cn-card-link" href="#" onclick="applyFilter('hardware'); closeCardNav(); return false;" aria-label="Hardware datasets">
+                        <span class="cn-arrow">&#8599;</span> Hardware
+                    </a>
                 </div>
             </div>
 
@@ -3510,7 +3513,7 @@ a {
                     data-split-delay="25"
                 >
 
-                    40 FILES
+                    42 FILES
 
                 </span>
 
@@ -3632,6 +3635,16 @@ a {
             >
 
                 SONGS
+
+            </button>
+
+
+            <button
+                class="filter"
+                data-filter="hardware"
+            >
+
+                HARDWARE
 
             </button>
 
@@ -4712,6 +4725,36 @@ const datasets = [
         type: "Entertainment",
         directory: "songs / sql",
         tags: ["sql", "songs", "database"]
+    }
+
+    ,
+
+    /* --------------------------------------------------------
+       HARDWARE DATASETS
+    -------------------------------------------------------- */
+
+    {
+        id: "35",
+        name: "GPU Specifications",
+        description: "Dataset lengkap spesifikasi GPU (NVIDIA & AMD) sepanjang masa untuk catalog hardware atau e-commerce.",
+        file: "data-gpu-by-pradipta.php",
+        preview: "hardware/preview/data-gpu-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Hardware",
+        directory: "hardware",
+        tags: ["php", "hardware", "reference"]
+    },
+
+    {
+        id: "36",
+        name: "Processor Specifications",
+        description: "Dataset spesifikasi Processor/CPU (Intel & AMD) dari berbagai generasi untuk simulasi rakit PC.",
+        file: "data-processor-by-pradipta.php",
+        preview: "hardware/preview/data-processor-by-pradipta.php.txt",
+        format: "PHP",
+        type: "Hardware",
+        directory: "hardware",
+        tags: ["php", "hardware", "reference"]
     }
 
 ];
